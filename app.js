@@ -2,26 +2,17 @@ $(document).ready(function(){
   // Cargar la home al cargar la app
   $.load_page('home');
 
-  $('#main-menu .nav-item a').click(function(e) {
-    $('#main-menu .nav-item.active').removeClass('active');
-    $(this).parent().parent().addClass('active');
+  // Funcion de menu
+  $('.nav-item a').click(function(e) {
+    $('.nav-item.active').removeClass('active');
+    let $li = $(this).parent().parent();
+    $li.addClass('active');
+    $li.load_page($li.data('location'))
     e.preventDefault();
   });
 
 
 });
-
-// const navItems = document.querySelectorAll(".nav-item");
-
-// navItems.forEach((navItem, i) => {
-//   navItem.addEventListener("click", () => {
-//     navItems.forEach((item, j) => {
-//       item.className = "nav-item";
-//     });  
-//     navItem.className = "nav-item active";
-//   });  
-// });  
-
 
 
 
