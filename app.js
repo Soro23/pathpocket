@@ -2,8 +2,8 @@ $(document).ready(function(){
   // Cargar la home al cargar la app
   $.load_page('home');
 
-  $('.nav-item li a').click(function(e) {
-    $('.nav-item.active').removeClass('active');
+  $('#main-menu .nav-item a').click(function(e) {
+    $('#main-menu .nav-item.active').removeClass('active');
     $(this).parent().parent().addClass('active');
     e.preventDefault();
   });
