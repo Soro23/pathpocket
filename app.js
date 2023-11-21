@@ -5,9 +5,9 @@ $(document).ready(function(){
   // Funcion de menu
   $('.nav-item a').click(function(e) {
     $('.nav-item.active').removeClass('active');
-    let $li = $(this).parent().parent();
+    let $li = $(this).parent();
     $li.addClass('active');
-    $.load_page($li.data('location'))
+    $.load_page($li.data('location'));
     e.preventDefault();
   });
 
