@@ -7,7 +7,7 @@ $(document).ready(function(){
     $('.nav-item.active').removeClass('active');
     let $li = $(this).parent().parent();
     $li.addClass('active');
-    $li.load_page($li.data('location'))
+    $.load_page($li.data('location'))
     e.preventDefault();
   });
 
