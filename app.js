@@ -2,9 +2,9 @@ $(document).ready(function(){
   // Cargar la home al cargar la app
   $.load_page('home');
 
-  $('.navbar-nav').click(function(e) {
+  $('.navbar-nav li a').click(function(e) {
     $('.navbar-nav.active').removeClass('active');
-    $(this).addClass('active');
+    $(this).parent().parent().addClass('active');
     e.preventDefault();
   });
 
