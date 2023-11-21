@@ -13,16 +13,16 @@ navItems.forEach((navItem, i) => {
 
 $(document).ready(function(){
   $.load_page('home');
-
-
-
-
-
-
-  $.load_page = function(pagename) {
-    $("#content").load('page/'+pagename+'.html');
-  }
 });
+
+
+
+
+
+
+$.load_page = function(pagename) {
+  $("#content").load('page/'+pagename+'.html');
+}
 
 function load_page(pagename) {
   $.load_page(pagename);
