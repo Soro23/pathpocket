@@ -10,7 +10,7 @@ var data = {
 };
 
 // Establece datos en un nodo específico
-pathfinder.DB.insertCharacterData(data);
+pathfinder._data.insertCharacterData(data);
 
 var data = {
   name: "Patrick",
@@ -19,7 +19,7 @@ var data = {
   },
 };
 
-let newdata = pathfinder.DB.getCharacterData(data.name)
+let newdata = pathfinder._data.getCharacterData(data.name);
 
 console.log(newdata);
 // // Ejemplo de lectura de la base de datos

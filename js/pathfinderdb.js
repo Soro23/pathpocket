@@ -8,7 +8,7 @@ import {
   update,
   remove,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
-export var DB = (function () {
+export var _data = (function () {
   var firebaseConfig = {
     apiKey: "AIzaSyDBGJIICX3rsFL8_ysotcayXpJdm0Fvujg",
     authDomain: "ghpages-97675.firebaseapp.com",
@@ -57,6 +57,11 @@ export var DB = (function () {
     insertCharacterData: (data) => {
       insertCharacterData(data);
     },
-    getCharacterData: (name) => {return getCharacterData(name)},
+    getCharacterData: (name) => {
+      var data = getCharacterData(name);
+      console.log("iin");
+      console.log(data);
+      return data;
+    },
   };
 })();
