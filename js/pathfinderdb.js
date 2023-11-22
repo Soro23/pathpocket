@@ -15,7 +15,8 @@ export var DB = (function () {
   function writeCharacterData(data) {
     if(data.hasOwnProperty('name')){
       // set(ref(pfdb, "characters/" + data.name), data);
-      pathfinder.DB.getDB.ref("characters").push(data);
+      pathfinder.DB.getDB.ref("characters/" + data.name).set(data);
+      // pathfinder.DB.getDB.ref("characters/" + data.name).push(data);
       
     }else{
       console.log('Error pushing data');
@@ -25,11 +26,10 @@ export var DB = (function () {
 
   // externals
   return {
-    getConfig: function () {
-      return firebaseConfig;
-    },
-    getDB: function () {
-      return pfdb;
-    },
+    getConfig: () => firebaseConfig,
+    getDB: () => pfdb,
+    writeCharacterData: (data) => {
+      writeCharacterData(data);
+    }
   };
 })();

@@ -12,10 +12,10 @@ var data = {
 };
 
 // Establece datos en un nodo específico
-pathfinder.DB.getDB.ref("characters").push(data);
+pathfinder.DB.getDB().ref("characters").push(data);
 
 // Ejemplo de lectura de la base de datos
-pathfinder.DB.getDB
+pathfinder.DB.getDB()
   .ref("characters")
   .once("Patrick")
   .then(function (snapshot) {
