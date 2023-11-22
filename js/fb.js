@@ -10,7 +10,12 @@ var data = {
 };
 
 // Establece datos en un nodo específico
-pathfinder.DB.writeCharacterData(data);
+pathfinder.DB.writeCharacterData({
+  name: "Patrick",
+  stats: {
+    des: 16,
+  },
+});
 
 // // Ejemplo de lectura de la base de datos
 // pathfinder.DB.getDB()
