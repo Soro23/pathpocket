@@ -60,3 +60,75 @@
   margin-left: -10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
 }
+
+
+/* Hoja de personaje */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  .character-sheet {
+    border: 2px solid #333;
+    padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+  }
+
+  h1, h2, h3 {
+    text-align: center;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+
+  .section-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .attribute {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .attribute label {
+    flex: 1;
+  }
+
+  .attribute input {
+    width: 60px;
+    text-align: center;
+  }
+
+  .abilities {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ability {
+    width: 30%;
+  }
+
+  .skills {
+    margin-top: 20px;
+  }
+
+  .skill {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .skill label {
+    flex: 1;
+  }
+
+  .skill input {
+    width: 50px;
+    text-align: center;
+  }
