@@ -28,7 +28,7 @@ export var DB = (function () {
       stats: data.stats,
     })
       .then(() => {
-        console.log("Inserted: " + data);
+        console.log("Inserted data on " + data.name);
       })
       .catch((error) => {
         alert("Error: " + error);
@@ -57,6 +57,6 @@ export var DB = (function () {
     insertCharacterData: (data) => {
       insertCharacterData(data);
     },
-    getCharacterData: (name) => getCharacterData(name),
+    getCharacterData: (name) => {return getCharacterData(name)},
   };
 })();
