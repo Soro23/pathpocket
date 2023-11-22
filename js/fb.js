@@ -1,8 +1,6 @@
 import * as pathfinder from "./pathfinderdb.js";
 // import "./pathfinderdb.js";
 
-// Inicializa Firebase
-firebase.initializeApp(pathfinder.DB.getDB);
 
 // Ejemplo de escritura en la base de datos
 var data = {
