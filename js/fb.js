@@ -19,8 +19,9 @@ var data = {
   },
 };
 
+let newdata = pathfinder.DB.getCharacterData(data.name)
 
-console.log(pathfinder.DB.getCharacterData(data.name));
+console.log(newdata);
 // // Ejemplo de lectura de la base de datos
 // pathfinder.DB.getDB()
 //   .ref("characters")

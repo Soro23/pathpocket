@@ -28,7 +28,7 @@ export var DB = (function () {
       stats: data.stats,
     })
       .then(() => {
-        console.log(data);
+        console.log("Inserted: " + data);
       })
       .catch((error) => {
         alert("Error: " + error);
