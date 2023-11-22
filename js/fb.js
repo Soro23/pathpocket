@@ -2,15 +2,14 @@ import * as pathfinder from "./pathfinderdb.js";
 // import "./pathfinderdb.js";
 
 // Ejemplo de escritura en la base de datos
-var data = {
-  name: "Patrick",
-  stats: {
-    fue: 14,
-  },
-};
-
-// Establece datos en un nodo específico
-pathfinder._data.insertCharacterData(data);
+// Establece datos en un nodo específico -- funciona
+// var data = {
+//   name: "Patrick",
+//   stats: {
+//     fue: 14,
+//   },
+// };
+// pathfinder._data.insertCharacterData(data);
 
 var data = {
   name: "Patrick",

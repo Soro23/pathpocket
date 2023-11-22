@@ -8,6 +8,7 @@ import {
   update,
   remove,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+
 export var _data = (function () {
   var firebaseConfig = {
     apiKey: "AIzaSyDBGJIICX3rsFL8_ysotcayXpJdm0Fvujg",
@@ -22,19 +23,7 @@ export var _data = (function () {
   var firebase = initializeApp(firebaseConfig);
   var pfdb = getDatabase();
 
-  function insertCharacterData(data) {
-    set(ref(pfdb, "characters/" + data.name), {
-      name: data.name,
-      stats: data.stats,
-    })
-      .then(() => {
-        console.log("Inserted data on " + data.name);
-      })
-      .catch((error) => {
-        alert("Error: " + error);
-      });
-  }
-
+  // ------ GET DATA ---------------//
   function getCharacterData(name) {
     get(child(ref(pfdb), "characters/" + name))
       .then((character) => {
@@ -50,12 +39,53 @@ export var _data = (function () {
       });
   }
 
+  // ------ INSERT DATA ---------------//
+  function insertCharacterData(data) {
+    set(ref(pfdb, "characters/" + data.name), {
+      name: data.name,
+      stats: data.stats,
+    })
+      .then(() => {
+        console.log("Inserted data on node" + data.name);
+      })
+      .catch((error) => {
+        alert("Error: " + error);
+      });
+  }
+
+  // ------ UPDATE DATA ---------------//
+  function updateCharacterData(data) {
+    update(ref(pfdb, "characters/" + data.name), {
+      stats: data.stats,
+    })
+      .then(() => {
+        console.log("Updated data on node" + data.name);
+      })
+      .catch((error) => {
+        alert("Error: " + error);
+      });
+  }
+
+  // ------ REMOVE DATA ---------------//
+  function updateCharacterData(data) {
+    remove(ref(pfdb, "characters/" + data.name))
+      .then(() => {
+        console.log("Removed data on node" + data.name);
+      })
+      .catch((error) => {
+        alert("Error: " + error);
+      });
+  }
+
   // externals
   return {
     getConfig: () => firebaseConfig,
     getDB: () => pfdb,
     insertCharacterData: (data) => {
       insertCharacterData(data);
+    },
+    updateCharacterData: (data) => {
+      updateCharacterData(data);
     },
     getCharacterData: (name) => {
       var data = getCharacterData(name);
