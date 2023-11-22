@@ -12,7 +12,7 @@ export var DB = (function () {
     databaseURL:
       "https://ghpages-97675-default-rtdb.europe-west1.firebasedatabase.app",
   };
-  firebase.initializeApp(firebaseConfig);
+  var firebase = initializeApp(firebaseConfig);
   var pfdb = firebase.database();
 
   function writeCharacterData(data) {
