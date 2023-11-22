@@ -39,6 +39,7 @@ export var DB = (function () {
     get(child(ref(pfdb), "characters/" + name))
       .then((character) => {
         if (character.exists()) {
+          console.log(character);
           return character;
         } else {
           alert("No data found");
@@ -57,8 +58,6 @@ export var DB = (function () {
     insertCharacterData: (data) => {
       insertCharacterData(data);
     },
-    getCharacterData: (name) => {
-      return getCharacterData(name);
-    },
+    getCharacterData: (name) => getCharacterData(name),
   };
 })();
