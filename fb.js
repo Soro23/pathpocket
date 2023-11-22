@@ -17,15 +17,15 @@
 
   // Ejemplo de escritura en la base de datos
   var data = {
-    Raizel: {
+    Patrick: {
         stats: {
-            fue : 20
+            fue : 14
         }
     }
   };
 
   // Establece datos en un nodo específico
-  database.ref('characters').set(data);
+  database.ref('characters').push(data);
 
   // Ejemplo de lectura de la base de datos
   database.ref('characters').once('Pattick').then(function(snapshot) {

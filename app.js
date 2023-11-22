@@ -27,3 +27,7 @@ $.load_page = function(pagename) {
 function load_page(pagename) {
   $.load_page(pagename);
 }
+
+
+// soro23
+// 2yszh1ITie8OdXQI
