@@ -31,7 +31,7 @@ firebase.initializeApp(firebaseConfig);
 var data = {
   Patrick: {
     stats: {
-      fue: 14,
+      fue: 16,
     },
   },
 };
