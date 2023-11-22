@@ -14,9 +14,8 @@ export var DB = (function () {
 
   function writeCharacterData(data) {
     if(data.hasOwnProperty('name')){
-      // set(ref(pfdb, "characters/" + data.name), data);
-      pfdb.ref("characters/" + data.name).set(data);
-      // pathfinder.DB.getDB.ref("characters/" + data.name).push(data);
+      // pfdb.ref("characters/" + data.name).set(data);
+      pfdb.ref("characters/" + data.name).push(data);
       console.log(data);
     }else{
       console.log('Error pushing data');

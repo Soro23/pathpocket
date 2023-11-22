@@ -5,7 +5,7 @@ import * as pathfinder from "./pathfinderdb.js";
 var data = {
   name: "Patrick",
   stats: {
-    des: 14,
+    fue: 16,
   },
 };
 
