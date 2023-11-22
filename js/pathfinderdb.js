@@ -9,8 +9,8 @@ export var DB = (function () {
     databaseURL:
       "https://ghpages-97675-default-rtdb.europe-west1.firebasedatabase.app",
   };
+  firebase.initializeApp(pathfinder.DB.getDB);
   var pfdb = firebase.database();
-
 
   function writeCharacterData(userId, name, email, imageUrl) {
     const db = getDatabase();
@@ -20,7 +20,6 @@ export var DB = (function () {
       profile_picture: imageUrl,
     });
   }
-
 
   // externals
   return {
@@ -32,4 +31,3 @@ export var DB = (function () {
     },
   };
 })();
-
