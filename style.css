@@ -171,7 +171,7 @@ main {
     display: grid;
     grid-template-rows: 50% 50%;
     background: #f6f7fb;
-    margin: 15px;
+    margin: 15px 15px 15px 0;
     padding: 20px;
     border-radius: 15px;
 }
