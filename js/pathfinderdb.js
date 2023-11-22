@@ -9,16 +9,18 @@ export var DB = (function () {
     databaseURL:
       "https://ghpages-97675-default-rtdb.europe-west1.firebasedatabase.app",
   };
-  firebase.initializeApp(pathfinder.DB.getDB);
+  firebase.initializeApp(firebaseConfig);
   var pfdb = firebase.database();
 
-  function writeCharacterData(userId, name, email, imageUrl) {
-    const db = getDatabase();
-    set(ref(db, "users/" + userId), {
-      username: name,
-      email: email,
-      profile_picture: imageUrl,
-    });
+  function writeCharacterData(data) {
+    if(data.hasOwnProperty('name')){
+      // set(ref(pfdb, "characters/" + data.name), data);
+      pathfinder.DB.getDB.ref("characters").push(data);
+      
+    }else{
+      console.log('Error pushing data');
+      console.log(data);
+    }
   }
 
   // externals
