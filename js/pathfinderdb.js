@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
 import {
   getDatabase,
   ref,
+  get,
   set,
   child,
   update,
@@ -35,10 +36,12 @@ export var DB = (function () {
   }
 
   function getCharacterData(name) {
-    getCharacterData(child(ref(pfdb), "characters/" + name))
+    get(child(ref(pfdb), "characters/" + name))
       .then((character) => {
         if (character.exists()) {
           return characterd;
+        } else {
+          alert("No data found");
         }
       })
       .catch((error) => {
