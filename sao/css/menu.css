@@ -68,8 +68,17 @@
 ul.floating.submenu0 {
 	position: absolute;
 	top: 50%;
-	left: -50%;
+	left: -100%;
 	transform: translate(50%, -50%);
+	/* display: none; */
+	height: 0;
+	overflow: hidden;
+	transition: all 1s linear;
+	-webkit-transition: all 0.2s linear;
+}
+
+#nav-options>li:hover ul.floating.submenu0 {
+    height: calc(245px * 1);
 }
 
 .floating.submenu0>li {
