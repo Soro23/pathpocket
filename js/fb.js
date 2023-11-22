@@ -1,5 +1,4 @@
 import * as pathfinder from "./pathfinderdb.js";
-import * as DBJs from "./DB.js";
 // import "./pathfinderdb.js";
 
 // Ejemplo de escritura en la base de datos
@@ -11,7 +10,7 @@ var data = {
 };
 
 // Establece datos en un nodo específico
-DBJs.DB.insertCharacterData(data);
+pathfinder.DB.insertCharacterData(data);
 
 var data = {
   name: "Patrick",
@@ -21,7 +20,7 @@ var data = {
 };
 
 
-console.log(DBJs.DB.getCharacterData(data.name));
+console.log(pathfinder.DB.getCharacterData(data.name));
 // // Ejemplo de lectura de la base de datos
 // pathfinder.DB.getDB()
 //   .ref("characters")
