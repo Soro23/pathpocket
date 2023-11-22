@@ -12,8 +12,9 @@
 #nav-options>li::after {
 	content: "\A";
 	z-index: -1;
+	opacity: 0;
 	border-style: solid;
-	border-width: 10px 15px 10px 0px;
+	border-width: 6px 10px 6px 0px;
 	border-color: transparent #e7a92d;
 	position: absolute;
 	right: 00%;
@@ -24,7 +25,8 @@
 }
 
 #nav-options>li:hover::after {
-	right: -50%;
+	right: -75%;
+	opacity: 1;
 }
 
 #nav-options>li:hover>.option {
@@ -66,7 +68,7 @@
 ul.floating.submenu0 {
 	position: absolute;
 	top: 50%;
-	left: 100%;
+	left: -50%;
 	transform: translate(50%, -50%);
 }
 
