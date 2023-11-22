@@ -22,7 +22,7 @@ export var DB = (function () {
   var pfdb = getDatabase();
 
   function writeCharacterData(data) {
-    set(ref(db, "characters/" + data.name), { data })
+    set(ref(pfdb, "characters/" + data.name), { data })
       .then(() => {
         console.log(data);
       })
