@@ -39,7 +39,7 @@ export var DB = (function () {
     get(child(ref(pfdb), "characters/" + name))
       .then((character) => {
         if (character.exists()) {
-          return characterd;
+          return character;
         } else {
           alert("No data found");
         }
