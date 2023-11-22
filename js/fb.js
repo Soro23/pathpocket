@@ -5,17 +5,12 @@ import * as pathfinder from "./pathfinderdb.js";
 var data = {
   name: "Patrick",
   stats: {
-    fue: 16,
+    fue: 14,
   },
 };
 
 // Establece datos en un nodo específico
-pathfinder.DB.writeCharacterData({
-  name: "Patrick",
-  stats: {
-    des: 16,
-  },
-});
+pathfinder.DB.writeCharacterData(data);
 
 // // Ejemplo de lectura de la base de datos
 // pathfinder.DB.getDB()
