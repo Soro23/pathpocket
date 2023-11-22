@@ -1,7 +1,7 @@
 var startY = 0;
 var endY = 0;
 
-var dragArea = document.getElementById('sao-detect-drag');
+var dragArea = document.getElementById('nav-detect-drag');
 dragArea.addEventListener("mousedown", function(e){
     startY = e.clientY;
 }, false);

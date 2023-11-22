@@ -1,8 +1,15 @@
+#floating-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #sao-options {
-	position: fixed;
-	top: -100%;
-	right: 15px;
-	height: 100%;
+	/* position: fixed; */
+	/* top: -100%; */
+	/* right: 15px; */
+	/* height: 100%; */
 	width: 100px;
 	transition: all 0.5s ease;
 }

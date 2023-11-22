@@ -1,7 +1,7 @@
 active = false;
 
 function activateOptions(sY, eY) {
-	var options = document.getElementById('sao-options');
+	var options = document.getElementById('nav-options');
 	var dragDistance = 50;
 
 	if ( (sY + dragDistance) < eY ) {
