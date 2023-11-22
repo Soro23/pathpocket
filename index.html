@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="custom.css" />
-        <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <title>Soro23 Playground</title>
-    </head>
-    <body>
-        <main>
-            <nav class="main-menu">
-                <h1>AppMenu</h1>
-                <img class="logo" src="images/app-logo.png" alt />
-                <ul>
-                    <li class="nav-item active" data-location="home">
-                        <b></b>
-                        <b></b>
-                        <a href="#">
-                            <i class="fa fa-house nav-icon"></i>
-                            <span class="nav-text">Home</span>
-                        </a>
-                    </li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="custom.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-database.js"></script>
 
-                    <li class="nav-item" data-location="pathfinder">
-                        <b></b>
-                        <b></b>
-                        <a href="#">
-                            <i class="fa-solid fa-people-group nav-icon"></i>
-                            <span class="nav-text">Pathfinder</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <b></b>
-                        <b></b>
-                        <a href="#">
-                            <i class="fa fa-user nav-icon"></i>
-                            <span class="nav-text">Profile</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <b></b>
-                        <b></b>
-                        <a href="#">
-                            <i class="fa fa-sliders nav-icon"></i>
-                            <span class="nav-text">Settings</span>
-                        </a>
-                    </li>
+    <title>Soro23 Playground</title>
+  </head>
+  <body>
+    <main>
+      <nav class="main-menu">
+        <h1>AppMenu</h1>
+        <img class="logo" src="images/app-logo.png" alt />
+        <ul>
+          <li class="nav-item active" data-location="home">
+            <b></b>
+            <b></b>
+            <a href="#">
+              <i class="fa fa-house nav-icon"></i>
+              <span class="nav-text">Home</span>
+            </a>
+          </li>
 
-                </ul>
-            </nav>
+          <li class="nav-item" data-location="pathfinder">
+            <b></b>
+            <b></b>
+            <a href="#">
+              <i class="fa-solid fa-people-group nav-icon"></i>
+              <span class="nav-text">Pathfinder</span>
+            </a>
+          </li>
 
-            <section id="content" class="content">
-                <!-- Content Dynamic -->
-            </section>
-        </main>
+          <li class="nav-item">
+            <b></b>
+            <b></b>
+            <a href="#">
+              <i class="fa fa-user nav-icon"></i>
+              <span class="nav-text">Profile</span>
+            </a>
+          </li>
 
-        <script src="app.js"></script>
-    </body>
+          <li class="nav-item">
+            <b></b>
+            <b></b>
+            <a href="#">
+              <i class="fa fa-sliders nav-icon"></i>
+              <span class="nav-text">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <section id="content" class="content">
+        <!-- Content Dynamic -->
+      </section>
+    </main>
+
+  </body>
+  <script src="app.js"></script>
+  <script src="fb.js"></script>
+  </body>
 </html>
