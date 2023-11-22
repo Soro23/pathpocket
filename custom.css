@@ -8,6 +8,7 @@
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
     gap: 5px;
+    height: fit-content;
 }
 
 .boxed-content h1 {

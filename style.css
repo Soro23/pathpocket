@@ -487,7 +487,7 @@ main {
 
 .right-content {
     display: grid;
-    grid-template-rows: 5% 20% 75%;
+    grid-template-rows: 5% 35% auto;
     background: #f6f7fb;
     margin: 15px 15px 15px 0;
     padding: 10px 0;
