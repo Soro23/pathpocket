@@ -21,7 +21,7 @@ export var DB = (function () {
   var firebase = initializeApp(firebaseConfig);
   var pfdb = getDatabase();
 
-  function writeCharacterData(data) {
+  function insertCharacterData(data) {
     set(ref(pfdb, "characters/" + data.name), {
       name: data.name,
       stats: data.stats,
@@ -34,12 +34,28 @@ export var DB = (function () {
       });
   }
 
+  function getCharacterData(name) {
+    getCharacterData(child(ref(pfdb), "characters/" + name))
+      .then((character) => {
+        if (character.exists()) {
+          return characterd;
+        }
+      })
+      .catch((error) => {
+        alert("Error: " + error);
+        return { error: error };
+      });
+  }
+
   // externals
   return {
     getConfig: () => firebaseConfig,
     getDB: () => pfdb,
-    writeCharacterData: (data) => {
-      writeCharacterData(data);
+    insertCharacterData: (data) => {
+      insertCharacterData(data);
+    },
+    getCharacterData: (name) => {
+      return getCharacterData(name);
     },
   };
 })();
