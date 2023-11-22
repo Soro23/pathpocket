@@ -1,4 +1,7 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getDatabase, ref, set, child, update, remove } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 export var DB = (function () {
+
   var firebaseConfig = {
     apiKey: "AIzaSyDBGJIICX3rsFL8_ysotcayXpJdm0Fvujg",
     authDomain: "ghpages-97675.firebaseapp.com",
@@ -14,8 +17,8 @@ export var DB = (function () {
 
   function writeCharacterData(data) {
     if(data.hasOwnProperty('name')){
-      // pfdb.ref("characters/" + data.name).set(data);
-      pfdb.ref("characters/" + data.name).push(data);
+      pfdb.ref("characters/" + data.name).set(data);
+      // pfdb.ref("characters/" + data.name).push(data);
       console.log(data);
     }else{
       console.log('Error pushing data');
