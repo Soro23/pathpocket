@@ -3,6 +3,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	font-family: 'SAOUI';
 }
 
 #nav-options>li:hover {
@@ -90,4 +91,14 @@ ul.floating.submenu0 {
 	cursor: pointer;
 	transition: all 1s linear;
 	-webkit-transition: all 1s linear;
+}
+
+nav#floating-nav a {
+    text-decoration: none;
+    color: #6c6b6c;
+}
+
+.floating.submenu0>li>a {
+    line-height: 40px;
+    padding-left: 20px;
 }
