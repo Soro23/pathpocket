@@ -32,25 +32,21 @@ $(document).ready(function () {
   /**
    * SUBMENU FUNCTIONALLITY
    */
-  let $mainmenu = $("#nav-options li");
-
-  $mainmenu.click(function (e) {
-	$mainmenu.removeClass('active')
+  $("#nav-options li").click(function (e) {
+    $mainmenu.removeClass("active");
     $(this).toggleClass("active");
   });
 
-//   $(document).on("click", function(e) {
-// 	if( $(".floating.submenu0.active").length){
-// 		if ($(e.target).is(".floating.submenu0.active") === false) {
-// 		  $("#nav-options li.active").removeClass("active");
-// 		}
-
-// 	}
-//   });
-
-
+  $(document).on("click", function (e) {
+    console.log($(e.target).is("#nav-options"));
+    if ($(".floating.submenu0.active").length) {
+      if ($(e.target).is(".floating.submenu0.active") === false) {
+        $("#nav-options li.active").removeClass("active");
+      }
+    }
+  });
 
 
 
-
+  
 });
