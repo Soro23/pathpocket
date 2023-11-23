@@ -75,6 +75,8 @@ ul.floating.submenu0 {
 	overflow: hidden;
 	transition: all 1s linear;
 	-webkit-transition: all 0.2s linear;
+	transition-delay: 1.5s;
+
 }
 
 #nav-options>li:hover ul.floating.submenu0 {
@@ -93,7 +95,6 @@ ul.floating.submenu0 {
 	cursor: pointer;
 	transition: all 1s linear;
 	-webkit-transition: all 1s linear;
-	transition-delay: 1.5s;
 }
 
 nav#floating-nav a {
