@@ -22,6 +22,7 @@ function displayMessage(messageContent) {
     // Establece una clase 'active' después de un breve retraso
     setTimeout(function () {
       $("#sao-popup").addClass("active");
+	  $('#sao-popup').draggable();
     }, 100);
   }
 }
@@ -88,5 +89,5 @@ $(document).ready(function () {
   $("#sao-x").on("click", function () {
 
   });
-  $('#sao-popup').draggable();
+  
 });
