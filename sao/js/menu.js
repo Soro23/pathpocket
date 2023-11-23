@@ -79,6 +79,19 @@ $(document).ready(function () {
 	// $( "#nav-detect-drag" ).draggable({
 	// 	drag: function( event, ui ) {}
 	//   });
+
+	var start, stop;
+
+	$("#nav-detect-drag").draggable({
+		axis: "x",
+		start: function (event, ui) {
+			start = ui.position.left;
+		},
+		stop: function (event, ui) {
+			stop = ui.position.left;
+			alert('has moved ' + ((start < stop) ? 'rigth' : 'left'))
+		}
+	});
 	var isDragging = false;
 	$("#nav-detect-drag")
 		.mousedown(function () {
