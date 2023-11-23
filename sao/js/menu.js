@@ -76,7 +76,9 @@ $(document).ready(function () {
 	// 	   return this;
 	// 	}; 
 	//  })( jQuery );
-
+	// $( "#nav-detect-drag" ).draggable({
+	// 	drag: function( event, ui ) {}
+	//   });
 	var isDragging = false;
 	$("#nav-detect-drag")
 		.mousedown(function () {
