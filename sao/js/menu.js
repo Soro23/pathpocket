@@ -35,6 +35,7 @@ $(document).ready(function () {
   let $mainmenu = $("#nav-options li");
 
   $mainmenu.click(function (e) {
+	$mainmenu.removeClass('active')
     $(this).toggleClass("active");
   });
 });
