@@ -92,7 +92,7 @@ $(document).ready(function () {
 			const deltaY = e.clientY - startY;
 			const newTop = $('#nav-detect-drag').offset().top + deltaY;
 
-			console.log(deltaY > 0 ? 'Arrastrando hacia abajo' : 'Arrastrando hacia arriba');
+			deltaY > 0 ? $('#floating-nav').addClass('active') : $('#floating-nav').removeClass('active');
 
 			$('#nav-detect-drag').css('top', newTop + 'px');
 			startY = e.clientY;
