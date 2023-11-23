@@ -150,7 +150,7 @@ nav#floating-nav.active #nav-options > li {
 }
 
 #nav-options > li > .option i {
-  font-size: 24px;
+  font-size: 18px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -199,7 +199,7 @@ nav#floating-nav a {
   color: #6c6b6c;
 }
 
-.floating.submenu0 > li > a {
+.floating.submenu0 > li > span {
   line-height: 40px;
   padding-left: 20px;
 }
