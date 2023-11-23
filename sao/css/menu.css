@@ -79,6 +79,7 @@ ul.floating.submenu0 {
 
 #nav-options>li:hover ul.floating.submenu0 {
 	height: calc(245px * 1);
+	transition-delay: 0s;
 }
 
 .floating.submenu0>li {
@@ -92,6 +93,7 @@ ul.floating.submenu0 {
 	cursor: pointer;
 	transition: all 1s linear;
 	-webkit-transition: all 1s linear;
+	transition-delay: 1.5s;
 }
 
 nav#floating-nav a {
