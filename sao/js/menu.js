@@ -43,38 +43,55 @@ $(document).ready(function () {
 	/**
 	 * OPEN MAIN MENU
 	 */
-	var startY = 0;
-	var endY = 0;
+	// var startY = 0;
+	// var endY = 0;
 
-	var dragArea = $('#nav-detect-drag');
-	dragArea.mousedown(function (e) {
-		startY = e.clientY;
-		console.log("StartY: " + startY + " | ClientY: " + clientY);
-	}, false);
-	dragArea.mouseup(function (e) {
-		endY = e.clientY;
-		console.log("endY: " + endY + " | ClientY: " + clientY);
+	// $('#nav-detect-drag').mousedown(function (e) {
+	// 	startY = e.clientY;
+	// 	console.log("StartY: " + startY);
+	// });
+	// $('#nav-detect-drag').mouseup(function (e) {
+	// 	endY = e.clientY;
+	// 	console.log("endY: " + endY );
 
-		activateNavigation(startY, endY);
-	}, false);
+	// 	activateNavigation(startY, endY);
+	// });
 
 
-	function activateNavigation(sY, eY) {
-		var options = $('#floating-nav');
-		var dragDistance = 50;
+	// (function( $ ){
+	// 	$.fn.activateNavigation = function(sY, eY) {
+	// 		var options = $('#floating-nav');
+	// 		var dragDistance = 50;
 
-		if ((sY + dragDistance) < eY) {
-			if (!options.hasClass('active')) {
-				options.addClass('active');
+	// 		if ((sY + dragDistance) < eY) {
+	// 			if (!options.hasClass('active')) {
+	// 				options.addClass('active');
+	// 			}
+
+	// 		} else if ((sY - dragDistance) > eY) {
+	// 			if (options.hasClass('active')) {
+	// 				options.removeClass('active');
+	// 			}
+	// 		}
+	// 	   return this;
+	// 	}; 
+	//  })( jQuery );
+
+	var isDragging = false;
+	$("#nav-detect-drag")
+		.mousedown(function () {
+			isDragging = false;
+		})
+		.mousemove(function () {
+			isDragging = true;
+		})
+		.mouseup(function () {
+			var wasDragging = isDragging;
+			isDragging = false;
+			if (!wasDragging) {
+				$("#floating-nav").toggle();
 			}
-
-		} else if ((sY - dragDistance) > eY) {
-			if (options.hasClass('active')) {
-				options.removeClass('active');
-			}
-		}
-	}
-
+		});
 	/**
 	 * ACTIVATE SUBMENU
 	 */
