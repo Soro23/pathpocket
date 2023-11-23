@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	}, false);
 	dragArea.addEventListener("mouseup", function (e) {
 		endY = e.clientY;
-		activateOptions(startY, endY);
+		activateNavigation(startY, endY);
 	}, false);
 
 
 	var active = false;
-	function activateOptions(sY, eY) {
-		var options = document.getElementById('nav-options');
+	function activateNavigation(sY, eY) {
+		var options = document.getElementById('floating-nav');
 		var dragDistance = 50;
 
 		if ((sY + dragDistance) < eY) {
