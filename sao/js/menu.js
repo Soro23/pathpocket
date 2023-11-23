@@ -39,12 +39,18 @@ $(document).ready(function () {
     $(this).toggleClass("active");
   });
 
-  $(document).on("click", function(e) {
-	if( $(".floating.submenu0.active").length){
-		if ($(e.target).is(".floating.submenu0.active") === false) {
-		  $("#nav-options li.active").removeClass("active");
-		}
+//   $(document).on("click", function(e) {
+// 	if( $(".floating.submenu0.active").length){
+// 		if ($(e.target).is(".floating.submenu0.active") === false) {
+// 		  $("#nav-options li.active").removeClass("active");
+// 		}
 
-	}
-  });
+// 	}
+//   });
+
+
+
+
+
+
 });
