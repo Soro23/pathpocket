@@ -33,15 +33,6 @@
 	background: #e7a92d;
 }
 
-#nav-options {
-	width: 100px;
-	transition: all 0.5s ease;
-}
-
-#nav-options.active {
-	top: 0;
-}
-
 #nav-options>li {
 	position: relative;
 	list-style: none;
@@ -51,8 +42,15 @@
 	width: 40;
 	height: 40px;
 	cursor: pointer;
-	transition: all 1s linear;
-	-webkit-transition: all 1s linear;
+	transition: all 1s linear, bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-webkit-transition: all 1s linear, bottom 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	bottom: 200px;
+    opacity: 0;
+}
+
+nav#floating-nav.active #nav-options>li {
+    opacity: 1;
+    bottom: 0;
 }
 
 #nav-options>li>.option {
