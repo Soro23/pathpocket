@@ -41,6 +41,7 @@ $(document).ready(function () {
       $("#nav-options li").click(function (e) {
         $("#nav-options li").removeClass("active");
         $(this).toggleClass("active");
+		$('#nav-options > li.active ul.floating.submenu0').css('height', $('#nav-options > li.active ul.floating.submenu0').children().length* 60)
       });
     } else {
       //Se clica fuera
