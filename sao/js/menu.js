@@ -30,12 +30,21 @@ $(document).ready(function () {
     isDragging = false;
   });
   /**
-   * ACTIVATE SUBMENU
+   * SUBMENU FUNCTIONALLITY
    */
   let $mainmenu = $("#nav-options li");
 
   $mainmenu.click(function (e) {
 	$mainmenu.removeClass('active')
     $(this).toggleClass("active");
+  });
+
+  $(document).on("click", function(e) {
+	if( $(".floating.submenu0.active").length){
+		if ($(e.target).is(".floating.submenu0.active") === false) {
+		  $("#nav-options li.active").removeClass("active");
+		}
+
+	}
   });
 });
