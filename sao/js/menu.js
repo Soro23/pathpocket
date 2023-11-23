@@ -80,33 +80,28 @@ $(document).ready(function () {
 	// 	drag: function( event, ui ) {}
 	//   });
 
-	var start, stop;
+	let isDragging = false, startY;
 
-	$("#nav-detect-drag").draggable({
-		axis: "x",
-		start: function (event, ui) {
-			start = ui.position.left;
-		},
-		stop: function (event, ui) {
-			stop = ui.position.left;
-			alert('has moved ' + ((start < stop) ? 'rigth' : 'left'))
+	$('#nav-detect-drag').on('mousedown', function (e) {
+		isDragging = true;
+		startY = e.clientY;
+	});
+
+	$(document).on('mousemove', function (e) {
+		if (isDragging) {
+			const deltaY = e.clientY - startY;
+			const newTop = $('#nav-detect-drag').offset().top + deltaY;
+
+			console.log(deltaY > 0 ? 'Arrastrando hacia abajo' : 'Arrastrando hacia arriba');
+
+			$('#nav-detect-drag').css('top', newTop + 'px');
+			startY = e.clientY;
 		}
 	});
-	var isDragging = false;
-	$("#nav-detect-drag")
-		.mousedown(function () {
-			isDragging = false;
-		})
-		.mousemove(function () {
-			isDragging = true;
-		})
-		.mouseup(function () {
-			var wasDragging = isDragging;
-			isDragging = false;
-			if (!wasDragging) {
-				$("#floating-nav").toggle();
-			}
-		});
+
+	$(document).on('mouseup', function () {
+		isDragging = false;
+	});
 	/**
 	 * ACTIVATE SUBMENU
 	 */
