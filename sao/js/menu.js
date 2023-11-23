@@ -49,9 +49,12 @@ $(document).ready(function () {
 	var dragArea = $('#nav-detect-drag');
 	dragArea.mousedown(function (e) {
 		startY = e.clientY;
+		console.log("StartY: " + startY + " | ClientY: " + clientY);
 	}, false);
 	dragArea.mouseup(function (e) {
 		endY = e.clientY;
+		console.log("endY: " + endY + " | ClientY: " + clientY);
+
 		activateNavigation(startY, endY);
 	}, false);
 
