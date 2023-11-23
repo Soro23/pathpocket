@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#message-icon").addEventListener("click", function () {
+  $("#message-icon").on("click", function () {
     displayMessage([
       "Notification",
       "Heathcliff has challenged you to a duel.",
