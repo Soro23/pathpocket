@@ -19,7 +19,7 @@ function displayMessage(headerContent, messageContent, o = true, x = true) {
     // Establece una clase 'active' después de un breve retraso
     setTimeout(function () {
       $("#sao-popup").addClass("active");
-      $('#sao-popup').draggable();
+      // $('#sao-popup').draggable();
     }, 100);
   }
 }
@@ -77,6 +77,18 @@ function activateButtons() {
   // Agrega un evento de clic al botón X
   $("#sao-x").on("click", function () {
     var popup = $("#sao-popup");
+    $.fn.popupResponse = false;
+
+    // Remueve la clase 'active' y elimina el elemento después de un breve retraso
+    popup.removeClass("active");
+    setTimeout(function () {
+      popup.remove();
+    }, 500);
+  });
+
+  $("#sao-o").on("click", function () {
+    var popup = $("#sao-popup");
+    $.fn.popupResponse = true;
 
     // Remueve la clase 'active' y elimina el elemento después de un breve retraso
     popup.removeClass("active");
