@@ -1,17 +1,14 @@
 // Función principal para mostrar el mensaje
-function displayMessage(messageContent) {
+function displayMessage(headerContent, messageContent, o = true, x = true) {
   // Verifica si el elemento ya existe
   if (!$("#sao-popup").length) {
     // Crea el elemento de mensaje
     var message = $("<div>").attr("id", "sao-popup");
 
-    // Obtiene el texto del primer elemento del array
-    var text = messageContent[0];
-
     // Agrega el encabezado, cuerpo y pie al mensaje
-    appendHeader(message, text);
+    appendHeader(message, headerContent);
     appendBody(message, messageContent);
-    appendFooter(message);
+    appendFooter(message, o, x);
 
     // Añade el mensaje al cuerpo del documento
     $("body").append(message);
@@ -22,7 +19,7 @@ function displayMessage(messageContent) {
     // Establece una clase 'active' después de un breve retraso
     setTimeout(function () {
       $("#sao-popup").addClass("active");
-	  $('#sao-popup').draggable();
+      $('#sao-popup').draggable();
     }, 100);
   }
 }
@@ -36,7 +33,7 @@ function appendHeader(message, text) {
 // Función para agregar el cuerpo al mensaje
 function appendBody(message, textArray) {
   var newBody = $("<section>");
-  for (var index = 1; index < textArray.length; ++index) {
+  for (var index = 0; index < textArray.length; ++index) {
     var paragraph = $("<p>").text(textArray[index]);
     newBody.append(paragraph);
   }
@@ -44,28 +41,32 @@ function appendBody(message, textArray) {
 }
 
 // Función para agregar el pie al mensaje
-function appendFooter(message) {
+function appendFooter(message, o, x) {
   var newFooter = $("<footer>");
 
   // Botón O
-  var newOButton = $("<div>").attr("id", "sao-o");
-  var newOButtonInner = $("<div>");
-  var newOButtonSymbol = $("<div>");
-  newOButtonInner.append(newOButtonSymbol);
-  newOButton.append(newOButtonInner);
+  if (o) {
+    var newOButton = $("<div>").attr("id", "sao-o");
+    var newOButtonInner = $("<div>");
+    var newOButtonSymbol = $("<div>");
+    newOButtonInner.append(newOButtonSymbol);
+    newOButton.append(newOButtonInner);
+    newFooter.append(newOButton);
+
+  }
 
   // Botón X
-  var newXButton = $("<div>").attr("id", "sao-x");
-  var newXButtonInner = $("<div>");
-  var newXButtonSymbol1 = $("<div>");
-  var newXButtonSymbol2 = $("<div>");
-  newXButtonInner.append(newXButtonSymbol2);
-  newXButtonInner.append(newXButtonSymbol1);
-  newXButton.append(newXButtonInner);
+  if (x) {
+    var newXButton = $("<div>").attr("id", "sao-x");
+    var newXButtonInner = $("<div>");
+    var newXButtonSymbol1 = $("<div>");
+    var newXButtonSymbol2 = $("<div>");
+    newXButtonInner.append(newXButtonSymbol2);
+    newXButtonInner.append(newXButtonSymbol1);
+    newXButton.append(newXButtonInner);
+    newFooter.append(newXButton);
 
-  // Agrega los botones al pie
-  newFooter.append(newOButton);
-  newFooter.append(newXButton);
+  }
 
   // Agrega el pie al mensaje
   message.append(newFooter);
@@ -89,5 +90,5 @@ $(document).ready(function () {
   $("#sao-x").on("click", function () {
 
   });
-  
+
 });
