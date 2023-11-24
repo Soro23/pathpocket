@@ -1,7 +1,7 @@
 #sao-popup {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: 15px;
   min-width: 500px;
   background: #d4d2d0;
   text-align: center;

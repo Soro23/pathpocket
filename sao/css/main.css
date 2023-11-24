@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'SAOUI';
+	font-family: SAOUI;
 	src:
 		url('../fonts/SAOUITT-Regular.ttf') format('truetype'),
 		url('../fonts/SAOUI-Regular.otf') format('opentype');
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-	font-family: 'SAOUI';
+	font-family: SAOUI;
 	src:
 		url('../fonts/SAOUITT-Bold.ttf') format('truetype'),
 		url('../fonts/SAOUI-Bold.otf') format('opentype');
@@ -15,14 +15,14 @@
 }
 
 @font-face {
-	font-family: 'SAOWelcome';
+	font-family: SAOWelcome;
 	src:
 		url('../fonts/SAOWelcomeTT-Regular.ttf') format('truetype'),
 		url('../fonts/SAOWelcome-Regular.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'SAOWelcome';
+	font-family: SAOWelcome;
 	src:
 		url('../fonts/SAOWelcomeTT-Bold.ttf') format('truetype'),
 		url('../fonts/SAOWelcome-Bold.otf') format('opentype');
@@ -45,7 +45,7 @@ body {
 	background-size: 10px;
 	color: #656361;
 	text-shadow: 2px 2px 1px #F3EFEB;
-	font-family: Impact, Charcoal, sans-serif;
+	font-family: SAOUI, sans-serif;
 	font-size: 20px;
 	font-weight: light;
 	-webkit-font-smoothing: antialiased;
@@ -53,13 +53,32 @@ body {
 }
 
 css-doodle {
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    background: #fff;
-    overflow: hidden;
-    /* display: flex; */
-    /* align-items:center; */
-    /* justify-content: center; */
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	background: #fff;
+	overflow: hidden;
+	/* display: flex; */
+	/* align-items:center; */
+	/* justify-content: center; */
 }
 
+div#container-outter {
+	background: transparent;
+	width: 350px;
+	height: 110px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	border: 5px solid #f3efeb;
+}
+
+div#container-inner {
+	background: #f3efeb;
+	width: 340px;
+	height: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
