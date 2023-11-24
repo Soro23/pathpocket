@@ -33,13 +33,9 @@
     transform-style: preserve-3d;
 
     background: linear-gradient(to left,
-    @multi(@p([2-4]), @p(#ffffff, #000000, #ffffff, #000000)),
+    @multi(@p([2-4]), @p(#000000, #ffffff, #000000, #ffffff)),
     transparent @r(50%)
     );
-    <!-- background: linear-gradient(to left,
-    @multi(@p([2-4]), @p(#00b8a9, #f8f3d4, #f6416c, #ffde7d)),
-    transparent @r(50%)
-  ); -->
 
     animation: move @r(1s, 2s, .1) linear infinite;
     animation-delay: -@r(.1s, 2s);
