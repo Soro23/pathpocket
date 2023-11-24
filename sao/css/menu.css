@@ -176,10 +176,6 @@
 	-webkit-transition: all 0.2s linear;
   }
   
-  #nav-options > li.active ul.floating.submenu0 {
-	height: calc(245px * 1);
-  }
-  
   .floating.submenu0 > li {
 	position: relative;
 	list-style: none;
