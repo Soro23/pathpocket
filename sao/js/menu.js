@@ -41,8 +41,9 @@ $(document).ready(function () {
   });
 
   $("#nav-options li").click(function (e) {
-    // Elimina el antiguo #submenu0counter y agrega la clase "active"
+    // Elimina el antiguo #submenu0counter, elimina el elemento "active" actual y agrega la clase "active" nueva
     $('#submenu0counter').remove();
+    $("#nav-options li.active").removeClass("active");
     $(this).toggleClass('active');
 
     // Si hay algún elemento activo, añade #submenu0counter
