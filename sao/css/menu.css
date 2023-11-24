@@ -17,7 +17,7 @@
 	opacity: 0;
 	border-style: solid;
 	border-width: 6px 10px 6px 0px;
-	border-color: transparent #e7a92d;
+	border-color: transparent #f3efeb;
 	position: absolute;
 	right: 00%;
 	top: 50%;
@@ -106,7 +106,7 @@
 	opacity: 0;
 	border-style: solid;
 	border-width: 6px 0px 6px 10px;
-	border-color: transparent #e7a92d;
+	border-color: transparent #f3efeb;
 	position: absolute;
 	left: 00%;
 	top: 50%;
@@ -263,6 +263,12 @@ ul.floating.submenu0 {
 	overflow: hidden;
 	transition: all 1s linear;
 	-webkit-transition: all 0.2s linear;
+	border: 10px solid;
+	border-image-slice: 1;
+	border-width: 1px;
+	border-top: 0;
+	border-right: 0;
+	border-image-source: linear-gradient(to bottom, transparent, #aaaaaa, transparent);
 }
 
 .floating.submenu0>li {
@@ -295,11 +301,11 @@ nav#floating-nav a {
 	width: 250px;
 	height: 0;
 	position: absolute;
-	left: -276px;
+	left: -280px;
 	top: 0;
-	border: 1px solid;
+	border: 2px solid #f3efeb;
 	transform: translate(0, -45%);
-	background: #f3efeb;
+	background: transparent;
 	opacity: 0;
 	transition: all .1s linear;
 	-webkit-transition: all 1s linear, opacity 0.5s linear;
