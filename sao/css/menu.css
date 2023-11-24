@@ -306,12 +306,21 @@ nav#floating-nav a {
 	display: block;
 }
 
-#perfil-inner {
-	width: 230px;
-	height: 95%;
-	margin: 10px;
+#nav-options>li.opt-right.active #perfil-inner {
+	opacity: 1;
+	height: 390px;
+}
+
+#nav-options>li.opt-right #perfil-inner {
+	opacity: 0;
+	transition: all .1s linear;
+	-webkit-transition: all 1s linear, opacity 0.5s linear;
+	width: 240px;
+	height: 0;
+	margin: 5px;
 	display: grid;
 	grid-template-rows: 10% auto 15%;
+	background: #f3efeb;
 }
 
 #perfil-inner div {
