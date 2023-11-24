@@ -33,18 +33,21 @@ $(document).ready(function () {
    * SUBMENU FUNCTIONALLITY
    */
   $(document).on("click", function (e) {
-    if (!$(e.target).is($("#nav-options")) || !$.contains($("#nav-options")[0], e.target)) {
-      //Se clica fuera del menu
+    // Si se hace clic fuera del menú
+    if (!$(e.target).closest("#nav-options").length) {
       $("#nav-options li.active").removeClass("active");
       $('#submenu0counter').remove();
     }
   });
+
   $("#nav-options li").click(function (e) {
+    // Elimina el antiguo #submenu0counter y agrega la clase "active"
     $('#submenu0counter').remove();
-    $(e.currentTarget).toggleClass('active');
-      $(e.currentTarget).addClass("active");
-      if (!$('#submenu0counter').length) {
-        $('<style id="submenu0counter">#nav-options > li.active ul.floating.submenu0 { height: ' + $('#nav-options > li.active ul.floating.submenu0').children().length * 60 + '; }</style>').appendTo('body');
+    $(this).toggleClass('active');
+
+    // Si hay algún elemento activo, añade #submenu0counter
+    if ($("#nav-options li.active").length) {
+      $('<style id="submenu0counter">#nav-options > li.active ul.floating.submenu0 { height: ' + $('#nav-options > li.active ul.floating.submenu0').children().length * 60 + '; }</style>').appendTo('body');
     }
   });
 });
