@@ -41,7 +41,7 @@ $(document).ready(function () {
   });
   $("#nav-options li").click(function (e) {
     $('#submenu0counter').remove();
-    $("#nav-options li.active").toggleClass('active');
+    $(e.currentTarget).toggleClass('active');
       $(e.currentTarget).addClass("active");
       if (!$('#submenu0counter').length) {
         $('<style id="submenu0counter">#nav-options > li.active ul.floating.submenu0 { height: ' + $('#nav-options > li.active ul.floating.submenu0').children().length * 60 + '; }</style>').appendTo('body');
