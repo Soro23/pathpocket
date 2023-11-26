@@ -41,7 +41,7 @@
 }
 
 body {
-	background: #000;
+	background: #fff;
 	background-size: 10px;
 	color: #656361;
 	text-shadow: 2px 2px 1px #F3EFEB;
@@ -55,14 +55,18 @@ body {
 css-doodle {
 	height: 100vh;
 	width: 100vw;
-	margin: 0;
+	margin: auto;
 	background: #fff;
 	overflow: hidden;
 	/* display: flex; */
 	/* align-items:center; */
 	/* justify-content: center; */
 	box-shadow: inset 0px 0px 200px 5000px #000;
-    transition: all 10s linear;
+	transition: all 5s linear;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	position: absolute;
 }
 
 div#container-outter {
