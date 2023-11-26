@@ -3,45 +3,56 @@ $(document).ready(function () {
    * OPEN MAIN MENU
    */
   let isDragging = false,
-    minDrag = 10,
-    startY;
+  startY,
+  touchStartTimestamp;
+  const minDrag = 10;
+  const doubleTapThreshold = 300;
 
-  // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-  //   // You are in mobile browser
-  //   alert('mobil');
-  // }else{
-  $("#nav-detect-drag").on("mousedown touchstart", function (e) {
-    // Utiliza 'e.originalEvent.touches[0]' para obtener la posición del primer dedo en dispositivos táctiles
-    startY = e.type === 'mousedown' ? e.clientY : e.originalEvent.touches[0].clientY;
-    isDragging = true;
-  });
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // You are in mobile browser
+    // Gestionar doble toque para abrir el menú
+    $("#nav-detect-drag").on("touchstart", function (e) {
+      const currentTime = new Date().getTime();
+      const elapsedTime = currentTime - touchStartTimestamp;
 
-  $(document).on("mousemove touchmove", function (e) {
-    if (isDragging) {
-      // Utiliza 'e.originalEvent.touches[0]' para obtener la posición del primer dedo en dispositivos táctiles
-      const deltaY = (e.type === 'mousemove' ? e.clientY : e.originalEvent.touches[0].clientY) - startY;
-      const newTop = $("#nav-detect-drag").offset().top + deltaY;
+      if (elapsedTime <= doubleTapThreshold) {
+        // Doble toque detectado, realiza la acción deseada (abrir el menú)
+        // Aquí puedes agregar la lógica para abrir el menú, por ejemplo, toggleClass("menu-abierto")
+        $("#floating-nav").toggleClass("active");
 
-      if (deltaY > minDrag) {
-        $("#floating-nav").addClass("active");
-      } else if (deltaY < minDrag * -1) {
-        $("#floating-nav").removeClass("active");
+        // Restablece el temporizador
+        touchStartTimestamp = null;
+      } else {
+        // Primer toque, inicia el temporizador
+        touchStartTimestamp = currentTime;
       }
+    });
+  } else {
+    $("#nav-detect-drag").on("mousedown", function (e) {
+      isDragging = true;
+      startY = e.clientY;
+    });
 
-      startY = e.type === 'mousemove' ? e.clientY : e.originalEvent.touches[0].clientY;
-    }
-  });
+    $(document).on("mousemove", function (e) {
+      if (isDragging) {
+        const deltaY = e.clientY - startY;
+        const newTop = $("#nav-detect-drag").offset().top + deltaY;
 
-  $(document).on("mouseup touchend", function () {
-    isDragging = false;
-  });
+        if (deltaY > minDrag) {
+          $("#floating-nav").addClass("active");
+        } else if (deltaY < minDrag * -1) {
+          $("#floating-nav").removeClass("active");
+        }
 
-  // Cancela el desplazamiento predeterminado en dispositivos táctiles para evitar comportamientos no deseados
-  $("#nav-detect-drag").on("touchstart touchmove", function (e) {
-    e.preventDefault();
-  });
+        startY = e.clientY;
+      }
+    });
 
-  // }
+    $(document).on("mouseup", function () {
+      isDragging = false;
+    });
+
+  }
   /**
    * SUBMENU FUNCTIONALLITY
    */
