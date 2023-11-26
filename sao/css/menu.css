@@ -4,6 +4,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-family: "SAOUI";
+	z-index: -999;
 }
 
 #nav-options>li:hover,

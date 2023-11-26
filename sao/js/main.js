@@ -1,12 +1,16 @@
 $(document).ready(function () {
   // Bloquear el uso de web 10 segundos
   setTimeout(function () {
-  // $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
-  $('css-doodle').css('width', '0').css('height', '0');
-}, 5000);
-loadJS("js/menu.js", true);
-loadJS("js/modal-append.js", true);
-loadJS("js/modal.js", true);
+    // $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
+    $('css-doodle').css('width', '0').css('height', '0');
+    setTimeout(function () {
+      $('css-doodle').remove();
+    }, 5000);
+
+  }, 5000);
+  loadJS("js/menu.js", true);
+  loadJS("js/modal-append.js", true);
+  loadJS("js/modal.js", true);
 
 
 });

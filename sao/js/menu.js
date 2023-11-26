@@ -9,8 +9,8 @@ $(document).ready(function () {
   const doubleTapThreshold = 300;
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // You are in mobile browser
     // Gestionar doble toque para abrir el menú
+    // TODO: No funciona okay los index
     $("#nav-detect-drag").on("touchstart", function (e) {
       const currentTime = new Date().getTime();
       const elapsedTime = currentTime - touchStartTimestamp;
@@ -19,7 +19,7 @@ $(document).ready(function () {
         // Doble toque detectado, realiza la acción deseada (abrir el menú)
         // Aquí puedes agregar la lógica para abrir el menú, por ejemplo, toggleClass("menu-abierto")
         $("#floating-nav").toggleClass("active");
-
+        $('#floating-nav').css('z-index','999');
         // Restablece el temporizador
         touchStartTimestamp = null;
       } else {
@@ -40,8 +40,10 @@ $(document).ready(function () {
 
         if (deltaY > minDrag) {
           $("#floating-nav").addClass("active");
+          $('#floating-nav').css('z-index','900');
         } else if (deltaY < minDrag * -1) {
           $("#floating-nav").removeClass("active");
+          $('#floating-nav').css('z-index','');
         }
 
         startY = e.clientY;
