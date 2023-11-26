@@ -61,6 +61,8 @@ css-doodle {
 	/* display: flex; */
 	/* align-items:center; */
 	/* justify-content: center; */
+	box-shadow: inset 0px 0px 200px 5000px #000;
+    transition: all 10s linear;
 }
 
 div#container-outter {
