@@ -3,9 +3,9 @@ $(document).ready(function () {
   // Bloquear el uso de web 10 segundos
   setTimeout(function () {
     $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
-    loadJS("menu.js", true);
-    loadJS("modal-append", true);
-    loadJS("modal.js", true);
+    loadJS("js/menu.js", true);
+    loadJS("js/modal-append", true);
+    loadJS("js/modal.js", true);
   }, 5000);
 
 
