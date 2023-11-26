@@ -6,7 +6,7 @@ $(document).ready(function () {
     loadJS("menu.js", true);
     loadJS("modal-append", true);
     loadJS("modal.js", true);
-  }, 10000);
+  }, 5000);
 
 
 });
