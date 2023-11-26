@@ -1,8 +1,23 @@
 $(document).ready(function () {
   // Cargar BG
   $('<div class="bg"></div><div class="bg bg2"></div><div class="bg bg3"></div><div class="bgv bg"></div><div class="bgv bg2"></div><div class="bgv bg3"></div>').prependTo('body');
+  $('<div class="lines"></div>').prependTo('body');
+  var numeroElementos = Math.floor(Math.random() * 10) + 1;
+  // Selecciona el contenedor con la clase "lines"
+  var linesContainer = $(".lines");
+  // Crea los elementos div con la clase "line" y los agrega al contenedor
+  for (var i = 0; i < numeroElementos; i++) {
+    var nuevaLinea = $("<div>").addClass("line");
+    linesContainer.append(nuevaLinea);
+  }
+  numeroElementos = Math.floor(Math.random() * 10) + 1;
+
+  for (var i = 0; i < numeroElementos; i++) {
+    var nuevaLinea = $("<div>").addClass("linev");
+    linesContainer.append(nuevaLinea);
+  }
   // Bloquear el uso de web Loader 5 segundos
-  setTimeout(function () { 
+  setTimeout(function () {
 
     // $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
     $('css-doodle').css('width', '0').css('height', '0');
