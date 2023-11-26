@@ -16,25 +16,27 @@ $(document).ready(function () {
     var nuevaLinea = $("<div>").addClass("linev");
     linesContainer.append(nuevaLinea);
   }
-  $('.line').each((i, e) => {
-    $(e).css('margin-left', Math.random() * 200 - 100 + '%');
-    $(e).css('--animation', 'drop' + Math.round(Math.random() + 1) + ' 3s 0s infinite');
-    $(e).css('--animation-delay', Math.random() * 2 - 1 + 's');
-  });
 
-  $('.linev').each((i, e) => {
-    $(e).css('margin-top', Math.random() * 200 - 100 + '%');
-    $(e).css('--animation', 'pord' + Math.round(Math.random() + 1) + ' 3s 0s infinite');
-    $(e).css('--animation-delay', Math.random() * 2 - 1 + 's');
-  });
   // Bloquear el uso de web Loader 5 segundos
   setTimeout(function () {
 
     // $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
     $('css-doodle').css('width', '0').css('height', '0');
+    $('.line').each((i, e) => {
+      $(e).css('margin-left', Math.random() * 200 - 100 + '%');
+      $(e).css('--animation', 'drop' + Math.round(Math.random() + 1) + ' 3s 0s infinite');
+      $(e).css('--animation-delay', Math.random() * 2 - 1 + 's');
+    });
+
+    $('.linev').each((i, e) => {
+      $(e).css('margin-top', Math.random() * 200 - 100 + '%');
+      $(e).css('--animation', 'pord' + Math.round(Math.random() + 1) + ' 3s 0s infinite');
+      $(e).css('--animation-delay', Math.random() * 2 - 1 + 's');
+    });
     setTimeout(function () {
       $('css-doodle').remove();
     }, 5000);
+
 
   }, 5000);
   loadJS("js/menu.js", true);
