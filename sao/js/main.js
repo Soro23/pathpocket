@@ -1,6 +1,9 @@
 $(document).ready(function () {
-  // Bloquear el uso de web 10 segundos
-  setTimeout(function () {
+  // Cargar BG
+  $('<div class="bg"></div><div class="bg bg2"></div><div class="bg bg3"></div><div class="bgv bg"></div><div class="bgv bg2"></div><div class="bgv bg3"></div>').prependTo('body');
+  // Bloquear el uso de web Loader 5 segundos
+  setTimeout(function () { 
+
     // $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
     $('css-doodle').css('width', '0').css('height', '0');
     setTimeout(function () {
