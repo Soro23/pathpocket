@@ -9,7 +9,7 @@
 
 #nav-options>li:hover,
 #nav-options>li.active {
-	border-color: #e7a92d;
+	border-color: var(--colorhighlight);
 }
 
 #nav-options>li::after {
@@ -18,7 +18,7 @@
 	opacity: 0;
 	border-style: solid;
 	border-width: 6px 10px 6px 0px;
-	border-color: transparent #f3efeb;
+	border-color: transparent var(--color);
 	position: absolute;
 	right: 00%;
 	top: 50%;
@@ -107,7 +107,7 @@
 	opacity: 0;
 	border-style: solid;
 	border-width: 6px 0px 6px 10px;
-	border-color: transparent #f3efeb;
+	border-color: transparent var(--color);
 	position: absolute;
 	left: 00%;
 	top: 50%;
@@ -204,7 +204,7 @@
 .floating.submenu0>li:hover,
 #nav-options>li.active>.option,
 .floating.submenu0>li.active {
-	background: #e7a92d;
+	background: var(--colorhighlight);
 }
 
 #nav-options>li {
@@ -230,7 +230,7 @@ nav#floating-nav.active #nav-options>li {
 
 #nav-options>li>.option {
 	border-radius: 50%;
-	background: #f3efeb;
+	background: var(--color);
 	margin: 4px auto;
 	width: 32px;
 	height: 32px;
@@ -244,13 +244,13 @@ nav#floating-nav.active #nav-options>li {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	text-shadow: 0px 0px 2px black;
+	text-shadow: 0px 0px 2px var(--colorshadow-dark);
 	transition: color 0s linear, tranform 0.5s linear;
 }
 
 #nav-options>li:hover>.option>i,
 #nav-options>li.active>.option>i {
-	color: #fff !important;
+	color: var(--colorbg) !important;
 	transform: translate(-50%, -50%) rotateZ(359deg);
 }
 
@@ -269,13 +269,13 @@ ul.floating.submenu0 {
 	border-width: 1px;
 	border-top: 0;
 	border-right: 0;
-	border-image-source: linear-gradient(to bottom, transparent, #aaaaaa, transparent);
+	border-image-source: linear-gradient(to bottom, transparent, var(--colorshadow-dark), transparent);
 }
 
 .floating.submenu0>li {
 	position: relative;
 	list-style: none;
-	background-color: #f3efeb;
+	background-color: var(--color);
 	margin: 1px auto;
 	width: 200px;
 	height: 40px;
@@ -287,7 +287,7 @@ ul.floating.submenu0 {
 
 nav#floating-nav a {
 	text-decoration: none;
-	color: #6c6b6c;
+	color: var(--colortext);
 }
 
 .floating.submenu0>li>span {
@@ -304,7 +304,7 @@ nav#floating-nav a {
 	position: absolute;
 	left: -280px;
 	top: 0;
-	border: 2px solid #f3efeb;
+	border: 2px solid var(--color);
 	transform: translate(0, -45%);
 	background: transparent;
 	opacity: 0;
@@ -332,7 +332,7 @@ nav#floating-nav a {
 	margin: 5px;
 	display: grid;
 	grid-template-rows: 10% auto 15%;
-	background: #f3efeb;
+	background: var(--color);
 }
 
 #perfil-inner div {
@@ -344,7 +344,7 @@ nav#floating-nav a {
 	border-image-slice: 1;
 	border-width: 1px;
 	border-top: 0;
-	border-image-source: linear-gradient(to left, transparent, #aaaaaa, transparent);
+	border-image-source: linear-gradient(to left, transparent, var(--colorshadow-dark), transparent);
 }
 
 #perfil-inner div {
