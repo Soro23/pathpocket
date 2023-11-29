@@ -200,6 +200,11 @@
 	opacity: 1;
 }
 
+#nav-options>li>.option>i{
+	color: var(--colorhighlight);
+}
+
+
 #nav-options>li:hover>.option,
 .floating.submenu0>li:hover,
 #nav-options>li.active>.option,
