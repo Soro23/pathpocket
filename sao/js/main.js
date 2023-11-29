@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // Cargar BG
-  $('<div class="bg"></div><div class="bg bg2"></div><div class="bg bg3"></div><div class="bgv bg"></div><div class="bgv bg2"></div><div class="bgv bg3"></div>').prependTo('body');
   $('<div class="lines"></div>').prependTo('body');
+  $('<div class="bg"><div class="bg bg2"><div class="bg bg3"></div></div></div><div class="bgv bg"><div class="bgv bg2"><div class="bgv bg3"></div></div></div>').prependTo('.lines');
   var numeroElementos = Math.floor(Math.random() * 10) + 1;
   // Selecciona el contenedor con la clase "lines"
   var linesContainer = $(".lines");
