@@ -5,7 +5,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="css/menu1.css" />
     <link rel="stylesheet" type="text/css" href="css/popup.css" />
 
     <link
@@ -71,39 +71,28 @@ Salir
   <body id="nav-detect-drag">
     <nav id="floating-nav">
       <ul id="nav-options">
-        <li class="opt-right">
-          <div class="option">
+        <li class="opt-right opt-left">
+          <input type="checkbox" id="sm-perfil" class="submenu0">  
+          <label for="sm-perfil">
             <i class="fa-solid fa-user"></i>
-            <!-- Izquierda -->
-            <div id="perfil-outter">
-              <div id="perfil-inner">
-                <div>
-                  <h1>Aitor Solana</h1>
-                </div>
-                <div>
-                  <p>foto</p>
-                  <p>email</p>
-                  <p>telefono</p>
-                </div>
-                <div>
-                  <i class="fa-brands fa-github"></i>
-                  <i class="fa-brands fa-instagram"></i>
-                  <i class="fa-brands fa-linkedin"></i>
-                </div>
-              </div>
-            </div>
-            <!-- Derecha -->
-            <ul class="floating submenu0 active">
-              <li><i class="fa-solid fa-share"></i><span>???</span></li>
-            </ul>
-          </div>
+          </label>  
+          <!-- Derecha -->
+          <ul class="floatingmenu">
+            <li><i class="fa-solid fa-share"></i><span>?????????????????????????????????????????????????????????????????????????????????</span></li>
+          </ul>
         </li>
         <li class="opt-left">
-          <div class="option">
-            <i class="fa-solid fa-grip-lines"></i>
-            <ul class="floating submenu0 longtext">
-              <li><span>Habilidades Técnicas y de Programación</span>
-                <ul class="floating submenu1">
+            <input type="checkbox" id="sm-habilidades" class="submenu0">
+            <label for="sm-habilidades">
+              <i class="fa-solid fa-grip-lines"></i>
+            </label>
+            <ul class="floatingmenu longtext">
+              <li>
+                <label for="sm-habilidades1">
+                  <span>Habilidades Técnicas y de Programación</span>
+                </label>
+                <input type="checkbox" id="sm-habilidades1" class="submenu1">
+                <ul class="floatingmenu">
                   <li><span>Desarrollo web</span></li>
                   <li><span>Programación en varios lenguajes (Java, Python,
                       etc.)</span></li>
@@ -112,29 +101,41 @@ Salir
                   <li><span>Experiencia con frameworks</span></li>
                 </ul>
               </li>
-              <li><span>Habilidades de Proyecto</span>
-                <ul class="floating submenu1">
+              <li> <label for="sm-habilidades2">
+                  <span>Habilidades de Proyecto</span>
+                </label>
+                <input type="checkbox" id="sm-habilidades2" class="submenu1">
+                <ul class="floatingmenu">
                   <li><span>Gestión de proyectos</span></li>
                   <li><span>Metodologías ágiles</span></li>
                   <li><span>Colaboración en equipo</span></li>
                 </ul>
               </li>
-              <li><span>Habilidades Creativas</span>
-                <ul class="floating submenu1">
+              <li><label for="sm-habilidades3">
+                  <span>Habilidades Creativas</span>
+                </label>
+                <input type="checkbox" id="sm-habilidades3" class="submenu1">
+                <ul class="floatingmenu">
                   <li><span>Diseño gráfico</span></li>
                   <li><span>Creatividad en soluciones</span></li>
                   <li><span>Experiencia en UX/UI</span></li>
                 </ul>
               </li>
-              <li><span>Habilidades Sociales y de Comunicación</span>
-                <ul class="floating submenu1">
+              <li><label for="sm-habilidades4">
+                  <span>Habilidades Sociales y de Comunicación</span>
+                </label>
+                <input type="checkbox" id="sm-habilidades4" class="submenu1">
+                <ul class="floatingmenu">
                   <li><span>Comunicación efectiva</span></li>
                   <li><span>Trabajo en equipo</span></li>
                   <li><span>Colaboración en proyectos abiertos</span></li>
                 </ul>
               </li>
-              <li><span>Habilidades de Personales</span>
-                <ul class="floating submenu1">
+              <li><label for="sm-habilidades5">
+                  <span>Habilidades de Personales</span>
+                </label>
+                <input type="checkbox" id="sm-habilidades5" class="submenu1">
+                <ul class="floatingmenu">
                   <li><span>Adaptabilidad y aprendizaje continuo</span></li>
                   <li><span>Autodidacta</span></li>
                   <li><span>Aprendizaje activo</span></li>
@@ -148,9 +149,11 @@ Salir
           </div>
         </li>
         <li class="opt-left">
-          <div class="option">
-            <i class="fa-solid fa-box"></i>
-            <ul class="floating submenu0">
+            <input type="checkbox" id="sm-proyectos" class="submenu0">
+            <label for="sm-proyectos">
+              <i class="fa-solid fa-box"></i>
+            </label>
+            <ul class="floatingmenu">
               <li><span>Caminando por japan</span></li>
               <li><span>Pathfinder app</span></li>
               <li><span>Fless CMS</span></li>
@@ -158,9 +161,11 @@ Salir
           </div>
         </li>
         <li class="opt-left">
-          <div class="option">
-            <i class="fa-solid fa-book"></i>
-            <ul class="floating submenu0 longtext">
+            <input type="checkbox" id="sm-aventura" class="submenu0">
+            <label for="sm-aventura">
+              <i class="fa-solid fa-book"></i>
+            </label>
+            <ul class="floatingmenu longtext">
               <li><span>Servir en la Vanguardia en L’Amistat</span></li>
               <li><span>Mezclar Encantamientos en Blau Sandwich</span></li>
               <li><span>Exploración Backend en BINT</span></li>
@@ -171,9 +176,11 @@ Salir
           </div>
         </li>
         <li class="opt-left">
-          <div class="option">
-            <i class="fa-solid fa-users"></i>
-            <ul class="floating submenu0 active">
+            <input type="checkbox" id="sm-clanes" class="submenu0">
+            <label for="sm-clanes">
+              <i class="fa-solid fa-users"></i>
+            </label>
+            <ul class="floatingmenu">
               <li><i class="fa-brands fa-github"></i><span>Github</span></li>
               <li>
                 <i class="fa-brands fa-instagram"></i><span>Instagram</span>
@@ -185,14 +192,16 @@ Salir
           </div>
         </li>
         <li>
-          <div id="message-icon" class="option">
-            <i class="fa-solid fa-message"></i>
-          </div>
+            <label id="message-icon" for="sm-opciones">
+              <i class="fa-solid fa-message"></i>
+            </label>
         </li>
         <li class="opt-left">
-          <div class="option">
-            <i class="fa-solid fa-gear"></i>
-            <ul class="floating submenu0 active">
+            <input type="checkbox" id="sm-opciones" class="submenu0">
+            <label for="sm-opciones">
+              <i class="fa-solid fa-gear"></i>
+            </label>
+            <ul class="floatingmenu">
               <li>
                 <i class="fa-solid fa-screwdriver-wrench"></i><span>Configuración</span>
               </li>
@@ -205,6 +214,10 @@ Salir
         </li>
       </ul>
     </nav>
+
+
+
+
     <div id="container-outter" style="display: none;">
       <div id="container-inner">
         <h1>Aitor Solana</h1>
