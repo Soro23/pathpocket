@@ -42,10 +42,13 @@ $(document).ready(function () {
           $("#floating-nav").addClass("active");
           $('#floating-nav').css('z-index','900');
           $('#floating-nav').css('opacity','1');
+          $('#floating-nav').css('transform', 'translate(-50%, -50%)');
         } else if (deltaY < minDrag * -1) {
           $("#floating-nav").removeClass("active");
           $('#floating-nav').css('z-index','');
           $('#floating-nav').css('opacity','');
+          $('#floating-nav').css('transform', '');
+
         }
 
         startY = e.clientY;
