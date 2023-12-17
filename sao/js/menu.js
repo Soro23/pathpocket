@@ -41,9 +41,11 @@ $(document).ready(function () {
         if (deltaY > minDrag) {
           $("#floating-nav").addClass("active");
           $('#floating-nav').css('z-index','900');
+          $('#floating-nav').css('opacity','1');
         } else if (deltaY < minDrag * -1) {
           $("#floating-nav").removeClass("active");
           $('#floating-nav').css('z-index','');
+          $('#floating-nav').css('opacity','');
         }
 
         startY = e.clientY;
