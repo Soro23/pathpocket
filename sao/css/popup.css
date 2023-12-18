@@ -104,3 +104,17 @@
 #sao-popup #sao-o:hover {
   box-shadow: 0 0 6px 2px var(--colorok);
 }
+
+#sao-popup form {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+#sao-popup form input {
+  margin: 0 0 10px 0;
+}
