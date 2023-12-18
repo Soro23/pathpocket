@@ -1,5 +1,8 @@
-// Función principal para mostrar el mensaje
-function displayMessage(headerContent, messageContent, o = true, x = true) {
+/**
+ * Funciones de generación del mensaje
+ */
+// Función principal para mostrar el mensaje de notificación
+function dNotification(headerContent, messageContent, o = true, x = true) {
   // Verifica si el elemento ya existe
   if (!$("#sao-popup").length) {
     // Crea el elemento de mensaje
@@ -24,6 +27,43 @@ function displayMessage(headerContent, messageContent, o = true, x = true) {
   }
 }
 
+// Función principal para mostrar el mensaje de notificación
+function dForm(headerContent, messageContent, o = true, x = true) {
+  // Verifica si el elemento ya existe
+  if (!$("#sao-popup").length) {
+    // Crea el elemento de mensaje
+    var message = $("<div>").attr("id", "sao-popup");
+
+    // Agrega el encabezado, cuerpo y pie al mensaje
+    appendHeader(message, headerContent);
+    appendBody(message, messageContent);
+    var messageContainer = $("#tuContenedorDeMensajes"); // Reemplaza con el identificador de tu contenedor de mensajes
+    var camposDelFormulario = [
+      { label: "Username: ", id: "uname" },
+      { label: "Password: ", id: "pword" }
+    ];
+
+    appendForm(messageContainer, camposDelFormulario);
+    appendFooter(message, o, x);
+
+    // Añade el mensaje al cuerpo del documento
+    $("body").append(message);
+
+    // Activa los botones
+    activateButtons();
+
+    // Establece una clase 'active' después de un breve retraso
+    setTimeout(function () {
+      $("#sao-popup").addClass("active");
+      // $('#sao-popup').draggable();
+    }, 100);
+  }
+}
+
+
+/**
+ * Funciones del popup
+ */
 // Función para agregar el encabezado al mensaje
 function appendHeader(message, text) {
   var newHeader = $("<header>").text(text);
@@ -38,6 +78,26 @@ function appendBody(message, textArray) {
     newBody.append(paragraph);
   }
   message.append(newBody);
+}
+
+function appendForm(message, fieldsArray) {
+  var newForm = $("<form>");
+
+  for (var index = 0; index < fieldsArray.length; ++index) {
+    var field = fieldsArray[index];
+
+    // Crear un párrafo para la descripción del campo
+    var paragraph = $("<label>").text(field.label).attr("for", field.id);
+
+    // Crear un campo de entrada
+    var inputField = $("<input>").attr("type", "text").attr("id", field.id).attr("name", field.id); // Puedes ajustar el tipo de campo según tus necesidades
+
+    // Agregar el párrafo y el campo de entrada al formulario
+    newForm.append(paragraph, inputField);
+  }
+
+  // Agregar el formulario al mensaje
+  message.append(newForm);
 }
 
 // Función para agregar el pie al mensaje

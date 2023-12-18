@@ -21,7 +21,7 @@ $(document).ready(function () {
   setTimeout(function () {
 
     // $('css-doodle').css('box-shadow', 'inset 0px 0px 200px -200px #000');
-    $('css-doodle').css('width', '0').css('height', '0');
+    // $('css-doodle').css('width', '0').css('height', '0');
     $('.line').each((i, e) => {
       $(e).css('margin-left', Math.random() * 200 - 100 + '%');
       $(e).css('--animation', 'drop' + Math.round(Math.random() + 1) + ' 3s 0s infinite');
@@ -33,9 +33,9 @@ $(document).ready(function () {
       $(e).css('--animation', 'pord' + Math.round(Math.random() + 1) + ' 3s 0s infinite');
       $(e).css('--animation-delay', Math.random() * 2 - 1 + 's');
     });
-    setTimeout(function () {
-      $('css-doodle').remove();
-    }, 5000);
+    // setTimeout(function () {
+      // $('css-doodle').remove();
+    // }, 5000);
 
 
   }, 5000);
