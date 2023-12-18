@@ -89,6 +89,8 @@ function appendForm(message, fieldsArray) {
 
     // Agregar el label y el campo de entrada al div
     fieldDiv.append(label, inputField);
+
+    newForm.append(fieldDiv);
   }
 
   // Agregar el formulario al mensaje
