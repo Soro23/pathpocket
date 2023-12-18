@@ -3,8 +3,8 @@ $(document).ready(function () {
    * OPEN MAIN MENU
    */
   let isDragging = false,
-  startY,
-  touchStartTimestamp;
+    startY,
+    touchStartTimestamp;
   const minDrag = 10;
   const doubleTapThreshold = 300;
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
         // Doble toque detectado, realiza la acción deseada (abrir el menú)
         // Aquí puedes agregar la lógica para abrir el menú, por ejemplo, toggleClass("menu-abierto")
         $("#floating-nav").toggleClass("active");
-        $('#floating-nav').css('z-index','999');
+        $('#floating-nav').css('z-index', '999');
         // Restablece el temporizador
         touchStartTimestamp = null;
       } else {
@@ -40,13 +40,13 @@ $(document).ready(function () {
 
         if (deltaY > minDrag) {
           $("#floating-nav").addClass("active");
-          $('#floating-nav').css('z-index','900');
-          $('#floating-nav').css('opacity','1');
+          $('#floating-nav').css('z-index', '900');
+          $('#floating-nav').css('opacity', '1');
           $('#floating-nav').css('transform', 'translate(-50%, -50%)');
         } else if (deltaY < minDrag * -1) {
           $("#floating-nav").removeClass("active");
-          $('#floating-nav').css('z-index','');
-          $('#floating-nav').css('opacity','');
+          $('#floating-nav').css('z-index', '');
+          $('#floating-nav').css('opacity', '');
           $('#floating-nav').css('transform', '');
 
         }
@@ -60,6 +60,15 @@ $(document).ready(function () {
     });
 
   }
+
+  /**
+   * Solo un menu seleccionado
+   */
+  $('#nav-options input[type="checkbox"]').change(function () {
+    // Desactivar todos los demás checkboxes
+    $('#nav-options input[type="checkbox"]').not(this).prop('checked', false);
+  });
+
   /**
    * SUBMENU FUNCTIONALLITY
    */
