@@ -107,15 +107,12 @@
 }
 
 #sao-popup form {
-  min-height: 150px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
   flex-wrap: nowrap;
-}
-
-#sao-popup form input {
-  margin: 0 0 10px 0;
+  gap: 15px;
 }
