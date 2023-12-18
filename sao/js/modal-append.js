@@ -36,9 +36,6 @@ function dForm(headerContent, formContent, o = true, x = true) {
 
     // Agrega el encabezado, cuerpo y pie al mensaje
     appendHeader(message, headerContent);
-    appendBody(message, messageContent);
-  
-
     appendForm(message, formContent);
     appendFooter(message, o, x);
 
@@ -82,14 +79,16 @@ function appendForm(message, fieldsArray) {
   for (var index = 0; index < fieldsArray.length; ++index) {
     var field = fieldsArray[index];
 
+    var fieldDiv = $("<div>");
+
     // Crear un párrafo para la descripción del campo
     var paragraph = $("<label>").text(field.label).attr("for", field.id);
 
     // Crear un campo de entrada
     var inputField = $("<input>").attr("type", "text").attr("id", field.id).attr("name", field.id); // Puedes ajustar el tipo de campo según tus necesidades
 
-    // Agregar el párrafo y el campo de entrada al formulario
-    newForm.append(paragraph, inputField);
+    // Agregar el label y el campo de entrada al div
+    fieldDiv.append(label, inputField);
   }
 
   // Agregar el formulario al mensaje
