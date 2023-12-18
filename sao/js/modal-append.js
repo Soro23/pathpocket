@@ -28,7 +28,7 @@ function dNotification(headerContent, messageContent, o = true, x = true) {
 }
 
 // Función principal para mostrar el mensaje de notificación
-function dForm(headerContent, messageContent, o = true, x = true) {
+function dForm(headerContent, formContent, o = true, x = true) {
   // Verifica si el elemento ya existe
   if (!$("#sao-popup").length) {
     // Crea el elemento de mensaje
@@ -37,13 +37,9 @@ function dForm(headerContent, messageContent, o = true, x = true) {
     // Agrega el encabezado, cuerpo y pie al mensaje
     appendHeader(message, headerContent);
     appendBody(message, messageContent);
-    var messageContainer = $("#tuContenedorDeMensajes"); // Reemplaza con el identificador de tu contenedor de mensajes
-    var camposDelFormulario = [
-      { label: "Username: ", id: "uname" },
-      { label: "Password: ", id: "pword" }
-    ];
+  
 
-    appendForm(messageContainer, camposDelFormulario);
+    appendForm(message, formContent);
     appendFooter(message, o, x);
 
     // Añade el mensaje al cuerpo del documento
