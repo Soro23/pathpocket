@@ -5,7 +5,7 @@ $(document).ready(function () {
   //   ]);
   // });
 
-  $("#???").on("click", function () {
+  $("#privatearealogin").on("click", function () {
     dForm("Login Area", [{ label: "Username: ", id: "uname" },{ label: "Password: ", id: "pword" }]);
   });
 });
