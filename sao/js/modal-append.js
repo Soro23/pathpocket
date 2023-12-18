@@ -82,7 +82,7 @@ function appendForm(message, fieldsArray) {
     var fieldDiv = $("<div>");
 
     // Crear un párrafo para la descripción del campo
-    var paragraph = $("<label>").text(field.label).attr("for", field.id);
+    var label = $("<label>").text(field.label).attr("for", field.id);
 
     // Crear un campo de entrada
     var inputField = $("<input>").attr("type", "text").attr("id", field.id).attr("name", field.id); // Puedes ajustar el tipo de campo según tus necesidades
