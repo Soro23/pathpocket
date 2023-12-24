@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 
 const Dashboard: NextPage = () => {
   return (
-    <Box w="full" justify={"start"} align="start">
+    <Box w="full">
       Dashboard
     </Box>
   )
