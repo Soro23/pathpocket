@@ -19,7 +19,7 @@ export function SocialLogin() {
         leftIcon={<FaGoogle />}
         onClick={handleSignInWithSocialLogin(SocialLoginProviderIds.GOOGLE)}
       >
-        Fazer login com o Google
+        Iniciar sesión con Google
       </Button>}
     {SocialLoginProviders[SocialLoginProviderIds.FACEBOOK].enabled &&
       <Button
@@ -27,7 +27,7 @@ export function SocialLogin() {
         leftIcon={<FaFacebook />}
         onClick={handleSignInWithSocialLogin(SocialLoginProviderIds.FACEBOOK)}
       >
-        Fazer login com o Facebook
+        Iniciar sesión con Facebook
       </Button>}
 
     {SocialLoginProviders[SocialLoginProviderIds.GITHUB].enabled
@@ -39,7 +39,7 @@ export function SocialLogin() {
         leftIcon={<FaGithub />}
         onClick={handleSignInWithSocialLogin(SocialLoginProviderIds.GITHUB)}
       >
-        Fazer login com o Github
+        Iniciar sesión con Github
       </Button>}
     {SocialLoginProviders[SocialLoginProviderIds.TWITTER].enabled
       &&
@@ -48,7 +48,7 @@ export function SocialLogin() {
         leftIcon={<FaTwitter />}
         onClick={handleSignInWithSocialLogin(SocialLoginProviderIds.TWITTER)}
       >
-        Fazer login com o Twitter
+        Iniciar sesión con Twitter
       </Button>}
     {SocialLoginProviders[SocialLoginProviderIds.APPLE].enabled
       &&
@@ -59,7 +59,7 @@ export function SocialLogin() {
         leftIcon={<FaApple />}
         onClick={handleSignInWithSocialLogin(SocialLoginProviderIds.APPLE)}
       >
-        Fazer login com o Apple
+        Iniciar sesión con Apple
       </Button>}
   </Stack>;
 }

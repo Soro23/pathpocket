@@ -7,10 +7,13 @@ import {
   DrawerHeader,
   DrawerBody,
   VStack,
+  HStack
 } from '@chakra-ui/react';
 import { useSidebarDrawer } from 'contexts/SidebarDrawerContext';
 import DashboardLogo from '../../atoms/DashboardLogo';
 import { SidebarNav } from './SidebarNav';
+import { GiDiceTwentyFacesTwenty } from "react-icons/gi";
+
 
 export function Sidebar() {
   const { isOpen, onClose } = useSidebarDrawer();
@@ -30,7 +33,12 @@ export function Sidebar() {
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay>
           <DrawerContent>
-            <DrawerHeader><DashboardLogo /></DrawerHeader>
+            <DrawerHeader>
+              <HStack>
+                <GiDiceTwentyFacesTwenty fontSize="40" />
+                <DashboardLogo />
+              </HStack>
+            </DrawerHeader>
             <DrawerCloseButton size={'lg'} />
             <DrawerBody>
               <SidebarNav />
@@ -38,6 +46,7 @@ export function Sidebar() {
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
+
     );
   }
 
@@ -53,7 +62,10 @@ export function Sidebar() {
     top={"0"}
     zIndex={999}
   >
-    <DashboardLogo py="4" />
+    <HStack>
+      <GiDiceTwentyFacesTwenty fontSize="40" />
+      <DashboardLogo py="4" />
+    </HStack>
     <SidebarNav />
   </VStack>;
 }

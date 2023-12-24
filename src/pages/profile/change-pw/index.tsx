@@ -15,11 +15,11 @@ type ProfileFormData = {
 };
 
 const formSchema = yup.object().shape({
-  oldPassword: yup.string().required("Campo obrigatório"),
-  newPassword: yup.string().required("Campo obrigatório"),
+  oldPassword: yup.string().required("Campo obligatorio"),
+  newPassword: yup.string().required("Campo obligatorio"),
   confirmNewPassword: yup
     .string()
-    .oneOf([yup.ref("newPassword"), null], "Senha não confere").required("Campo obrigatório"),
+    .oneOf([yup.ref("newPassword"), null], "La contraseña no coincide").required("Campo obligatorio"),
 });
 
 const ChangePassword: NextPage = () => {
@@ -39,7 +39,7 @@ const ChangePassword: NextPage = () => {
       await updateCurrentUserPassword(values.oldPassword, values.newPassword);
       toast({
         title: "Sucesso",
-        description: "Senha atualizada",
+        description: "Contraseña actualizada",
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -48,7 +48,7 @@ const ChangePassword: NextPage = () => {
     } catch (err) {
       toast({
         title: "Erro",
-        description: "Não foi possível atualizar",
+        description: "No se puede actualizar",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -69,21 +69,21 @@ const ChangePassword: NextPage = () => {
         bgColor={cardBg}
       >
         <Input
-          label="Senha antiga"
+          label="Contraseña antigua"
           maxW={600}
           type="password"
           error={errors.oldPassword}
           {...register("oldPassword")}
         />
         <Input
-          label="Nova senha"
+          label="Nueva contraseña"
           maxW={600}
           type="password"
           error={errors.newPassword}
           {...register("newPassword")}
         />
         <Input
-          label="Confirmar nova senha"
+          label="Confirmar nueva contraseña"
           maxW={600}
           type="password"
           error={errors.confirmNewPassword}
@@ -98,7 +98,7 @@ const ChangePassword: NextPage = () => {
           isLoading={formState.isSubmitting}
           w="100%"
         >
-          Salvar
+          Guardar
         </Button>
       </Box>
     </Stack>

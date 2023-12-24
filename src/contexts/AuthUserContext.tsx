@@ -141,7 +141,7 @@ const defaultStates: Record<StateCodes, AuthStateType> = {
     alert: {
       code: 'auth/sign_in_link_sent',
       title: 'Link enviado',
-      message: 'Acesse seu email e clique no link',
+      message: 'Acceda a su correo electrónico y haga clic en el enlace',
       severity: 'success',
       showToast: false,
       showCard: true,
@@ -165,8 +165,8 @@ const defaultStates: Record<StateCodes, AuthStateType> = {
     code: 'SIGN_IN_WITH_LINK_REQUIRED',
     alert: {
       code: 'auth/sign_in_with_link_required',
-      title: 'Erro',
-      message: 'Faça login via email',
+      title: 'Error',
+      message: 'Conectarse por correo electrónico',
       severity: 'error',
       showToast: true,
       showCard: true,
@@ -190,8 +190,8 @@ const defaultStates: Record<StateCodes, AuthStateType> = {
     code: 'PASSWORD_REQUIRED_FOR_EMAIL',
     alert: {
       code: 'auth/password_required_for_email',
-      title: 'Você já possui um conta cadastrada!',
-      message: 'Digite sua senha para continuar',
+      title: 'Ya tiene una cuenta registrada!',
+      message: 'Introduzca su contraseña para continuar',
       severity: 'warning',
       showToast: false,
       showCard: true,
@@ -217,8 +217,8 @@ const defaultStates: Record<StateCodes, AuthStateType> = {
     code: 'EMAIL_REQUIRED_FOR_SIGN_IN_FROM_LINK',
     alert: {
       code: 'auth/email_confirmation_required',
-      title: 'Email não identificado',
-      message: 'Favor digitar seu email',
+      title: 'Correo electrónico no identificado',
+      message: 'Introduzca su dirección de correo electrónico',
       severity: 'error',
       showToast: true,
       showCard: true,
@@ -242,8 +242,8 @@ const defaultStates: Record<StateCodes, AuthStateType> = {
     code: 'INVALID_SIGN_IN_LINK',
     alert: {
       code: 'auth/invalid_sign_in_link',
-      title: 'Link inválido ou expirado',
-      message: 'Envie o link novamente',
+      title: 'Enlace no válido o caducado',
+      message: 'Vuelva a enviar el enlace',
       severity: 'error',
       showToast: true,
       showCard: true,

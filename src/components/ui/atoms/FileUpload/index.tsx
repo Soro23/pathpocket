@@ -20,7 +20,7 @@ const FileUpload = ({ placeholder, acceptedFileTypes = [], maxSize, onChange, ch
       const currentFileSize = currentFile.size;
       if (maxSize && (currentFileSize > maxSize)) {
         alert(
-          'Arquivo muito grande: ' + currentFileSize + ' bytes',
+          'Archivo muy grande: ' + currentFileSize + ' bytes',
         );
         return false;
       }
@@ -62,7 +62,7 @@ const FileUpload = ({ placeholder, acceptedFileTypes = [], maxSize, onChange, ch
 
       <label htmlFor="raised-button-file">
         <Button onClick={() => inputRef.current.click()}>
-          {placeholder || "Selecionar arquivo"}
+          {placeholder || "Seleccionar archivo"}
         </Button>
       </label>
     </>

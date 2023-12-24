@@ -37,7 +37,7 @@ export function Profile({ showProfileData = true }: ProfileProps) {
             />
             {showProfileData && (
               <Box ml="4" textAlign="left">
-                <Text>{authUser?.displayName || "Nome não informado"}</Text>
+                <Text>{authUser?.displayName || "Nombre desconocido"}</Text>
                 <Text color="gray.300" fontSize="small">
                   {authUser?.email}
                 </Text>
@@ -53,7 +53,7 @@ export function Profile({ showProfileData = true }: ProfileProps) {
             <VStack alignItems="flex-start">
 
               <Button variant="link" href={"/profile/edit"} as={Link}>Editar</Button>
-              <Button variant="link" href={"/profile/change-pw"} as={Link}>Alterar senha</Button>
+              <Button variant="link" href={"/profile/change-pw"} as={Link}>Cambiar contraseña</Button>
 
               <Divider />
               <Button variant="link" color="red.400" isLoading={loadingAuth} onClick={signOut}>

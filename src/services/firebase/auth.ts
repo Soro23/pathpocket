@@ -97,59 +97,59 @@ const AuthErrorMapper: {
     [code: string]: AuthError
 } = {
     [AuthErrorCodes.QUOTA_EXCEEDED]: {
-        title: "Erro",
-        message: "Quota diária excedida",
+        title: "Error",
+        message: "Cuota diaria superada",
         code: AuthErrorCodes.QUOTA_EXCEEDED,
     },
     [AuthErrorCodes.NEED_CONFIRMATION]: { // "auth/account-exists-with-different-credential"
-        title: "Erro",
-        message: "O email informado já existe",
+        title: "Error",
+        message: "El correo electrónico proporcionado ya existe.",
         code: AuthErrorCodes.NEED_CONFIRMATION
     },
     [AuthErrorCodes.GENERIC_ERROR_CODE]: {
-        title: "Erro",
-        message: "Um erro não identificado ocorreu",
+        title: "Error",
+        message: "Se ha producido un error no identificado",
         code: AuthErrorCodes.GENERIC_ERROR_CODE
     },
     [AuthErrorCodes.SIGN_IN_WITH_LINK_REQUIRED]: {
-        title: "Erro",
-        message: "Faça login utilizando seu email",
+        title: "Error",
+        message: "Inicie sesión con su dirección de correo electrónico",
         code: AuthErrorCodes.SIGN_IN_WITH_LINK_REQUIRED
     },
     [AuthErrorCodes.NOT_A_LOGIN_LINK]: {
-        title: "Erro",
+        title: "Error",
         code: AuthErrorCodes.NOT_A_LOGIN_LINK,
         message: "Link de login inválido"
     },
     [AuthErrorCodes.REQUIRED_SIGN_IN_WITH_EMAIL_AND_PASSWORD]: {
-        title: "Conta já existe",
+        title: "La cuenta ya existe",
         code: AuthErrorCodes.REQUIRED_SIGN_IN_WITH_EMAIL_AND_PASSWORD,
-        message: "A conta já possui um cadastro com email e senha"
+        message: "La cuenta ya está registrada con una dirección de correo electrónico y una contraseña"
     },
     [AuthErrorCodes.EMAIL_NOT_FOUND_LOCALLY]: {
-        title: "Erro",
+        title: "Error",
         code: AuthErrorCodes.EMAIL_NOT_FOUND_LOCALLY,
-        message: "Não foi possível identificar o email"
+        message: "No se ha podido identificar el correo electrónico"
     },
     [AuthErrorCodes.INVALID_OOB_CODE]: {
         title: "Link inválido",
         code: AuthErrorCodes.INVALID_OOB_CODE,
-        message: "Envie o link novamente"
+        message: "Vuelva a enviar el enlace"
     },
     [AuthErrorCodes.INVALID_PASSWORD]: {
-        title: "Erro",
+        title: "Error",
         code: AuthErrorCodes.INVALID_PASSWORD,
-        message: "Login ou senha inválidos"
+        message: "Nombre de usuario o contraseña no válidos"
     },
     [AuthErrorCodes.INVALID_EMAIL]: {
-        title: "Erro",
+        title: "Error",
         code: AuthErrorCodes.INVALID_EMAIL,
-        message: "Login ou senha inválidos"
+        message: "Nombre de usuario o contraseña no válidos"
     },
     [AuthErrorCodes.USER_DELETED]: {
-        title: "Erro",
+        title: "Error",
         code: AuthErrorCodes.USER_DELETED,
-        message: "Login ou senha inválidos"
+        message: "Nombre de usuario o contraseña no válidos"
     },
 }
 

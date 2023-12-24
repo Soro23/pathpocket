@@ -18,7 +18,7 @@ type ProfileFormData = {
 };
 
 const profileFormSchema = yup.object().shape({
-    name: yup.string().required('Nome é obrigatório')
+    name: yup.string().required('Nombre requerido')
 })
 
 const ProfileEdit: NextPage = () => {
@@ -40,8 +40,8 @@ const ProfileEdit: NextPage = () => {
         try {
             await updateCurrentUserProfile({ displayName: values.name })
             toast({
-                title: 'Sucesso',
-                description: 'Seu perfil foi atualizado',
+                title: 'Éxito',
+                description: 'Su perfil ha sido actualizado',
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
@@ -49,8 +49,8 @@ const ProfileEdit: NextPage = () => {
             })
         } catch (err) {
             toast({
-                title: 'Erro',
-                description: 'Ocorreu um erro ao salvar',
+                title: 'Error',
+                description: 'Se ha producido un error al guardar',
                 status: 'error',
                 duration: 3000,
                 isClosable: true,
@@ -64,8 +64,8 @@ const ProfileEdit: NextPage = () => {
         sendEmailVerification().then(() => {
             setSendingVerificationEmail(false)
             toast({
-                title: `Email enviado para ${authUser?.email}`,
-                description: 'Acesse seu email e clique no link de verificação.',
+                title: `Correo electrónico enviado a ${authUser?.email}`,
+                description: 'Acceda a su correo electrónico y haga clic en el enlace de verificación.',
                 status: 'success',
                 duration: null,
                 isClosable: true,
@@ -74,8 +74,8 @@ const ProfileEdit: NextPage = () => {
         }).catch(err => {
             setSendingVerificationEmail(false)
             toast({
-                title: 'Erro',
-                description: 'Ocorreu um erro ao enviar',
+                title: 'Error',
+                description: 'Se ha producido un error al enviar',
                 status: 'error',
                 duration: 3000,
                 isClosable: true,
@@ -101,7 +101,7 @@ const ProfileEdit: NextPage = () => {
                 maxW="500"
             >
                 <Box w="100%" pt="6" pb="4">
-                    <Heading size='md'>Informações públicas</Heading>
+                    <Heading size='md'>Información pública</Heading>
                 </Box>
                 <Box p="8" boxShadow='xs' rounded='md' bgColor={cardBg}>
                     <Stack align="center">
@@ -116,7 +116,7 @@ const ProfileEdit: NextPage = () => {
                         pb='6'
                     >
                         <Input
-                            label="Nome"
+                            label="Nombre"
                             maxW={600}
                             error={errors.name}
                             {...register('name')}
@@ -129,12 +129,12 @@ const ProfileEdit: NextPage = () => {
                             isLoading={formState.isSubmitting}
                             w="100%"
                         >
-                            Salvar
+                            Guardar
                         </Button>
                     </Box>
                 </Box>
                 <Box w="100%" pt="6" pb="4">
-                    <Heading size='md'>Configurações da conta</Heading>
+                    <Heading size='md'>Configuración de la cuenta</Heading>
                 </Box>
                 <Box p="8" boxShadow='xs' rounded='md' bgColor={cardBg}>
                     <Text fontSize='lg'>E-mail: {authUser?.email}</Text>
@@ -142,9 +142,9 @@ const ProfileEdit: NextPage = () => {
                         !authUser?.emailVerified && <>
                             <Flex align="center" justify='center'>
                                 <Icon as={RiErrorWarningLine} color={'red.500'} mr={2} />
-                                <Text color={'red.500'}>Email não verificado!</Text>
+                                <Text color={'red.500'}>Correo electrónico no verificado</Text>
                             </Flex>
-                            <Button isLoading={sendingVerificationEmail} mt={4} colorScheme='blue' onClick={handleSendVerificationEmail}>Enviar e-mail de verificação</Button>
+                            <Button isLoading={sendingVerificationEmail} mt={4} colorScheme='blue' onClick={handleSendVerificationEmail}>Enviar correo electrónico de verificación</Button>
                         </>
                     }
                 </Box>

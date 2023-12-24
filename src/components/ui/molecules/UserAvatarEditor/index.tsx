@@ -47,8 +47,8 @@ export default function UserAvatarEditor() {
       onClose();
     } catch (err) {
       toast({
-        title: "Erro",
-        description: "Ocorreu um erro ao salvar",
+        title: "Error",
+        description: "Se ha producido un error al guardar",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -61,7 +61,7 @@ export default function UserAvatarEditor() {
   return (
     <>
       <FileUpload
-        placeholder="Mudar foto"
+        placeholder="Cambiar foto"
         acceptedFileTypes={["image/*"]}
         onChange={handleStartEdit}
       />
@@ -69,7 +69,7 @@ export default function UserAvatarEditor() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Editar foto do perfil</ModalHeader>
+          <ModalHeader>Editar foto de perfil</ModalHeader>
           <ModalCloseButton />
           <ModalBody mx='auto'>
             <AvatarEditor
@@ -95,7 +95,7 @@ export default function UserAvatarEditor() {
               Salvar
             </Button>
             <Button variant="ghost" onClick={onClose} disabled={saving}>
-              Cancelar edição
+            Cancelar edición
             </Button>
           </ModalFooter>
         </ModalContent>

@@ -10,8 +10,8 @@ export default function DashboardLogo(props: DashboardLogoProps) {
       letterSpacing="tight"
       {...props}
     >
-      NextDash
-      <Text as='span' ml="1" color="red.500">.</Text>
+      Soro
+      <Text as='span' ml="1" color="green.500">.</Text>
     </Text>
   );
 }
