@@ -7,7 +7,7 @@ interface TextDividerProps {
 
 export function TextDivider(props: TextDividerProps) {
     return (
-        <HStack pv={8}>
+        <HStack>
             <Divider />
             <Heading size="sm">
                 {props.text}
