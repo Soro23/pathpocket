@@ -1,0 +1,39 @@
+{
+  "name": "dashboard-nextjs-chakraui-firebase",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "upgrade:next": "yarn upgrade next react react-dom eslint-config-next --latest",
+    "pnpm:upgrade": "corepack prepare pnpm@latest --activate",
+    "deps:update": "pnpm up",
+    "deps:update:latest": "pnpm up --latest"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@hookform/resolvers": "^2.9.11",
+    "firebase": "^9.17.2",
+    "framer-motion": "^6.5.1",
+    "next": "13.0.3",
+    "react": "18.2.0",
+    "react-avatar-editor": "^13.0.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.5",
+    "react-icons": "^4.7.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-avatar-editor": "^13.0.0",
+    "@types/react-dom": "18.0.9",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.3",
+    "typescript": "4.9.3"
+  }
+}
