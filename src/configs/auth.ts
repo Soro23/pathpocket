@@ -4,22 +4,22 @@ export const authConfig = {
         withoutPassword: false,
     },
     social: {
-        enabled: false,
+        enabled: true,
         providers: {
             google: {
                 enabled: true,
             },
             facebook: {
-                enabled: true,
+                enabled: false,
             },
             github: {
-                enabled: true,
+                enabled: false,
             },
             apple: {
-                enabled: true,
+                enabled: false,
             },
             twitter: {
-                enabled: true,
+                enabled: false,
             },
         }
     }

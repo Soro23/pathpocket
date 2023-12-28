@@ -22,8 +22,8 @@ type SignInFormData = {
 };
 
 const signInFormSchema = yup.object().shape({
-  email: yup.string().required("E-mail obrigatório.").email("E-mail inválido."),
-  password: authConfig.email.withoutPassword ? yup.string().optional() : yup.string().required("Senha obrigatória."),
+  email: yup.string().required("E-mail obligatorio.").email("E-mail inválido."),
+  password: authConfig.email.withoutPassword ? yup.string().optional() : yup.string().required("Contraseña obligatoria."),
 });
 
 const SignIn: NextPage = () => {
@@ -115,7 +115,7 @@ const SignIn: NextPage = () => {
           {authState?.passwordInput.disabled ||
             <Input
               type="password"
-              label="Senha"
+              label="Contraseña"
               error={errors.password}
               autoFocus={!!authState?.passwordInput.requiredForEmail}
               {...register("password")}
@@ -131,7 +131,7 @@ const SignIn: NextPage = () => {
             variant={"link"}
             href={`/forgot-pw${authState?.passwordInput.requiredForEmail ? `?email=${authState?.passwordInput.requiredForEmail}` : ""}`}
           >
-            Esqueceu sua senha?
+            ¿Ha olvidado su contraseña?
           </Button>}
 
         <Button
@@ -151,10 +151,10 @@ const SignIn: NextPage = () => {
           as="a"
           href={`/signin`}
         >
-          Entrar com outra conta
+          Conectarse con otra cuenta
         </Button>}
         {!!authState?.passwordInput.requiredForEmail || <HStack mt={4}>
-          <Text>Não possui uma conta?</Text>
+          <Text>¿No tienes cuenta?</Text>
           <Button
             fontSize={"sm"}
             fontWeight={600}
@@ -162,7 +162,7 @@ const SignIn: NextPage = () => {
             href={"/signup"}
             as={NextLink}
           >
-            Cadastre-se
+            Inscríbete
           </Button>
         </HStack>}
         <Center mt='6'>

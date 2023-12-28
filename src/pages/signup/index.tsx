@@ -19,8 +19,8 @@ type SignInFormData = {
 };
 
 const signInFormSchema = yup.object().shape({
-  email: yup.string().required("E-mail obrigatório.").email("E-mail inválido."),
-  password: yup.string().required("Senha obrigatória."),
+  email: yup.string().required("E-mail obligatorio.").email("E-mail inválido."),
+  password: yup.string().required("Contraseña obligatoria."),
 });
 
 const SignUp: NextPage = () => {
@@ -56,7 +56,7 @@ const SignUp: NextPage = () => {
             <DashboardLogo />
           </Center>
           <Heading size="md">
-            Vamos lá! o cadastro leva poucos segundos.
+          Registrarse sólo lleva unos segundos.
           </Heading>
 
           {authConfig.social.enabled &&
@@ -73,12 +73,12 @@ const SignUp: NextPage = () => {
           />
           {authConfig.email.withoutPassword || <Input
             type="password"
-            label="Senha"
+            label="Contraseña"
             error={errors.password}
             {...register("password")}
           />}
         </Stack>
-        {/* <Text>Sua senha deve ter no mínimo 6 caracteres</Text> */}
+        {/* <Text>Su contraseña debe tener al menos 6 caracteres</Text> */}
         <Button
           type="submit"
           mt="8"
@@ -86,10 +86,10 @@ const SignUp: NextPage = () => {
           size="lg"
           isLoading={formState.isSubmitting}
         >
-          Criar conta
+          Crear una cuenta
         </Button>
         <HStack mt={4}>
-          <Text>Você já tem uma conta?</Text>
+          <Text>Ya tienes una cuenta?</Text>
           <Button
             variant="link"
             fontSize={"sm"}

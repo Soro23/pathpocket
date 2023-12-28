@@ -17,7 +17,7 @@ import { storage } from "services/firebase";
 import { useAuth } from "contexts/AuthUserContext";
 import { updateCharacterAvatar } from "@/services/firebase/database";
 
-export default function CharacterAvatarEditor(props: { name: string; }) {
+export default function CharacterAvatarEditor(props) {
   const [imageUrl, setImageUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const imageEditorRef = useRef<AvatarEditor>(null);
@@ -46,7 +46,6 @@ export default function CharacterAvatarEditor(props: { name: string; }) {
       const photoURL = await storage.getDownloadURL(imageStoragePath);
       // await updateCurrentUserProfile({ photoURL });
       updateCharacterAvatar(authUser?.uid, props.name, photoURL)
-      
       onClose();
     } catch (err) {
       toast({
