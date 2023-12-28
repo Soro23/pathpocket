@@ -17,7 +17,7 @@ import { storage } from "services/firebase";
 import { useAuth } from "contexts/AuthUserContext";
 import { updateCharacterAvatar } from "@/services/firebase/database";
 
-export default function CharacterAvatarEditor(props) {
+export default function CharacterAvatarEditor(props: { name: string; }) {
   const [imageUrl, setImageUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const imageEditorRef = useRef<AvatarEditor>(null);

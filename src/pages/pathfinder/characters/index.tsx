@@ -7,7 +7,7 @@ import CharacterAvatarEditor from '@/components/ui/molecules/CharacterAvatarEdit
 
 const Characters: NextPage = () => {
   const { authUser } = useAuth();
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState<any[]>([]);
 
   useEffect(() => {
     if (authUser) {
@@ -36,7 +36,7 @@ const Characters: NextPage = () => {
       </Heading>
       <SimpleGrid columns={5} spacing={10}>
         {characters.map((character) => (
-          <Card maxW='sm'>
+          <Card key={character.key} maxW='sm'>
             <CardBody>
               <Image
                 src={character.val.imagesrc}
