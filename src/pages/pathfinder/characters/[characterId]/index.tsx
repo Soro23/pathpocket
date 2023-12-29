@@ -86,7 +86,7 @@ const EditCharacterPage: NextPage = () => {
               <Flex flexDirection="row" alignItems="stretch">
                 <Container maxW={250}>
                   <Image
-                    size={250}
+                    sizes={250}
                     src={character?.imagesrc}
                     alt={character?.name}
                   />
