@@ -3,6 +3,7 @@ import init from './init'
 import { child, get, getDatabase, ref, set } from "firebase/database";
 
 const firebaseConfig = {
+    appName: 'database',
     appId: 'AIzaSyD49dBskpFc1slU2n00gxaPSzsMt6xE5Uc',
     apiKey: 'soro-dashboard.firebaseapp.com',
     authDomain: 'soro-dashboard',
