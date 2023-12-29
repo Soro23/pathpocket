@@ -90,7 +90,7 @@ const SignIn: NextPage = () => {
             authState?.socialLogin.disabled ||
             <>
               <SocialLogin />
-              <TextDivider text="ou" />
+              <TextDivider text="o" />
             </>
           }
           {authState?.emailInput.disabled ||

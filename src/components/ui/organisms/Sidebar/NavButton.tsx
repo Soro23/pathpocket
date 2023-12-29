@@ -19,6 +19,7 @@ export function NavButton({
 }: ActiveLinkProps) {
   const { asPath } = useRouter();
   const inactiveLinkColor = useColorModeValue('gray.300', 'gray.50')
+  const activeLinkColor = useColorModeValue('maroon', 'wheat')
   const bgColor = useColorModeValue('gray.50', 'gray.700')
   const hoverColor = useColorModeValue('gray.50', 'gray.600')
 
@@ -40,12 +41,12 @@ export function NavButton({
       <Box
         display="flex" 
         alignItems="center" 
-        _hover={{bgColor: hoverColor}}
+        _hover={{bgColor: isActive ? hoverColor : activeLinkColor, color: isActive ? activeLinkColor : bgColor}}
         py={"4"}
         pl={"2"}
         pr={"8"}
         rounded={"md"}
-        color={isActive ? 'red.400' : inactiveLinkColor}
+        color={isActive ? activeLinkColor : inactiveLinkColor}
         bgColor={isActive ? bgColor : undefined}
       >
         <Icon as={icon} fontSize="20"  />

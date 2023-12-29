@@ -19,6 +19,17 @@ export const getUserCharacters = (userId: string) => {
         });
 };
 
+export const getUserCharacter = (userId: string, charname: string) => {
+    const charactersRef = ref(db, `characters/${userId}/${charname}`);
+
+    return get(charactersRef)
+        .then((snapshot) => snapshot.val())
+        .catch((error) => {
+            console.error('Error fetching characters:', error);
+            throw error;  // Propaga el error para que pueda ser manejado fuera de esta función
+        });
+};
+
 export const updateCharacterAvatar = (userId: any, character: string, avatarsrc: string) => {
     const charactersRef = ref(db, `characters/${userId}/${character}`);
     get(charactersRef)
@@ -31,6 +42,5 @@ export const updateCharacterAvatar = (userId: any, character: string, avatarsrc:
             console.error('Error fetching characters:', error);
             throw error;  // Propaga el error para que pueda ser manejado fuera de esta función
         });
-
 
 };

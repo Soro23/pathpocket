@@ -1,5 +1,5 @@
 import { ReactNode, useCallback, useRef } from "react";
-import { Button } from "@chakra-ui/react";
+import { Button } from "@/components/ui/atoms/Button";
 
 interface FileUploadProps {
   placeholder?: string; 
@@ -61,7 +61,7 @@ const FileUpload = ({ placeholder, acceptedFileTypes = [], maxSize, onChange, ch
       />
 
       <label htmlFor="raised-button-file">
-        <Button onClick={() => inputRef.current.click()}>
+        <Button cvariant={true} onClick={() => inputRef.current.click()}>
           {placeholder || "Seleccionar archivo"}
         </Button>
       </label>
