@@ -55,7 +55,7 @@ const Characters: NextPage = () => {
           <Card key={character.key} maxW='sm'>
             <CardBody>
               <Image
-                src={character.val.imagesrc}
+                src={character.val.imagesrc ?? 'https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3'}
                 alt={character.val.name}
                 borderRadius='lg'
               />

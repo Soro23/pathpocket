@@ -20,7 +20,7 @@ const EditCharacterPage: NextPage = () => {
 
   const router = useRouter();
   const params = Array.isArray(router.query) ? router.query[0] : router.query
-  
+
 
 
   useEffect(() => {
@@ -58,8 +58,9 @@ const EditCharacterPage: NextPage = () => {
       <h2>Something went wrong</h2>
     )
   }
-  
-  let chardata = character ?? new CharacterData()
+  let chardata = new CharacterData()
+  chardata.copyFrom(character)
+
   return (
     <Box w="full" h="full" p={4} >
       <><Flex minWidth='max-content' alignItems='center' gap='2' p={4}>
@@ -93,45 +94,77 @@ const EditCharacterPage: NextPage = () => {
                     alt={chardata.name}
                   />
                 </Container>
-                <Container>
-                  <FormControl display="inline-flex" alignItems={'center'}>
-                    <FormLabel display="inline" w={10} py={2}>FUE</FormLabel>
-                    <Input size="md" display="inline" value={chardata.stats.strength} w={12} mr={3} />
-                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD FUE</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.strength | 0 - 10) / 2))} w={12} />
-                  </FormControl>
-                  <FormControl display="inline-flex" alignItems={'center'}>
-                    <FormLabel display="inline" w={10} py={2}>DES</FormLabel>
-                    <Input size="md" display="inline" value={chardata.stats.dexterity} w={12} mr={3} />
-                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD DES</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.dexterity - 10) / 2))} w={12} />
-                  </FormControl>
-                  <FormControl display="inline-flex" alignItems={'center'}>
-                    <FormLabel display="inline" w={10} py={2}>CON</FormLabel>
-                    <Input size="md" display="inline" value={chardata.stats.constitution} w={12} mr={3} />
-                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CON</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.constitution - 10) / 2))} w={12} />
-                  </FormControl>
-                  <FormControl display="inline-flex" alignItems={'center'}>
-                    <FormLabel display="inline" w={10} py={2}>INT</FormLabel>
-                    <Input size="md" display="inline" value={chardata.stats.intelligence} w={12} mr={3} />
-                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD INT</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.intelligence - 10) / 2))} w={12} />
-                  </FormControl>
-                  <FormControl display="inline-flex" alignItems={'center'}>
-                    <FormLabel display="inline" w={10} py={2}>SAB</FormLabel>
-                    <Input size="md" display="inline" value={chardata.stats.wisdom} w={12} mr={3} />
-                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD SAB</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.wisdom - 10) / 2))} w={12} />
-                  </FormControl>
-                  <FormControl display="inline-flex" alignItems={'center'}>
-                    <FormLabel display="inline" w={10} py={2}>CAR</FormLabel>
-                    <Input size="md" display="inline" value={chardata.stats.charisma} w={12} mr={3} />
-                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CAR</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.charisma - 10) / 2))} w={12} />
-                  </FormControl>
+
+                <Container flex={1}>
+                  <Container display="flex">
+                    <FormControl display="block">
+                      <FormLabel display="inline">Alineamiento</FormLabel>
+                      <Input width size="md" display="inline" value="N N" />
+                    </FormControl>
+                    <FormControl display="block">
+                      <FormLabel display="inline">Deidad</FormLabel>
+                      <Input width size="md" display="inline" value="Aitor" />
+                    </FormControl>
+                    <FormControl display="block">
+                      <FormLabel display="inline">Procedencia</FormLabel>
+                      <Input width size="md" display="inline" />
+                    </FormControl>
+                  </Container>
+                  <Container display="flex">
+                    <FormControl display="block">
+                      <FormLabel display="inline">Raza</FormLabel>
+                      <Input width size="md" display="inline" value="N N" />
+                    </FormControl>
+                    <FormControl display="block">
+                      <FormLabel display="inline">Tamaño</FormLabel>
+                      <Input width size="md" display="inline" value="Aitor" />
+                    </FormControl>
+                    <FormControl display="block">
+                      <FormLabel display="inline">Genero</FormLabel>
+                      <Input width size="md" display="inline" />
+                    </FormControl>
+                  </Container>
                 </Container>
               </Flex>
+
+              <Container >
+                <FormControl display="inline-flex" alignItems={'center'}>
+                  <FormLabel display="inline" w={10} py={2}>FUE</FormLabel>
+                  <Input size="md" display="inline" value={chardata.stats.strength} w={12} mr={3} />
+                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD FUE</FormLabel>
+                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.strength | 0 - 10) / 2))} w={12} />
+                </FormControl>
+                <FormControl display="inline-flex" alignItems={'center'}>
+                  <FormLabel display="inline" w={10} py={2}>DES</FormLabel>
+                  <Input size="md" display="inline" value={chardata.stats.dexterity} w={12} mr={3} />
+                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD DES</FormLabel>
+                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.dexterity - 10) / 2))} w={12} />
+                </FormControl>
+                <FormControl display="inline-flex" alignItems={'center'}>
+                  <FormLabel display="inline" w={10} py={2}>CON</FormLabel>
+                  <Input size="md" display="inline" value={chardata.stats.constitution} w={12} mr={3} />
+                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CON</FormLabel>
+                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.constitution - 10) / 2))} w={12} />
+                </FormControl>
+                <FormControl display="inline-flex" alignItems={'center'}>
+                  <FormLabel display="inline" w={10} py={2}>INT</FormLabel>
+                  <Input size="md" display="inline" value={chardata.stats.intelligence} w={12} mr={3} />
+                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD INT</FormLabel>
+                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.intelligence - 10) / 2))} w={12} />
+                </FormControl>
+                <FormControl display="inline-flex" alignItems={'center'}>
+                  <FormLabel display="inline" w={10} py={2}>SAB</FormLabel>
+                  <Input size="md" display="inline" value={chardata.stats.wisdom} w={12} mr={3} />
+                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD SAB</FormLabel>
+                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.wisdom - 10) / 2))} w={12} />
+                </FormControl>
+                <FormControl display="inline-flex" alignItems={'center'}>
+                  <FormLabel display="inline" w={10} py={2}>CAR</FormLabel>
+                  <Input size="md" display="inline" value={chardata.stats.charisma} w={12} mr={3} />
+                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CAR</FormLabel>
+                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.charisma - 10) / 2))} w={12} />
+                </FormControl>
+              </Container>
             </TabPanel>
             <TabPanel>Two !</TabPanel>
           </TabPanels>

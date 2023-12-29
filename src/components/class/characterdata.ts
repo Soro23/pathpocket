@@ -87,7 +87,7 @@ export class CharacterData {
     this.feats = []
     this.gold = 0
     this.hit_points = 0
-    this.imagesrc = ''
+    this.imagesrc = 'https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3'
     this.initiative = 0
     this.inventory = []
     this.languages = []
@@ -152,4 +152,30 @@ export class CharacterData {
       wisdom: 0,
     };
   }
+
+
+  private static isObject(obj: any): obj is Record<string, any> {
+    return typeof obj === 'object' && obj !== null;
+  }
+
+  private static copyObject(target: Record<string, any>, source: Record<string, any>): void {
+    for (const key in source) {
+      if (source.hasOwnProperty(key)) {
+        if (CharacterData.isObject(source[key])) {
+          target[key] = CharacterData.isObject(target[key]) ? target[key] : {};
+          CharacterData.copyObject(target[key], source[key]);
+        } else {
+          target[key] = source[key];
+        }
+      }
+    }
+  }
+
+  copyFrom(other: CharacterData | undefined): void {
+    if(other!){
+      CharacterData.copyObject(this, other);
+    }
+  }
+
+
 }
