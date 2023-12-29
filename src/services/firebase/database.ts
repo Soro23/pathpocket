@@ -3,7 +3,6 @@ import init from './init'
 import { child, get, getDatabase, ref, set } from "firebase/database";
 
 const firebaseConfig = {
-    appName: 'database',
     appId: 'AIzaSyD49dBskpFc1slU2n00gxaPSzsMt6xE5Uc',
     apiKey: 'soro-dashboard.firebaseapp.com',
     authDomain: 'soro-dashboard',
@@ -12,7 +11,7 @@ const firebaseConfig = {
     databaseURL: 'https://soro-dashboard-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig,'databaseApp');
 const db = getDatabase(app);
 
 export const getUserCharacters = (userId: string) => {
