@@ -1,5 +1,4 @@
 import { getApp, initializeApp } from 'firebase/app';
-import firebaseConfig from 'configs/firebase'
 import init from './init'
 import { child, get, getDatabase, ref, set } from "firebase/database";
 
