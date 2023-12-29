@@ -26,7 +26,7 @@ export function Profile({ showProfileData = true }: ProfileProps) {
   const { authUser, signOut, loading: loadingAuth } = useAuth()
 
   return (
-    <Flex align="center">
+    <Flex align="center" cursor='pointer'>
       <Popover placement='auto'>
         <PopoverTrigger>
           <HStack w={"full"}>
