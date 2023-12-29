@@ -39,7 +39,7 @@ export function Header() {
         ml="auto"
         pr="4"
       >
-        <QuickActionsNav />
+        {/* <QuickActionsNav /> */}
         <Divider orientation='vertical' my="8" mx="4" />
         <Profile showProfileData={isWideVersion} />
       </Flex>
