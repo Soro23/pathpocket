@@ -14,12 +14,13 @@ import { CharacterData } from '@/components/class/characterdata'
 
 const EditCharacterPage: NextPage = () => {
   const { authUser } = useAuth();
-  const [character, setCharacter] = useState<CharacterData[]>([]);
+  const [character, setCharacter] = useState<CharacterData>();
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
   const router = useRouter();
   const params = Array.isArray(router.query) ? router.query[0] : router.query
+  
 
 
   useEffect(() => {
@@ -57,6 +58,8 @@ const EditCharacterPage: NextPage = () => {
       <h2>Something went wrong</h2>
     )
   }
+  
+  let chardata = character ?? new CharacterData()
   return (
     <Box w="full" h="full" p={4} >
       <><Flex minWidth='max-content' alignItems='center' gap='2' p={4}>
@@ -86,46 +89,46 @@ const EditCharacterPage: NextPage = () => {
                 <Container maxW={250}>
                   <Image
                     sizes='250px'
-                    src={character.imagesrc}
-                    alt={!!(character) ? character.name : "''"}
+                    src={chardata.imagesrc}
+                    alt={chardata.name}
                   />
                 </Container>
                 <Container>
                   <FormControl display="inline-flex" alignItems={'center'}>
                     <FormLabel display="inline" w={10} py={2}>FUE</FormLabel>
-                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.strength} w={12} mr={3} />
+                    <Input size="md" display="inline" value={chardata.stats.strength} w={12} mr={3} />
                     <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD FUE</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.strength - 10) / 2))} w={12} />
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.strength | 0 - 10) / 2))} w={12} />
                   </FormControl>
                   <FormControl display="inline-flex" alignItems={'center'}>
                     <FormLabel display="inline" w={10} py={2}>DES</FormLabel>
-                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.dexterity} w={12} mr={3} />
+                    <Input size="md" display="inline" value={chardata.stats.dexterity} w={12} mr={3} />
                     <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD DES</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.dexterity - 10) / 2))} w={12} />
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.dexterity - 10) / 2))} w={12} />
                   </FormControl>
                   <FormControl display="inline-flex" alignItems={'center'}>
                     <FormLabel display="inline" w={10} py={2}>CON</FormLabel>
-                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.constitution} w={12} mr={3} />
+                    <Input size="md" display="inline" value={chardata.stats.constitution} w={12} mr={3} />
                     <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CON</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.constitution - 10) / 2))} w={12} />
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.constitution - 10) / 2))} w={12} />
                   </FormControl>
                   <FormControl display="inline-flex" alignItems={'center'}>
                     <FormLabel display="inline" w={10} py={2}>INT</FormLabel>
-                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.intelligence} w={12} mr={3} />
+                    <Input size="md" display="inline" value={chardata.stats.intelligence} w={12} mr={3} />
                     <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD INT</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.intelligence - 10) / 2))} w={12} />
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.intelligence - 10) / 2))} w={12} />
                   </FormControl>
                   <FormControl display="inline-flex" alignItems={'center'}>
                     <FormLabel display="inline" w={10} py={2}>SAB</FormLabel>
-                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.wisdom} w={12} mr={3} />
+                    <Input size="md" display="inline" value={chardata.stats.wisdom} w={12} mr={3} />
                     <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD SAB</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.wisdom - 10) / 2))} w={12} />
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.wisdom - 10) / 2))} w={12} />
                   </FormControl>
                   <FormControl display="inline-flex" alignItems={'center'}>
                     <FormLabel display="inline" w={10} py={2}>CAR</FormLabel>
-                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.charisma} w={12} mr={3} />
+                    <Input size="md" display="inline" value={chardata.stats.charisma} w={12} mr={3} />
                     <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CAR</FormLabel>
-                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.charisma - 10) / 2))} w={12} />
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.charisma - 10) / 2))} w={12} />
                   </FormControl>
                 </Container>
               </Flex>
