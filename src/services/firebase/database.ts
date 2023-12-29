@@ -1,15 +1,17 @@
 import { getApp, initializeApp } from 'firebase/app';
 import init from './init'
 import { child, get, getDatabase, ref, set } from "firebase/database";
+import firebaseConfig from 'configs/firebase'
 
-const firebaseConfig = {
-    appId: 'AIzaSyD49dBskpFc1slU2n00gxaPSzsMt6xE5Uc',
-    apiKey: 'soro-dashboard.firebaseapp.com',
-    authDomain: 'soro-dashboard',
-    projectId: 'soro-dashboard.appspot.com',
-    storageBucket: '1:167327093021:web:79d8d00aeb165aae3751f4',
-    databaseURL: 'https://soro-dashboard-default-rtdb.europe-west1.firebasedatabase.app',
-};
+
+// const firebaseConfig = {
+//     appId: 'AIzaSyD49dBskpFc1slU2n00gxaPSzsMt6xE5Uc',
+//     apiKey: 'soro-dashboard.firebaseapp.com',
+//     authDomain: 'soro-dashboard',
+//     projectId: 'soro-dashboard.appspot.com',
+//     storageBucket: '1:167327093021:web:79d8d00aeb165aae3751f4',
+//     databaseURL: 'https://soro-dashboard-default-rtdb.europe-west1.firebasedatabase.app',
+// };
 
 const app = initializeApp(firebaseConfig,'databaseApp');
 const db = getDatabase(app);

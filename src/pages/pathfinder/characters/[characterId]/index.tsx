@@ -59,83 +59,81 @@ const EditCharacterPage: NextPage = () => {
   }
   return (
     <Box w="full" h="full" p={4} >
-      {character.map((data) => (
-        <><Flex minWidth='max-content' alignItems='center' gap='2' p={4}>
-          <Box p='2'>
-            <Heading as='h3' size='lg' style={{ color: headingColor }}>{params.characterId}</Heading>
-          </Box>
-          <Spacer />
-          <ButtonGroup gap='2'>
-            <CButton onClick={handleGoBack} cvariant={true}>Volver</CButton>
-          </ButtonGroup>
-        </Flex><Tabs
-          size="md"
-          variant="enclosed"
-          align="start"
-          orientation="horizontal"
-          isLazy
-          isFitted
-        >
-            <TabList p={0}>
-              <Tab>Basic</Tab>
-              <Tab>Ataques</Tab>
-              <Tab>Conjuros</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                <Flex flexDirection="row" alignItems="stretch">
-                  <Container maxW={250}>
-                    <Image
-                      sizes='250px'
-                      src={data.imagesrc}
-                      alt={!!(data) ? data.name : "''"}
-                    />
-                  </Container>
-                  <Container>
-                    <FormControl display="inline-flex" alignItems={'center'}>
-                      <FormLabel display="inline" w={10} py={2}>FUE</FormLabel>
-                      <Input size="md" display="inline" value={typeof data.stats === 'number' ? 0 : data.stats.strength} w={12} mr={3} />
-                      <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD FUE</FormLabel>
-                      <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof data.stats === 'number' ? 0 : data.stats.strength - 10) / 2))} w={12} />
-                    </FormControl>
-                    <FormControl display="inline-flex" alignItems={'center'}>
-                      <FormLabel display="inline" w={10} py={2}>DES</FormLabel>
-                      <Input size="md" display="inline" value={typeof data.stats === 'number' ? 0 : data.stats.dexterity} w={12} mr={3} />
-                      <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD DES</FormLabel>
-                      <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof data.stats === 'number' ? 0 : data.stats.dexterity - 10) / 2))} w={12} />
-                    </FormControl>
-                    <FormControl display="inline-flex" alignItems={'center'}>
-                      <FormLabel display="inline" w={10} py={2}>CON</FormLabel>
-                      <Input size="md" display="inline" value={typeof data.stats === 'number' ? 0 : data.stats.constitution} w={12} mr={3} />
-                      <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CON</FormLabel>
-                      <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof data.stats === 'number' ? 0 : data.stats.constitution - 10) / 2))} w={12} />
-                    </FormControl>
-                    <FormControl display="inline-flex" alignItems={'center'}>
-                      <FormLabel display="inline" w={10} py={2}>INT</FormLabel>
-                      <Input size="md" display="inline" value={typeof data.stats === 'number' ? 0 : data.stats.intelligence} w={12} mr={3} />
-                      <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD INT</FormLabel>
-                      <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof data.stats === 'number' ? 0 : data.stats.intelligence - 10) / 2))} w={12} />
-                    </FormControl>
-                    <FormControl display="inline-flex" alignItems={'center'}>
-                      <FormLabel display="inline" w={10} py={2}>SAB</FormLabel>
-                      <Input size="md" display="inline" value={typeof data.stats === 'number' ? 0 : data.stats.wisdom} w={12} mr={3} />
-                      <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD SAB</FormLabel>
-                      <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof data.stats === 'number' ? 0 : data.stats.wisdom - 10) / 2))} w={12} />
-                    </FormControl>
-                    <FormControl display="inline-flex" alignItems={'center'}>
-                      <FormLabel display="inline" w={10} py={2}>CAR</FormLabel>
-                      <Input size="md" display="inline" value={typeof data.stats === 'number' ? 0 : data.stats.charisma} w={12} mr={3} />
-                      <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CAR</FormLabel>
-                      <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof data.stats === 'number' ? 0 : data.stats.charisma - 10) / 2))} w={12} />
-                    </FormControl>
-                  </Container>
-                </Flex>
-              </TabPanel>
-              <TabPanel>Two !</TabPanel>
-            </TabPanels>
-          </Tabs></>
-      ))}
-    </Box>
+      <><Flex minWidth='max-content' alignItems='center' gap='2' p={4}>
+        <Box p='2'>
+          <Heading as='h3' size='lg' style={{ color: headingColor }}>{params.characterId}</Heading>
+        </Box>
+        <Spacer />
+        <ButtonGroup gap='2'>
+          <CButton onClick={handleGoBack} cvariant={true}>Volver</CButton>
+        </ButtonGroup>
+      </Flex><Tabs
+        size="md"
+        variant="enclosed"
+        align="start"
+        orientation="horizontal"
+        isLazy
+        isFitted
+      >
+          <TabList p={0}>
+            <Tab>Basic</Tab>
+            <Tab>Ataques</Tab>
+            <Tab>Conjuros</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <Flex flexDirection="row" alignItems="stretch">
+                <Container maxW={250}>
+                  <Image
+                    sizes='250px'
+                    src={character.imagesrc}
+                    alt={!!(character) ? character.name : "''"}
+                  />
+                </Container>
+                <Container>
+                  <FormControl display="inline-flex" alignItems={'center'}>
+                    <FormLabel display="inline" w={10} py={2}>FUE</FormLabel>
+                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.strength} w={12} mr={3} />
+                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD FUE</FormLabel>
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.strength - 10) / 2))} w={12} />
+                  </FormControl>
+                  <FormControl display="inline-flex" alignItems={'center'}>
+                    <FormLabel display="inline" w={10} py={2}>DES</FormLabel>
+                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.dexterity} w={12} mr={3} />
+                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD DES</FormLabel>
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.dexterity - 10) / 2))} w={12} />
+                  </FormControl>
+                  <FormControl display="inline-flex" alignItems={'center'}>
+                    <FormLabel display="inline" w={10} py={2}>CON</FormLabel>
+                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.constitution} w={12} mr={3} />
+                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CON</FormLabel>
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.constitution - 10) / 2))} w={12} />
+                  </FormControl>
+                  <FormControl display="inline-flex" alignItems={'center'}>
+                    <FormLabel display="inline" w={10} py={2}>INT</FormLabel>
+                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.intelligence} w={12} mr={3} />
+                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD INT</FormLabel>
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.intelligence - 10) / 2))} w={12} />
+                  </FormControl>
+                  <FormControl display="inline-flex" alignItems={'center'}>
+                    <FormLabel display="inline" w={10} py={2}>SAB</FormLabel>
+                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.wisdom} w={12} mr={3} />
+                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD SAB</FormLabel>
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.wisdom - 10) / 2))} w={12} />
+                  </FormControl>
+                  <FormControl display="inline-flex" alignItems={'center'}>
+                    <FormLabel display="inline" w={10} py={2}>CAR</FormLabel>
+                    <Input size="md" display="inline" value={typeof character.stats === 'number' ? 0 : character.stats?.charisma} w={12} mr={3} />
+                    <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CAR</FormLabel>
+                    <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (typeof character.stats === 'number' ? 0 : character.stats?.charisma - 10) / 2))} w={12} />
+                  </FormControl>
+                </Container>
+              </Flex>
+            </TabPanel>
+            <TabPanel>Two !</TabPanel>
+          </TabPanels>
+        </Tabs></>
+    </Box >
   );
 };
 
