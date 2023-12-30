@@ -1,13 +1,12 @@
 // src/pages/edit-character/[characterId].tsx
 
-import { Flex, Heading, Spacer, ButtonGroup, Tabs, TabList, Tab, TabPanels, TabPanel, FormControl, FormLabel, Input, FormErrorMessage, Box, useColorModeValue, Image, Container, Text, Badge, Alert, AlertDescription, AlertIcon, AlertTitle, Button, Grid, InputGroup, InputLeftAddon, HStack, VStack, GridItem, FormHelperText, Textarea } from '@chakra-ui/react';
+import { Heading, ButtonGroup, FormControl, FormLabel, Input, Box, useColorModeValue, Image, Text, Button, Grid, InputGroup, HStack, GridItem, FormHelperText, Textarea } from '@chakra-ui/react';
 import { Button as CButton } from '@/components/ui/atoms/Button';
 import { useRouter } from 'next/router';
 import { getUserCharacter } from '@/services/firebase/database';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthUserContext';
 import { NextPage } from 'next';
-import { ParsedUrlQuery, stringify } from 'querystring';
 import { CharacterData } from '@/components/class/characterdata'
 
 
