@@ -85,12 +85,13 @@ const EditCharacterPage: NextPage = () => {
                 <Image
                   height="100px"
                   width="100px"
-                  src="https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FSaya?alt=media&token=9493848b-b3bf-4122-8a17-af1a62e44a96"
+                  src={chardata.imagesrc}
                   fallbackSrc="https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3"
                   display="block"
+                  alt={chardata.name}
                 />
                 <Box>
-                  <Heading as='h3' size='lg' style={{ color: headingColor }}>{params.characterId}</Heading>
+                  <Heading as='h3' size='lg' style={{ color: headingColor }}>{chardata.name}</Heading>
                   <Text>[Raza] - [Clase] - [Nivel Clase]</Text>
                   <Text>[Nivel Total]</Text>
                 </Box>
