@@ -1,13 +1,12 @@
 // src/pages/edit-character/[characterId].tsx
 
-import { Flex, Heading, Spacer, ButtonGroup, Tabs, TabList, Tab, TabPanels, TabPanel, FormControl, FormLabel, Input, FormErrorMessage, Box, useColorModeValue, Image, Container } from '@chakra-ui/react';
+import { Heading, ButtonGroup, FormControl, FormLabel, Input, Box, useColorModeValue, Image, Text, Button, Grid, InputGroup, HStack, GridItem, FormHelperText, Textarea } from '@chakra-ui/react';
 import { Button as CButton } from '@/components/ui/atoms/Button';
 import { useRouter } from 'next/router';
 import { getUserCharacter } from '@/services/firebase/database';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthUserContext';
 import { NextPage } from 'next';
-import { ParsedUrlQuery, stringify } from 'querystring';
 import { CharacterData } from '@/components/class/characterdata'
 
 
@@ -63,114 +62,206 @@ const EditCharacterPage: NextPage = () => {
 
   return (
     <Box w="full" h="full" p={4} >
-      <><Flex minWidth='max-content' alignItems='center' gap='2' p={4}>
-        <Box p='2'>
-          <Heading as='h3' size='lg' style={{ color: headingColor }}>{params.characterId}</Heading>
-        </Box>
-        <Spacer />
-        <ButtonGroup gap='2'>
-          <CButton onClick={handleGoBack} cvariant={true}>Volver</CButton>
-        </ButtonGroup>
-      </Flex><Tabs
-        size="md"
-        variant="enclosed"
-        align="start"
-        orientation="horizontal"
-        isLazy
-        isFitted
-      >
-          <TabList p={0}>
-            <Tab>Basic</Tab>
-            <Tab>Ataques</Tab>
-            <Tab>Conjuros</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Flex flexDirection="row" alignItems="stretch">
-                <Container maxW={250}>
-                  <Image
-                    sizes='250px'
-                    src={chardata.imagesrc}
-                    alt={chardata.name}
-                  />
-                </Container>
+      <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" templateRows="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" gap={2} p={5}
+        templateAreas={`
+        "head head head head head head head head head head head head"
+        "stats stats stats stats stats stats stats stats stats stats stats stats"
+        "saves saves saves hab hab hab ca ca ca ca ca ca"
+        "saves saves saves hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"; 
+        `}>
+        {/* Fila Imagen */}
+        <GridItem area={'head'}>
+          <Grid templateColumns="12fr" gap={6} p={5} pb={2} borderBottom="2px solid wheat">
+            <Box display="flex" gap={6} justifyContent="space-between">
+              <Box display="flex" justifyContent="center" alignItems="center" gap={6}>
+                <Image
+                  height="100px"
+                  width="100px"
+                  src={chardata.imagesrc}
+                  fallbackSrc="https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3"
+                  display="block"
+                  alt={chardata.name}
+                />
+                <Box>
+                  <Heading as='h3' size='lg' style={{ color: headingColor }}>{chardata.name}</Heading>
+                  <Text>[Raza] - [Clase] - [Nivel Clase]</Text>
+                  <Text>[Nivel Total]</Text>
+                </Box>
+              </Box>
+              <Box display="flex" alignItems="center">
+                <ButtonGroup gap='2'>
+                  <Button variant="solid" size="md">Editar / No Editar</Button>
+                  <CButton onClick={handleGoBack} cvariant={true}>Volver</CButton>
+                </ButtonGroup>
+              </Box>
+            </Box>
+          </Grid>
+        </GridItem>
+        {/* Fila Stats */}
+        <GridItem area={'stats'} >
+          <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 4fr" gap={6} p={5}>
+            <Box >
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">FUERZA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{(chardata.stats.strength < 10) ? '' : '+'}{Math.floor((chardata.stats.strength - 10) / 2)}</Text>
+                <Input value={chardata.stats.strength} variant='filled' textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">DESTREZA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.dexterity < 10 ? '' : '+'}{Math.floor((chardata.stats.dexterity - 10) / 2)}</Text>
+                <Input value={chardata.stats.dexterity} variant='filled' textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">CONSTITUCION</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.constitution < 10 ? '' : '+'}{Math.floor((chardata.stats.constitution - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.constitution} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">INTELIGENCIA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.intelligence < 10 ? '' : '+'}{Math.floor((chardata.stats.intelligence - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.intelligence} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">SABIDURIA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.wisdom < 10 ? '' : '+'}{Math.floor((chardata.stats.wisdom - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.wisdom} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">CARISMA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.charisma < 10 ? '' : '+'}{Math.floor((chardata.stats.charisma - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.charisma} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box />
+            <Box />
+            <HStack border="1px solid white" p={5}>
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="flex-start"
+              >
+                <Button variant="outline" size="xs" width={100} backgroundColor='green.500'>CURAR</Button>
+                <Input fontSize="xs" width={100} />
+                <Button variant="outline" size="xs" width={100} backgroundColor='red.500'>DAÑAR</Button>
+              </Box>
+              <Box display="flex" justifyContent="center" alignItems="center" width={100} flex={1}>
+                <Heading as='h3' size='2xl' style={{ color: headingColor }}>11/11</Heading>
+              </Box>
+            </HStack>
+          </Grid>
+        </GridItem>
+        {/* Fila Stats */}
+        <GridItem area={'saves'}>
+          <FormControl
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+          >
+            <Box
+              display="block"
+              flexDirection="column"
+              alignItems="flex-start"
+              p={2}
+              minWidth={120}
+              textAlign="center"
+            >
+              <FormLabel width="100%" textAlign="center">
+                FORTALEZA
+              </FormLabel>
+              <FormHelperText fontSize="xs" textAlign="center">
+                CON
+              </FormHelperText>
+            </Box>
+            <Box>
+              <Input width={14} />
+            </Box>
+          </FormControl>
+          <FormControl
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+          >
+            <Box
+              display="block"
+              flexDirection="column"
+              alignItems="flex-start"
+              p={2}
+              minWidth={120}
+              textAlign="center"
+            >
+              <FormLabel width="100%" textAlign="center">
+                REFLEJOS
+              </FormLabel>
+              <FormHelperText fontSize="xs" textAlign="center">
+                DES
+              </FormHelperText>
+            </Box>
+            <Box>
+              <Input width={14} />
+            </Box>
+          </FormControl>
+          <FormControl
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+          >
+            <Box
+              display="block"
+              flexDirection="column"
+              alignItems="flex-start"
+              p={2}
+              minWidth={120}
+            >
+              <FormLabel width="100%" textAlign="center">
+                VOLUNTAD
+              </FormLabel>
+              <FormHelperText fontSize="xs" textAlign="center">
+                SAB
+              </FormHelperText>
+            </Box>
+            <Box>
+              <Input width={14} />
+            </Box>
+          </FormControl>
+          <Textarea rows={5} placeholder='Bonificaciones de salvaciones' />
+        </GridItem>
+        <GridItem pl='2' bg='orange.300' area={'ca'}>
+          ca
+        </GridItem>
+        <GridItem pl='2' bg='orange.300' area={'atk-spell'}>
+          atk-spell
+        </GridItem>
+        <GridItem pl='2' bg='orange.300' area={'hab'}>
+          hab
+        </GridItem>
+        <GridItem area={'feats'}>
+          <Textarea rows={5} placeholder='Dotes' />
+        </GridItem>
+        <GridItem area={'lang'}>
+          <Textarea rows={5} placeholder='Idiomas' />
+        </GridItem>
 
-                <Container flex={1}>
-                  <Container display="flex">
-                    <FormControl display="block">
-                      <FormLabel display="inline">Alineamiento</FormLabel>
-                      <Input width size="md" display="inline" value="N N" />
-                    </FormControl>
-                    <FormControl display="block">
-                      <FormLabel display="inline">Deidad</FormLabel>
-                      <Input width size="md" display="inline" value="Aitor" />
-                    </FormControl>
-                    <FormControl display="block">
-                      <FormLabel display="inline">Procedencia</FormLabel>
-                      <Input width size="md" display="inline" />
-                    </FormControl>
-                  </Container>
-                  <Container display="flex">
-                    <FormControl display="block">
-                      <FormLabel display="inline">Raza</FormLabel>
-                      <Input width size="md" display="inline" value="N N" />
-                    </FormControl>
-                    <FormControl display="block">
-                      <FormLabel display="inline">Tamaño</FormLabel>
-                      <Input width size="md" display="inline" value="Aitor" />
-                    </FormControl>
-                    <FormControl display="block">
-                      <FormLabel display="inline">Genero</FormLabel>
-                      <Input width size="md" display="inline" />
-                    </FormControl>
-                  </Container>
-                </Container>
-              </Flex>
-
-              <Container >
-                <FormControl display="inline-flex" alignItems={'center'}>
-                  <FormLabel display="inline" w={10} py={2}>FUE</FormLabel>
-                  <Input size="md" display="inline" value={chardata.stats.strength} w={12} mr={3} />
-                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD FUE</FormLabel>
-                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.strength | 0 - 10) / 2))} w={12} />
-                </FormControl>
-                <FormControl display="inline-flex" alignItems={'center'}>
-                  <FormLabel display="inline" w={10} py={2}>DES</FormLabel>
-                  <Input size="md" display="inline" value={chardata.stats.dexterity} w={12} mr={3} />
-                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD DES</FormLabel>
-                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.dexterity - 10) / 2))} w={12} />
-                </FormControl>
-                <FormControl display="inline-flex" alignItems={'center'}>
-                  <FormLabel display="inline" w={10} py={2}>CON</FormLabel>
-                  <Input size="md" display="inline" value={chardata.stats.constitution} w={12} mr={3} />
-                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CON</FormLabel>
-                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.constitution - 10) / 2))} w={12} />
-                </FormControl>
-                <FormControl display="inline-flex" alignItems={'center'}>
-                  <FormLabel display="inline" w={10} py={2}>INT</FormLabel>
-                  <Input size="md" display="inline" value={chardata.stats.intelligence} w={12} mr={3} />
-                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD INT</FormLabel>
-                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.intelligence - 10) / 2))} w={12} />
-                </FormControl>
-                <FormControl display="inline-flex" alignItems={'center'}>
-                  <FormLabel display="inline" w={10} py={2}>SAB</FormLabel>
-                  <Input size="md" display="inline" value={chardata.stats.wisdom} w={12} mr={3} />
-                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD SAB</FormLabel>
-                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.wisdom - 10) / 2))} w={12} />
-                </FormControl>
-                <FormControl display="inline-flex" alignItems={'center'}>
-                  <FormLabel display="inline" w={10} py={2}>CAR</FormLabel>
-                  <Input size="md" display="inline" value={chardata.stats.charisma} w={12} mr={3} />
-                  <FormLabel display="inline" w={12} py={2} fontSize={10}>MOD CAR</FormLabel>
-                  <Input disabled size="md" display="inline" value={Math.floor(Math.max(-5, (chardata.stats.charisma - 10) / 2))} w={12} />
-                </FormControl>
-              </Container>
-            </TabPanel>
-            <TabPanel>Two !</TabPanel>
-          </TabPanels>
-        </Tabs></>
-    </Box >
-  );
+      </Grid>
+    </Box>
+  )
 };
 
 export default EditCharacterPage;
