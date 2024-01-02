@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+markdown.md
 
 # next.js
 /.next/
