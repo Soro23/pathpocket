@@ -13,18 +13,19 @@
 * https://vercel.com/soro23s-projects/soro23-github-io
 * https://wireframepro.mockflow.com/view/sorodashboard
 
+
 ---
-# Paginas
-### Hoja de personaje
-#### Apartados fijos hoja de personaje
+# *Paginas*
+### **Hoja de personaje**
+#### **Apartados fijos hoja de personaje**
 | Apartado | Contenido | Extra |
 | ----------- | ----------- | ----------- |
 | Cabecera superior 1 | Imagen, nombre (nivel total), raza nivel raza nivel. Vida | visible todo el rato |
 | Cabecera superior 2 | Velocidad de movimiento, Iniciativa, CA | visible todo el rato |
 | Pie de pagina | Botones hacia los apartados | visible todo el rato |
 
-#### Apartados hoja de personaje
-==A priori los apartados no seran editables, solo para calculos mientras se juega, y habra un sitio para gestion==
+#### **Apartados hoja de personaje**
+>A priori los apartados no seran editables, solo para calculos mientras se juega, y habra un sitio para gestion
 
 | Apartado | Contenido | Extra |
 | ----------- | ----------- | ----------- |
