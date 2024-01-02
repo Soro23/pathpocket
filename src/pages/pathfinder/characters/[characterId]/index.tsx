@@ -60,6 +60,107 @@ const EditCharacterPage: NextPage = () => {
   let chardata = new CharacterData()
   chardata.copyFrom(character)
 
+
+  return (
+    <Box w="full" h="full" p={4} >
+      <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" templateRows="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" gap={2} p={5}
+        templateAreas={`
+        "head head head head head head head head head head head head"
+        "stats stats stats stats stats stats stats stats stats stats stats stats"
+        "saves saves saves hab hab hab ca ca ca ca ca ca"
+        "saves saves saves hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
+        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"; 
+        `}>
+        {/* Fila Imagen */}
+        <GridItem area={'head'}>
+          <Grid templateColumns="12fr" gap={6} p={5} pb={2} borderBottom="2px solid wheat">
+            <Box display="flex" gap={6} justifyContent="space-between">
+              <Box display="flex" justifyContent="center" alignItems="center" gap={6}>
+                <Image
+                  height="100px"
+                  width="100px"
+                  src={chardata.imagesrc}
+                  fallbackSrc="https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3"
+                  display="block"
+                  alt={chardata.name}
+                />
+                <Box>
+                  <Heading as='h3' size='lg' style={{ color: headingColor }}>{chardata.name}</Heading>
+                  <Text>[Raza] - [Clase] - [Nivel Clase]</Text>
+                  <Text>[Nivel Total]</Text>
+                </Box>
+              </Box>
+              <Box display="flex" alignItems="center">
+                <ButtonGroup gap='2'>
+                  <Button variant="solid" size="md">Editar / No Editar</Button>
+                  <CButton onClick={handleGoBack} cvariant={true}>Volver</CButton>
+                </ButtonGroup>
+              </Box>
+            </Box>
+          </Grid>
+        </GridItem>
+        {/* Fila Stats */}
+        <GridItem area={'stats'} >
+          <Grid templateColumns="repeat(6, 2fr)" gap={0} p={0}>
+            <Box >
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">FUERZA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{(chardata.stats.strength < 10) ? '' : '+'}{Math.floor((chardata.stats.strength - 10) / 2)}</Text>
+                <Input value={chardata.stats.strength} variant='filled' textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">DESTREZA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.dexterity < 10 ? '' : '+'}{Math.floor((chardata.stats.dexterity - 10) / 2)}</Text>
+                <Input value={chardata.stats.dexterity} variant='filled' textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">CONSTITUCION</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.constitution < 10 ? '' : '+'}{Math.floor((chardata.stats.constitution - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.constitution} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">INTELIGENCIA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.intelligence < 10 ? '' : '+'}{Math.floor((chardata.stats.intelligence - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.intelligence} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">SABIDURIA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.wisdom < 10 ? '' : '+'}{Math.floor((chardata.stats.wisdom - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.wisdom} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box>
+              <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
+                <Text fontSize="xs">CARISMA</Text>
+                <Text textAlign="center" width={16} fontSize="xl">{chardata.stats.charisma < 10 ? '' : '+'}{Math.floor((chardata.stats.charisma - 10) / 2)}</Text>
+                <Input variant='filled' value={chardata.stats.charisma} textAlign="center" width={14} fontSize="md" />
+              </InputGroup>
+            </Box>
+            <Box />
+            <Box />
+            
+          </Grid>
+        </GridItem>
+        {/* Fila Stats */}
+        </Grid>
+    </Box>
+  )
+
   return (
     <Box w="full" h="full" p={4} >
       <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" templateRows="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" gap={2} p={5}
