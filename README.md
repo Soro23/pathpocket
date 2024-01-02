@@ -11,3 +11,4 @@
 #### Links del proyecto
 * https://console.firebase.google.com/u/0/project/soro-dashboard/overview
 * https://vercel.com/soro23s-projects/soro23-github-io
+* https://wireframepro.mockflow.com/view/sorodashboard
