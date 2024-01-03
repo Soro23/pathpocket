@@ -27,7 +27,9 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+# .env
+# .env.*
+# .env*.local
 
 # vercel
 .vercel
@@ -36,8 +38,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.env
-.env.*
 
 # Yarn
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
