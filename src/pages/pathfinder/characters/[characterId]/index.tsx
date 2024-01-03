@@ -8,7 +8,8 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthUserContext';
 import { NextPage } from 'next';
 import { CharacterData } from '@/components/class/characterdata'
-
+import { TopHeader } from '@/components/ui/organisms/Character/TopHeader';
+import { Header } from '@/components/ui/organisms/Character/Header';
 
 
 const EditCharacterPage: NextPage = () => {
@@ -62,7 +63,9 @@ const EditCharacterPage: NextPage = () => {
 
 
   return (
-    <Box w="full" h="full" p={4} >
+    <Box w="full" h="full" >
+      <TopHeader CharData={chardata} />
+      <Header CharData={chardata} />
       <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" templateRows="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" gap={2} p={5}
         templateAreas={`
         "head head head head head head head head head head head head"
@@ -79,7 +82,7 @@ const EditCharacterPage: NextPage = () => {
         "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"; 
         `}>
         {/* Fila Imagen */}
-        <GridItem area={'head'}>
+        {/* <GridItem area={'head'}>
           <Grid templateColumns="12fr" gap={6} p={5} pb={2} borderBottom="2px solid wheat">
             <Box display="flex" gap={6} justifyContent="space-between">
               <Box display="flex" justifyContent="center" alignItems="center" gap={6}>
@@ -105,9 +108,9 @@ const EditCharacterPage: NextPage = () => {
               </Box>
             </Box>
           </Grid>
-        </GridItem>
+        </GridItem> */}
         {/* Fila Stats */}
-        <GridItem area={'stats'} >
+        {/* <GridItem area={'stats'} >
           <Grid templateColumns="repeat(6, 2fr)" gap={0} p={0}>
             <Box >
               <InputGroup border="1px solid white" display="flex" flexDirection="column" alignItems="center">
@@ -155,7 +158,7 @@ const EditCharacterPage: NextPage = () => {
             <Box />
             
           </Grid>
-        </GridItem>
+        </GridItem> */}
         {/* Fila Stats */}
         </Grid>
     </Box>
