@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-nextjs-chakraui-firebase",
+  "name": "soro-dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,31 +9,28 @@
     "lint": "next lint",
     "upgrade:next": "yarn upgrade next react react-dom eslint-config-next --latest",
     "pnpm:upgrade": "corepack prepare pnpm@latest --activate",
-    "deps:update": "pnpm up",
-    "deps:update:latest": "pnpm up --latest"
+    "deps:update": "npm up",
+    "deps:update:latest": "npm up --latest"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.5.1",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@hookform/resolvers": "^2.9.11",
-    "firebase": "^9.17.2",
-    "framer-motion": "^6.5.1",
-    "next": "13.0.3",
-    "react": "18.2.0",
-    "react-avatar-editor": "^13.0.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.43.5",
-    "react-icons": "^4.7.1",
-    "yup": "^0.32.11"
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/righteous": "^5.0.18",
+    "@hookform/resolvers": "^3.3.3",
+    "firebase": "^10.7.1",
+    "framer-motion": "^10.17.0",
+    "next": "^14.0.4",
+    "react-avatar-editor": "^13.0.2",
+    "react-hook-form": "^7.49.2",
+    "react-icons": "^4.12.0",
+    "yup": "^1.3.3"
   },
   "devDependencies": {
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-avatar-editor": "^13.0.0",
-    "@types/react-dom": "18.0.9",
-    "eslint": "8.27.0",
-    "eslint-config-next": "13.0.3",
-    "typescript": "4.9.3"
+    "@types/node": "20.10.6",
+    "@types/react": "18.2.46",
+    "@types/react-avatar-editor": "^13.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "5.3.3"
   }
 }
