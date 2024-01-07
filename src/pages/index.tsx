@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import { Flex } from '@chakra-ui/layout';
-import { Spinner } from '@chakra-ui/react'
+import { Box, Spinner } from '@chakra-ui/react'
 import { useAuth } from 'contexts/AuthUserContext';
+import { SoroLogo } from '@/utils/soro-logo';
 
 const Dashboard: NextPage = () => {
   const { loading: loadingAuth } = useAuth()
@@ -11,6 +12,7 @@ const Dashboard: NextPage = () => {
       justify="center"
     >
       {loadingAuth && <Spinner />}
+      <SoroLogo size={50} />
     </Flex>
 
   )

@@ -40,6 +40,10 @@ const Characters: NextPage = () => {
     lg: 5,
   });
 
+  const handleGoNew = () => {
+    router.push("/pathfinder/characters/new"); // Redirige a la página de personajes después de editar
+  };
+
   useEffect(() => {
     if (authUser) {
       getUserCharacters(authUser.uid)
@@ -90,7 +94,7 @@ const Characters: NextPage = () => {
         </Box>
         <Spacer />
         <ButtonGroup gap="2">
-          <CButton cvariant={true} rightIcon={<RiAddFill />}>
+          <CButton onClick={handleGoNew} cvariant={true} rightIcon={<RiAddFill />}>
             Nuevo
           </CButton>
         </ButtonGroup>
