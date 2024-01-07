@@ -39,7 +39,7 @@ export function TopHeader({ CharData = new CharacterData() }: CharacterProps) {
   const level = 0;
 
   return (
-    <ChakraProvider resetCSS>
+    <ChakraProvider resetCSS cssVarsRoot={undefined}>
       {/* Mobil */}
       {!isWideVersion ? (
         <Flex justifyContent="space-between" px={3}>

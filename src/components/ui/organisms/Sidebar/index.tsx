@@ -13,6 +13,7 @@ import { useSidebarDrawer } from 'contexts/SidebarDrawerContext';
 import DashboardLogo from '../../atoms/DashboardLogo';
 import { SidebarNav } from './SidebarNav';
 import { GiDiceTwentyFacesTwenty } from "react-icons/gi";
+import { useRouter } from "next/router";
 
 
 export function Sidebar() {
@@ -28,13 +29,18 @@ export function Sidebar() {
     lg: true,
   })
 
+  const router = useRouter();
+  const handleGoHome = () => {
+    router.push("/"); // Redirige a la página de personajes después de editar
+  };
+
   if (isDrawerSidebar) {
     return (
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerHeader>
-              <HStack>
+              <HStack onClick={handleGoHome} >
                 <GiDiceTwentyFacesTwenty fontSize="40" />
                 <DashboardLogo />
               </HStack>
@@ -62,7 +68,7 @@ export function Sidebar() {
     top={"0"}
     zIndex={999}
   >
-    <HStack>
+    <HStack onClick={handleGoHome}>
       <GiDiceTwentyFacesTwenty fontSize="40" />
       <DashboardLogo py="4" />
     </HStack>

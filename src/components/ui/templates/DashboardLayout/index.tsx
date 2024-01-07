@@ -13,9 +13,11 @@ export default function DashboardLayout({ children }: Props) {
       <Sidebar />
       <Flex direction="column" w="full">
         <Header />
-        <Flex
+        <Flex id="bb" 
           bgColor={bg}
-          minH={"100vh"}
+          minH={"100vh"} 
+          direction={'row'}
+          justify={'center'}
         >
           {children}
         </Flex>
