@@ -18,7 +18,7 @@ import { useCallback } from "react";
 
 type SignInFormData = {
   email: string;
-  password: string;
+  password?: string | undefined;
 };
 
 const signInFormSchema = yup.object().shape({
@@ -44,7 +44,7 @@ const SignIn: NextPage = () => {
   const submitHandler = useCallback(async (values: SignInFormData) => {
     switch (authState?.submit.action) {
       case 'signInWithPassword':
-        await signInWithEmailAndPassword(values.email, values.password);
+        await signInWithEmailAndPassword(values.email, values.password ? values.password : '');
         break;
       case 'sendSignInLinkToEmail':
         await sendSignInLinkToEmail(values.email)

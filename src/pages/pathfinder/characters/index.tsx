@@ -55,10 +55,9 @@ const Characters: NextPage = () => {
             const charactersArray = Object.entries(characters).map(
               // Para cada entrada (key, val) del objeto 'characters', se crea un nuevo objeto CharacterData.
               ([key, val]) => {
-                let oldval = val;
-                val = new CharacterData();
+                let nval: CharacterData = new CharacterData();
                 // Se utiliza el método copyFrom para copiar las propiedades de 'val' al nuevo objeto CharacterData.
-                val.copyFrom(oldval as CharacterData | undefined);
+                nval.copyFrom(val as CharacterData | undefined);
                 return { key, val };
               }
             );

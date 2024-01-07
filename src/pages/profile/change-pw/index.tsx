@@ -19,7 +19,7 @@ const formSchema = yup.object().shape({
   newPassword: yup.string().required("Campo obligatorio"),
   confirmNewPassword: yup
     .string()
-    .oneOf([yup.ref("newPassword"), null], "La contraseña no coincide").required("Campo obligatorio"),
+    .oneOf([yup.ref("newPassword"), undefined], "La contraseña no coincide").required("Campo obligatorio"),
 });
 
 const ChangePassword: NextPage = () => {
