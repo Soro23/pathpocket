@@ -39,6 +39,7 @@
 
 ### **Creador de personaje**
 >Secuencia de pantallas para añadir detalles al personaje:
+
 | Pantalla | Contenido |
 | ----------- | ----------- | 
 | Informacion inicial | Imagen, Nombre |
