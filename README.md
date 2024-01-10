@@ -37,4 +37,12 @@
 | Extras | Gestionar Personaje | En Tabs? |
 
 
+### **Creador de personaje**
+>Secuencia de pantallas para añadir detalles al personaje:
+>>Informacion inicial (Imagen, Nombre)
+>>Raza (Raza, y Dotes raciales)
+>>Clase (Nivel total, HP, Classe + nivel clase)
+>>Puntuaciones
+>>Equipación (Equipación, Mochila)
+>>Descripcion
 
