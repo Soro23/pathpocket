@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Box, Button, HStack, useColorModeValue } from '@chakra-ui/react';
-import { Fade } from 'react-awesome-reveal';
 import { GiAxeSword, GiPapers, GiPencil, GiAtomicSlashes } from 'react-icons/gi';
 
 export const FloatingButton = () => {
