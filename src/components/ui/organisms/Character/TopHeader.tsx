@@ -11,6 +11,7 @@ import {
   useBreakpointValue,
   Spacer,
   Icon,
+  Input,
 } from "@chakra-ui/react";
 
 import { useAuth } from "contexts/AuthUserContext";
@@ -18,18 +19,34 @@ import { CharacterData } from "@/components/class/characterdata";
 import { useRouter } from "next/router";
 import { Button as CButton } from "@/components/ui/atoms/Button";
 import { useState } from "react";
-import { RiArrowLeftDoubleLine } from "react-icons/ri";
+import { RiAddFill, RiArrowLeftDoubleLine } from "react-icons/ri";
+import { createCharacter } from '@/services/firebase/database';
 
 interface CharacterProps {
-  CharData: CharacterData;
+  CharData: CharacterData
+  editMode?: boolean
 }
 
-export function TopHeader({ CharData = new CharacterData() }: CharacterProps) {
+export function TopHeader({ CharData = new CharacterData(), editMode = false }: CharacterProps) {
   const { authUser, signOut, loading: loadingAuth } = useAuth();
   const headingColor = useColorModeValue("maroon", "wheat");
   const router = useRouter();
   const handleGoBack = () => {
     router.push("/pathfinder/characters"); // Redirige a la página de personajes después de editar
+  };
+  const handleAddCharacter = () => {
+    const charNameInput = document.getElementById('charname') as HTMLInputElement | null;
+
+    if (charNameInput) {
+      const name = charNameInput.value;
+      if(name){
+        CharData.name = name
+        createCharacter(authUser?.uid, CharData,name)
+        router.push('/pathfinder/characters/'+name); // Redirige a la página de personajes después de editar
+      }
+    } else {
+      console.error('No se puede añadir un personaje');
+    }
   };
 
   const isWideVersion = useBreakpointValue({
@@ -46,9 +63,13 @@ export function TopHeader({ CharData = new CharacterData() }: CharacterProps) {
           <Box display="flex" justifyContent="flex-start" alignItems="center">
             <Avatar src={CharData.imagesrc} />
             <Flex flexDirection="column" px={2} py={2}>
-              <Heading as="h3" size="lg" style={{ color: headingColor }}>
-                {CharData.name}
-              </Heading>
+              {!editMode ? (
+                <Heading as="h3" size="lg" style={{ color: headingColor }}>
+                  {CharData.name}
+                </Heading>
+              ) : (
+                <Input placeholder='Nombre del personaje' id="charname" />
+              )}
               <Text fontSize={"xs"}>
                 {CharData.race} -{" "}
                 {CharData.class.map((cl, i) => {
@@ -70,9 +91,15 @@ export function TopHeader({ CharData = new CharacterData() }: CharacterProps) {
             </Flex>
           </Box>
           <Box display="flex" alignItems="center">
-            <CButton onClick={handleGoBack} cvariant={true}>
-              <RiArrowLeftDoubleLine />
-            </CButton>
+            {!editMode ? (
+              <CButton onClick={handleGoBack} cvariant={true}>
+                <RiArrowLeftDoubleLine />
+              </CButton>
+            ) : (
+              <CButton onClick={handleAddCharacter} cvariant={true}>
+                <RiAddFill />
+              </CButton>
+            )}
           </Box>
         </Flex>
       ) : (

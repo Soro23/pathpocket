@@ -17,7 +17,7 @@ import { storage } from "services/firebase";
 import { useAuth } from "contexts/AuthUserContext";
 import { updateCharacterAvatar } from "@/services/firebase/database";
 
-export default function CharacterAvatarEditor(props: { name: string; }) {
+export default function CharacterAvatarEditor(props: { name: string, buttonName?: string }) {
   const [imageUrl, setImageUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const imageEditorRef = useRef<AvatarEditor>(null);
@@ -63,7 +63,7 @@ export default function CharacterAvatarEditor(props: { name: string; }) {
   return (
     <>
       <FileUpload
-        placeholder="Foto"
+        placeholder={props.buttonName? props.buttonName : "Foto"}
         acceptedFileTypes={["image/*"]}
         onChange={handleStartEdit}
       />

@@ -2,6 +2,8 @@ import { getApp, initializeApp } from 'firebase/app';
 import init from './init'
 import { child, get, getDatabase, ref, set } from "firebase/database";
 import firebaseConfig from 'configs/firebase'
+import { CharacterData } from "@/components/class/characterdata";
+
 
 
 // const firebaseConfig = {
@@ -13,7 +15,7 @@ import firebaseConfig from 'configs/firebase'
 //     databaseURL: 'https://soro-dashboard-default-rtdb.europe-west1.firebasedatabase.app',
 // };
 
-const app = initializeApp(firebaseConfig,'databaseApp');
+const app = initializeApp(firebaseConfig, 'databaseApp');
 const db = getDatabase(app);
 
 export const getUserCharacters = (userId: string) => {
@@ -50,5 +52,12 @@ export const updateCharacterAvatar = (userId: any, character: string, avatarsrc:
             console.error('Error fetching characters:', error);
             throw error;  // Propaga el error para que pueda ser manejado fuera de esta función
         });
+
+};
+
+export const createCharacter = (userId: any, character: CharacterData, name: string) => {
+    const charactersRef = ref(db, `characters/${userId}/${name}`);
+    // Añadir validacion para ver si existe un character en ese userId con ese nombre
+    set(charactersRef, character);
 
 };

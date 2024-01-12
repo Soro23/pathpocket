@@ -2,6 +2,8 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react-hooks/exhaustive-deps": "off",
-    "import/no-anonymous-default-export": "off"
+    "import/no-anonymous-default-export": "off",
+    "comma-dangle": ["error", "always-multiline"],
+    "arrow-parens": ["error", "always"]
   }
 }
