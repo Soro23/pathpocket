@@ -19,8 +19,17 @@ import {
   Spacer,
   color,
   useBreakpointValue,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+  Input,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthUserContext";
 import { getUserCharacters } from "@/services/firebase/database";
 import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
@@ -33,15 +42,27 @@ const Characters: NextPage = () => {
   const { authUser } = useAuth();
   const [characters, setCharacters] = useState<any[]>([]);
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const gColumns = useBreakpointValue({
     base: 2,
     md: 3,
     lg: 5,
   });
+  const [name, setName] = useState('');
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
   const handleGoNew = () => {
-    router.push("/pathfinder/characters/new"); // Redirige a la página de personajes después de editar
+    if(name !== ''){
+      router.push({
+        pathname: "/pathfinder/characters/new",
+        query: {name: name}
+      });
+    }else{
+      alert("Introduce un nombre");
+    }
   };
 
   useEffect(() => {
@@ -51,16 +72,9 @@ const Characters: NextPage = () => {
           if (Array.isArray(characters)) {
             setCharacters(characters);
           } else {
-            // const charactersArray = Object.entries(characters).map(
-            //   ([key, val]) => ({ key, val })
-            // );
-
-            // Creas un nuevo array de objetos CharacterData utilizando Object.entries y el método map.
             const charactersArray = Object.entries(characters).map(
-              // Para cada entrada (key, val) del objeto 'characters', se crea un nuevo objeto CharacterData.
               ([key, val]) => {
                 let nval: CharacterData = new CharacterData();
-                // Se utiliza el método copyFrom para copiar las propiedades de 'val' al nuevo objeto CharacterData.
                 nval.copyFrom(val as CharacterData | undefined);
                 return { key, val };
               }
@@ -94,9 +108,29 @@ const Characters: NextPage = () => {
         </Box>
         <Spacer />
         <ButtonGroup gap="2">
-          <CButton onClick={handleGoNew} cvariant={true} rightIcon={<RiAddFill />}>
+          <CButton onClick={onOpen} cvariant={true} rightIcon={<RiAddFill />}>
             Nuevo
           </CButton>
+          <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Introduce un nombre</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody pb={6}>
+                <Input
+                  placeholder="Nombre"
+                  value={name}
+                  onChange={handleChange}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={handleGoNew}>
+                  Continuar
+                </Button>
+                <Button onClick={onClose}>Cancel</Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
         </ButtonGroup>
       </Flex>
       <SimpleGrid columns={gColumns} spacing={5}>
@@ -107,10 +141,11 @@ const Characters: NextPage = () => {
                 src={character.val.imagesrc}
                 alt={character.val.name}
                 borderRadius="lg"
+                onClick={() => logthis(character)}
               />
               <Stack mt="6" spacing="3">
                 <Heading size="md" onClick={() => logthis(character)}>
-                  <Center>{character.val.name}</Center>
+                  <Center>{character.key}</Center>
                 </Heading>
               </Stack>
             </CardBody>

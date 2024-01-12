@@ -40,6 +40,7 @@ export function TopHeader({ CharData = new CharacterData(), editMode = false }: 
     if (charNameInput) {
       const name = charNameInput.value;
       if(name){
+        CharData.name = name
         createCharacter(authUser?.uid, CharData,name)
         router.push('/pathfinder/characters/'+name); // Redirige a la página de personajes después de editar
       }
