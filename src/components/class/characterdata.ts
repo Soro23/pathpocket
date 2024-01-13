@@ -1,3 +1,5 @@
+import { SkillData } from "./skilldata"
+
 export class CharacterData {
   alignment: string = ''
   appearance: string = ''
@@ -26,46 +28,46 @@ export class CharacterData {
     will: number
   } | number = 0
   skills: {
-    acrobatics: number
-    apraise: number
-    bluff: number
-    climb: number
-    craft1: number
-    craft2: number
-    craft3: number
-    diplomacy: number
-    disable_device: number
-    disguise: number
-    escape_artist: number
-    fly: number
-    handle_animal: number
-    heal: number
-    intimidate: number
-    knowledge_arcana: number
-    knowledge_dungeoneering: number
-    knowledge_engineering: number
-    knowledge_geography: number
-    knowledge_History: number
-    knowledge_local: number
-    knowledge_nature: number
-    knowledge_nobility: number
-    knowledge_planes: number
-    knowledge_religion: number
-    linguistics: number
-    perception: number
-    perform1: number
-    perform2: number
-    profesion1: number
-    profesion2: number
-    ride: number
-    sense_motive: number
-    sleight_of_hand: number
-    spellcraft: number
-    stealth: number
-    survival: number
-    swim: number
-    use_magic_device: number
-  } | number = 0
+    acrobatics: SkillData
+    apraise: SkillData
+    bluff: SkillData
+    climb: SkillData
+    craft1: SkillData
+    craft3: SkillData
+    craft2: SkillData
+    diplomacy: SkillData
+    disable_device: SkillData
+    disguise: SkillData
+    escape_artist: SkillData
+    fly: SkillData
+    handle_animal: SkillData
+    heal: SkillData
+    intimidate: SkillData
+    knowledge_arcana: SkillData
+    knowledge_dungeoneering: SkillData
+    knowledge_engineering: SkillData
+    knowledge_geography: SkillData
+    knowledge_History: SkillData
+    knowledge_local: SkillData
+    knowledge_nature: SkillData
+    knowledge_nobility: SkillData
+    knowledge_planes: SkillData
+    knowledge_religion: SkillData
+    linguistics: SkillData
+    perception: SkillData
+    perform1: SkillData
+    perform2: SkillData
+    profesion1: SkillData
+    profesion2: SkillData
+    ride: SkillData
+    sense_motive: SkillData
+    sleight_of_hand: SkillData
+    spellcraft: SkillData
+    stealth: SkillData
+    survival: SkillData
+    swim: SkillData
+    use_magic_device: SkillData
+  } | undefined
   speed: number = 0
   spells!: Array<string>;
   stats: {
@@ -105,45 +107,325 @@ export class CharacterData {
       will: 0
     }
     this.skills = {
-      acrobatics: 0,
-      apraise: 0,
-      bluff: 0,
-      climb: 0,
-      craft1: 0,
-      craft2: 0,
-      craft3: 0,
-      diplomacy: 0,
-      disable_device: 0,
-      disguise: 0,
-      escape_artist: 0,
-      fly: 0,
-      handle_animal: 0,
-      heal: 0,
-      intimidate: 0,
-      knowledge_arcana: 0,
-      knowledge_dungeoneering: 0,
-      knowledge_engineering: 0,
-      knowledge_geography: 0,
-      knowledge_History: 0,
-      knowledge_local: 0,
-      knowledge_nature: 0,
-      knowledge_nobility: 0,
-      knowledge_planes: 0,
-      knowledge_religion: 0,
-      linguistics: 0,
-      perception: 0,
-      perform1: 0,
-      perform2: 0,
-      profesion1: 0,
-      profesion2: 0,
-      ride: 0,
-      sense_motive: 0,
-      sleight_of_hand: 0,
-      spellcraft: 0,
-      stealth: 0,
-      survival: 0,
-      swim: 0,
-      use_magic_device: 0,
+      acrobatics: {
+        name: 'Acrobacias',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'dexterity',
+        ranks: 0,
+        mod: 0
+      },
+      apraise: {
+        name: 'Tasación',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      bluff: {
+        name: 'Engañar',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      climb: {
+        name: 'Trepar',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'strength',
+        ranks: 0,
+        mod: 0
+      },
+      craft1: {
+        name: 'Artesania',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      craft2: {
+        name: 'Artesania',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      craft3: {
+        name: 'Artesania',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      diplomacy: {
+        name: 'Diplomacia',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      disable_device: {
+        name: 'Inutilizar Mecanismo',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      disguise: {
+        name: 'Disfrazarse',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      escape_artist: {
+        name: 'Escapismo',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'dexterity',
+        ranks: 0,
+        mod: 0
+      },
+      fly: {
+        name: 'Volar',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'dexterity',
+        ranks: 0,
+        mod: 0
+      },
+      handle_animal: {
+        name: 'Trato con animales',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      heal: {
+        name: 'Sanar',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'wisdom',
+        ranks: 0,
+        mod: 0
+      },
+      intimidate: {
+        name: 'Intimidar',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_arcana: {
+        name: 'Saber (Arcano',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_dungeoneering: {
+        name: 'Saber (Dungeons)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_engineering: {
+        name: 'Saber (Ingeniería)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_geography: {
+        name: 'Saber (Geografía)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_History: {
+        name: 'Saber (Historia)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_local: {
+        name: 'Saber (Local)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_nature: {
+        name: 'Saber (Naturaleza)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_nobility: {
+        name: 'Saber (Nobleza)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_planes: {
+        name: 'Saber (Los Planos)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      knowledge_religion: {
+        name: 'Saber (Religión)',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      linguistics: {
+        name: 'Lingüística',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      perception: {
+        name: 'Percepción',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'wisdom',
+        ranks: 0,
+        mod: 0
+      },
+      perform1: {
+        name: 'Interpretar 1',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      perform2: {
+        name: 'Interpretar 2',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
+      profesion1: {
+        name: 'Profesión 1',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'wisdom',
+        ranks: 0,
+        mod: 0
+      },
+      profesion2: {
+        name: 'Profesión 2',
+        customName: '',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'wisdom',
+        ranks: 0,
+        mod: 0
+      },
+      ride: {
+        name: 'Montar',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'dexterity',
+        ranks: 0,
+        mod: 0
+      },
+      sense_motive: {
+        name: 'Averiguar Intenciones',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'wisdom',
+        ranks: 0,
+        mod: 0
+      },
+      sleight_of_hand: {
+        name: 'Juego de manos',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'dexterity',
+        ranks: 0,
+        mod: 0
+      },
+      spellcraft: {
+        name: 'Conocimiento de conjuros',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'intelligence',
+        ranks: 0,
+        mod: 0
+      },
+      stealth: {
+        name: 'Sigilo',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'dexterity',
+        ranks: 0,
+        mod: 0
+      },
+      survival: {
+        name: 'Supervivencia',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'wisdom',
+        ranks: 0,
+        mod: 0
+      },
+      swim: {
+        name: 'Nadar',
+        isClassSkill: false,
+        isTrainedRequired: false,
+        modStat: 'strength',
+        ranks: 0,
+        mod: 0
+      },
+      use_magic_device: {
+        name: 'Usar objeto mágico',
+        isClassSkill: false,
+        isTrainedRequired: true,
+        modStat: 'charisma',
+        ranks: 0,
+        mod: 0
+      },
     }
     this.speed = 0
     this.spells = []
@@ -176,7 +458,7 @@ export class CharacterData {
   }
 
   copyFrom(other: CharacterData | undefined): void {
-    if(other!){
+    if (other!) {
       CharacterData.copyObject(this, other);
     }
   }

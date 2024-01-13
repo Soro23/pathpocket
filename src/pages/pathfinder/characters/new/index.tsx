@@ -11,7 +11,10 @@ import StepRace from './StepRace';
 import StepClass from './StepClass';
 import StepStats from './StepStats';
 import StepDescription from './StepDescription';
+import StepSkill from './StepSkill';
+import StepEquipment from './StepEquipment';
 import { useRouter } from 'next/router';
+
 
 const NewCharacter: NextPage = () => {
   const router = useRouter();
@@ -50,6 +53,8 @@ const NewCharacter: NextPage = () => {
     <StepRace onNext={handleNext} data={data} />,
     <StepClass onNext={handleNext} onPrev={handlePrev} data={data} />,
     <StepStats onNext={handleNext} onPrev={handlePrev} data={data} />,
+    <StepSkill onNext={handleNext} onPrev={handlePrev} data={data} />,
+    <StepEquipment onNext={handleNext} onPrev={handlePrev} data={data} />,
     <StepDescription onComplete={handleComplete} onPrev={handlePrev} data={data} />,
   ];
 

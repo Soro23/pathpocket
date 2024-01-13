@@ -7,6 +7,11 @@ import {
   Input,
   Text,
   ButtonGroup,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
 } from "@chakra-ui/react";
 import { ChangeEvent, FC, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
@@ -28,6 +33,12 @@ const StepStats: FC<StepStatsProps> = ({ onNext, onPrev, data }) => {
       [statName as string]: +value,
     }));
   };
+  const handleStatChange = (event: any) => {
+    setStats((prevStats) => ({
+      ...prevStats,
+      [event.target.name as string]: +event.target.value,
+    }));
+  }
 
   return (
     <Box>
@@ -60,43 +71,79 @@ const StepStats: FC<StepStatsProps> = ({ onNext, onPrev, data }) => {
           Siguiente
         </Button>
       </ButtonGroup>
-      <Heading>Habilidades</Heading>
+      <Heading>Puntuaciones de Caracteristica</Heading>
       <Text>Fuerza</Text>
-      <Input
+      <NumberInput
+        variant="flushed"
         value={stats.strength}
-        data-stat="strength"
-        onChange={handleInputChange}
-      />
+        onChange={(value) => handleStatChange({ target: { name: 'strength', value } })}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
       <Text>Destreza</Text>
-      <Input
+      <NumberInput
+        variant="flushed"
         value={stats.dexterity}
-        data-stat="dexterity"
-        onChange={handleInputChange}
-      />
+        onChange={(value) => handleStatChange({ target: { name: 'dexterity', value } })}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
       <Text>Constitucion</Text>
-      <Input
+      <NumberInput
+        variant="flushed"
         value={stats.constitution}
-        data-stat="constitution"
-        onChange={handleInputChange}
-      />
+        onChange={(value) => handleStatChange({ target: { name: 'constitution', value } })}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
       <Text>Inteligencia</Text>
-      <Input
+      <NumberInput
+        variant="flushed"
         value={stats.intelligence}
-        data-stat="intelligence"
-        onChange={handleInputChange}
-      />
+        onChange={(value) => handleStatChange({ target: { name: 'intelligence', value } })}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
       <Text>Sabiduria</Text>
-      <Input
+      <NumberInput
+        variant="flushed"
         value={stats.wisdom}
-        data-stat="wisdom"
-        onChange={handleInputChange}
-      />
+        onChange={(value) => handleStatChange({ target: { name: 'wisdom', value } })}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
       <Text>Carisma</Text>
-      <Input
+      <NumberInput
+        variant="flushed"
         value={stats.charisma}
-        data-stat="charisma"
-        onChange={handleInputChange}
-      />
+        onChange={(value) => handleStatChange({ target: { name: 'charisma', value } })}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
       {/* Agrega más habilidades según sea necesario */}
     </Box>
   );

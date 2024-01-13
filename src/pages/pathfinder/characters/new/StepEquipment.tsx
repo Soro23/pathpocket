@@ -3,12 +3,13 @@ import { FC, ChangeEvent, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
 import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
 
-interface Step1Props {
+interface StepEquipmentProps {
   onNext: (data: CharacterData) => void;
+  onPrev: (data: CharacterData) => void;
   data: CharacterData;
 }
 
-const Step1: FC<Step1Props> = ({ onNext, data }) => {
+const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
   const [name, setName] = useState(data.name);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,4 +45,4 @@ const Step1: FC<Step1Props> = ({ onNext, data }) => {
   );
 };
 
-export default Step1;
+export default StepEquipment;
