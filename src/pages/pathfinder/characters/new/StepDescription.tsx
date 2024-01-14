@@ -18,7 +18,20 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
 
   return (
     <Box>
-      <ButtonGroup display="flex" justifyContent="flex-end">
+      <ButtonGroup display="flex" justifyContent="space-between">
+        <Button
+          onClick={() =>
+            onPrev({
+              ...data,
+              copyFrom: (): void => {
+                throw new Error("Function not implemented.");
+              },
+            })
+          }
+        >
+          Atrás
+        </Button>
+        <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
             onComplete({
@@ -39,7 +52,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
         alt={name}
         borderRadius="lg"
       />
-      <CharacterAvatarEditor name={name} buttonName="Añadir Imagen"/>
+      <CharacterAvatarEditor name={name} buttonName="Añadir Imagen" />
       <Input placeholder="Nombre" value={name} onChange={handleChange} />
     </Box>
   );

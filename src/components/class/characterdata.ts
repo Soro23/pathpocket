@@ -67,7 +67,7 @@ export class CharacterData {
     survival: SkillData
     swim: SkillData
     use_magic_device: SkillData
-  } | undefined
+  } | Object
   speed: number = 0
   spells!: Array<string>;
   stats: {
@@ -111,7 +111,7 @@ export class CharacterData {
         name: 'Acrobacias',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'dexterity',
+        modStat: 'DES',
         ranks: 0,
         mod: 0
       },
@@ -119,7 +119,7 @@ export class CharacterData {
         name: 'Tasación',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -127,7 +127,7 @@ export class CharacterData {
         name: 'Engañar',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -135,7 +135,7 @@ export class CharacterData {
         name: 'Trepar',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'strength',
+        modStat: 'FUE',
         ranks: 0,
         mod: 0
       },
@@ -144,7 +144,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -153,7 +153,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -162,7 +162,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -170,7 +170,7 @@ export class CharacterData {
         name: 'Diplomacia',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -178,7 +178,7 @@ export class CharacterData {
         name: 'Inutilizar Mecanismo',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -186,7 +186,7 @@ export class CharacterData {
         name: 'Disfrazarse',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -194,7 +194,7 @@ export class CharacterData {
         name: 'Escapismo',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'dexterity',
+        modStat: 'DES',
         ranks: 0,
         mod: 0
       },
@@ -202,7 +202,7 @@ export class CharacterData {
         name: 'Volar',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'dexterity',
+        modStat: 'DES',
         ranks: 0,
         mod: 0
       },
@@ -210,7 +210,7 @@ export class CharacterData {
         name: 'Trato con animales',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -218,7 +218,7 @@ export class CharacterData {
         name: 'Sanar',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'wisdom',
+        modStat: 'SAB',
         ranks: 0,
         mod: 0
       },
@@ -226,7 +226,7 @@ export class CharacterData {
         name: 'Intimidar',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -234,7 +234,7 @@ export class CharacterData {
         name: 'Saber (Arcano',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -242,7 +242,7 @@ export class CharacterData {
         name: 'Saber (Dungeons)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -250,7 +250,7 @@ export class CharacterData {
         name: 'Saber (Ingeniería)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -258,7 +258,7 @@ export class CharacterData {
         name: 'Saber (Geografía)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -266,7 +266,7 @@ export class CharacterData {
         name: 'Saber (Historia)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -274,7 +274,7 @@ export class CharacterData {
         name: 'Saber (Local)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -282,7 +282,7 @@ export class CharacterData {
         name: 'Saber (Naturaleza)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -290,7 +290,7 @@ export class CharacterData {
         name: 'Saber (Nobleza)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -298,7 +298,7 @@ export class CharacterData {
         name: 'Saber (Los Planos)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -306,7 +306,7 @@ export class CharacterData {
         name: 'Saber (Religión)',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -314,7 +314,7 @@ export class CharacterData {
         name: 'Lingüística',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -322,7 +322,7 @@ export class CharacterData {
         name: 'Percepción',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'wisdom',
+        modStat: 'SAB',
         ranks: 0,
         mod: 0
       },
@@ -331,7 +331,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -340,7 +340,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },
@@ -349,7 +349,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'wisdom',
+        modStat: 'SAB',
         ranks: 0,
         mod: 0
       },
@@ -358,7 +358,7 @@ export class CharacterData {
         customName: '',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'wisdom',
+        modStat: 'SAB',
         ranks: 0,
         mod: 0
       },
@@ -366,7 +366,7 @@ export class CharacterData {
         name: 'Montar',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'dexterity',
+        modStat: 'DES',
         ranks: 0,
         mod: 0
       },
@@ -374,7 +374,7 @@ export class CharacterData {
         name: 'Averiguar Intenciones',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'wisdom',
+        modStat: 'SAB',
         ranks: 0,
         mod: 0
       },
@@ -382,7 +382,7 @@ export class CharacterData {
         name: 'Juego de manos',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'dexterity',
+        modStat: 'DES',
         ranks: 0,
         mod: 0
       },
@@ -390,7 +390,7 @@ export class CharacterData {
         name: 'Conocimiento de conjuros',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'intelligence',
+        modStat: 'INT',
         ranks: 0,
         mod: 0
       },
@@ -398,7 +398,7 @@ export class CharacterData {
         name: 'Sigilo',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'dexterity',
+        modStat: 'DES',
         ranks: 0,
         mod: 0
       },
@@ -406,7 +406,7 @@ export class CharacterData {
         name: 'Supervivencia',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'wisdom',
+        modStat: 'SAB',
         ranks: 0,
         mod: 0
       },
@@ -414,7 +414,7 @@ export class CharacterData {
         name: 'Nadar',
         isClassSkill: false,
         isTrainedRequired: false,
-        modStat: 'strength',
+        modStat: 'FUE',
         ranks: 0,
         mod: 0
       },
@@ -422,7 +422,7 @@ export class CharacterData {
         name: 'Usar objeto mágico',
         isClassSkill: false,
         isTrainedRequired: true,
-        modStat: 'charisma',
+        modStat: 'CAR',
         ranks: 0,
         mod: 0
       },

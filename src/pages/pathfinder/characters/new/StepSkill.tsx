@@ -18,10 +18,17 @@ import {
   Th,
   Thead,
   Tr,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Checkbox,
 } from "@chakra-ui/react";
 import { FC, ChangeEvent, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { SkillData } from "@/components/class/skilldata";
 
 interface StepSkillProps {
   onNext: (data: CharacterData) => void;
@@ -58,14 +65,26 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
 
   const totalClassLevel = classLevelList.reduce((acc, level) => acc + level, 0);
   const hasClassList = classList.length > 0;
+
+  // New
+  const [skillList, setSkillList] = useState(data.skills)
+
+  const handleRanksChange = ({ target }: { target: { skill: SkillData, value: string } }): void => {
+    // Accede a skilltag aquí
+    console.log(target);
+    const currentSkill = new SkillData()
+    setSkillList((prevSkillList) => ({
+      ...prevSkillList,
+    }));
+    // Resto de tu lógica...
+  };
   return (
     <Box>
-      <ButtonGroup display='flex' justifyContent="space-between">
+      <ButtonGroup display="flex" justifyContent="space-between">
         <Button
           onClick={() =>
             onPrev({
               ...data,
-              skills: data.skills,
               copyFrom: (): void => {
                 throw new Error("Function not implemented.");
               },
@@ -74,18 +93,18 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
         >
           Atrás
         </Button>
+        <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
             onNext({
               ...data,
-              skills: data.skills,
               copyFrom: (): void => {
                 throw new Error("Function not implemented.");
               },
             })
           }
         >
-          Completar
+          Siguiente
         </Button>
       </ButtonGroup>
       <Heading>Habilidades</Heading>
@@ -93,31 +112,85 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
         <Table size="sm">
           <Thead>
             <Tr>
-              <Th>Clases</Th>
-              <Th isNumeric>Nivel</Th>
-              <Th></Th>
+              <Th>Habilidad</Th>
+              <Th>Clase</Th>
+              <Th>Mod</Th>
+              <Th>Rangos</Th>
+              <Th>Modificadores de raza</Th>
+              <Th>Modificadores de dotes</Th>
+              <Th>Modificador varios</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {classList.map((_class, index) => (
+            {Object.entries(skillList).map(([skilltag, skillData], index) => (
               <Tr key={index}>
-                <Td whiteSpace="break-spaces">{_class}</Td>
-                <Td isNumeric>{classLevelList[index]}</Td>
-                <Td textAlign="right">
-                  <Button
-                    size="xs"
-                    onClick={() => handleDeleteClass(index)}
+                <Td whiteSpace="break-spaces">{skillData.name}</Td>
+                <Td><Checkbox defaultChecked={skillData.isClassSkill}></Checkbox></Td>
+                <Td>{skillData.modStat}</Td>
+                <Td>
+                  <NumberInput
+                    variant="flushed"
+                    value={skillData.ranks}
+                    onChange={(value) => handleRanksChange({ target: { skill: skillData, value } })}
                   >
-                    <FaMinus />
-                  </Button>
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </Td>
+                <Td>
+                  <NumberInput
+                    variant="flushed"
+                    value={skillData['mod'].racial}
+                    onChange={(value) => handleSkillChange({ target: { skill: skillData, value }, skilltag })}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </Td>
+                <Td>
+                  <NumberInput
+                    variant="flushed"
+                    value={skillData['mod'].trait}
+                    onChange={(value) => handleSkillChange({ target: { skill: skillData, value }, skilltag })}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </Td>
+                <Td>
+                  <NumberInput
+                    variant="flushed"
+                    value={skillData['mod'].misc}
+                    onChange={(value) => handleSkillChange({ target: { skill: skillData, value }, skilltag })}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
                 </Td>
               </Tr>
             ))}
           </Tbody>
           <Tfoot>
             <Tr>
-              <Th>Nivel Total</Th>
-              <Th isNumeric>{totalClassLevel}</Th>
+              <Th>Habilidad</Th>
+              <Th>Clase</Th>
+              <Th>Mod</Th>
+              <Th>Rangos</Th>
+              <Th>Modificadores de raza</Th>
+              <Th>Modificadores de dotes</Th>
+              <Th>Modificador varios</Th>
             </Tr>
           </Tfoot>
         </Table>
