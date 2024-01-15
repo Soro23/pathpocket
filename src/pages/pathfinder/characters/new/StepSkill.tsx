@@ -69,14 +69,48 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
   // New
   const [skillList, setSkillList] = useState(data.skills)
 
-  const handleRanksChange = ({ target }: { target: { skill: SkillData, value: string } }): void => {
-    // Accede a skilltag aquí
-    console.log(target);
-    const currentSkill = new SkillData()
+  const handleRanksChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+    target.skill.ranks = parseInt(target.value, 10) ?? target.skill.ranks;
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
+      skilltag: target.skill
     }));
-    // Resto de tu lógica...
+  };
+  const handleisClassChange = ({ target, skilltag }: { target: { skill: SkillData, event: ChangeEvent<HTMLInputElement> }, skilltag: string }): void => {
+    event?.target.checked
+    target.skill.ranks = parseInt(event.target.value, 10) ?? target.skill.ranks;
+    setSkillList((prevSkillList) => ({
+      ...prevSkillList,
+      skilltag: target.skill
+    }));
+  };
+
+  const handleModRacialChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+    if (target.skill.mod) {
+      target.skill.mod.racial = parseInt(target.value, 10) ?? target.skill.mod.racial;
+    }
+    setSkillList((prevSkillList) => ({
+      ...prevSkillList,
+      skilltag: target.skill
+    }));
+  };
+  const handleModTraitChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+    if (target.skill.mod) {
+      target.skill.mod.trait = parseInt(target.value, 10) ?? target.skill.mod.trait;
+    }
+    setSkillList((prevSkillList) => ({
+      ...prevSkillList,
+      skilltag: target.skill
+    }));
+  };
+  const handleModMiscChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+    if (target.skill.mod) {
+      target.skill.mod.misc = parseInt(target.value, 10) ?? target.skill.mod.misc;
+    }
+    setSkillList((prevSkillList) => ({
+      ...prevSkillList,
+      skilltag: target.skill
+    }));
   };
   return (
     <Box>
@@ -125,13 +159,13 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
             {Object.entries(skillList).map(([skilltag, skillData], index) => (
               <Tr key={index}>
                 <Td whiteSpace="break-spaces">{skillData.name}</Td>
-                <Td><Checkbox defaultChecked={skillData.isClassSkill}></Checkbox></Td>
+                <Td><Checkbox defaultChecked={skillData.isClassSkill} onChange={(e) => handleisClassChange({ target: { skill: skillData, e }, skilltag })}></Checkbox></Td>
                 <Td>{skillData.modStat}</Td>
                 <Td>
                   <NumberInput
                     variant="flushed"
                     value={skillData.ranks}
-                    onChange={(value) => handleRanksChange({ target: { skill: skillData, value } })}
+                    onChange={(value) => handleRanksChange({ target: { skill: skillData, value }, skilltag })}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -144,7 +178,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
                   <NumberInput
                     variant="flushed"
                     value={skillData['mod'].racial}
-                    onChange={(value) => handleSkillChange({ target: { skill: skillData, value }, skilltag })}
+                    onChange={(value) => handleModRacialChange({ target: { skill: skillData, value }, skilltag })}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -157,7 +191,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
                   <NumberInput
                     variant="flushed"
                     value={skillData['mod'].trait}
-                    onChange={(value) => handleSkillChange({ target: { skill: skillData, value }, skilltag })}
+                    onChange={(value) => handleModTraitChange({ target: { skill: skillData, value }, skilltag })}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -170,7 +204,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
                   <NumberInput
                     variant="flushed"
                     value={skillData['mod'].misc}
-                    onChange={(value) => handleSkillChange({ target: { skill: skillData, value }, skilltag })}
+                    onChange={(value) => handleModMiscChange({ target: { skill: skillData, value }, skilltag })}
                   >
                     <NumberInputField />
                     <NumberInputStepper>

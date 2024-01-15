@@ -8,7 +8,7 @@ export class SkillData{
     mod: {
         racial: number
         trait: number
-        misc: number[]
+        misc: number
     } | undefined
 
 }
