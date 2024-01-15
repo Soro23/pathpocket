@@ -77,7 +77,6 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
     }));
   };
   const handleisClassChange = ({ target, skilltag }: { target: { skill: SkillData, event: ChangeEvent<HTMLInputElement> }, skilltag: string }): void => {
-    event?.target.checked
     target.skill.ranks = parseInt(event.target.value, 10) ?? target.skill.ranks;
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
