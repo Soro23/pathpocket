@@ -24,11 +24,12 @@ import {
   NumberInputField,
   NumberInputStepper,
   Checkbox,
-} from "@chakra-ui/react";
-import { FC, ChangeEvent, useState } from "react";
-import { CharacterData } from "@/components/class/characterdata";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { SkillData } from "@/components/class/skilldata";
+  useBreakpointValue,
+} from '@chakra-ui/react';
+import { FC, ChangeEvent, useState } from 'react';
+import { CharacterData } from '@/components/class/characterdata';
+import { FaMinus, FaPlus } from 'react-icons/fa';
+import { SkillData } from '@/components/class/skilldata';
 
 interface StepSkillProps {
   onNext: (data: CharacterData) => void;
@@ -37,81 +38,90 @@ interface StepSkillProps {
 }
 
 const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
-  const [classList, setClassList] = useState(data.class);
-  const [classLevelList, setClassLevelList] = useState(data.class_level);
-  const [inputNewClass, setNewClass] = useState<string>("");
-  const [inputNewClassLevel, setNewClassLevel] = useState<number>(1);
+  const [skillList, setSkillList] = useState(data.skills);
 
-  const newClass = () => {
-    if (inputNewClass.trim() !== "") {
-      setClassList((prevClass) => [...prevClass, inputNewClass.trim()]);
-      setClassLevelList((prevClassLevel) => [
-        ...prevClassLevel,
-        inputNewClassLevel,
-      ]);
-      setNewClass("");
-      setNewClassLevel(1);
-    }
-  };
-
-  function handleDeleteClass(indexToDelete: number): void {
-    setClassList((prevClass) =>
-      prevClass.filter((_, index) => index !== indexToDelete)
-    );
-    setClassLevelList((prevClassLevel) =>
-      prevClassLevel.filter((_, index) => index !== indexToDelete)
-    );
-  }
-
-  const totalClassLevel = classLevelList.reduce((acc, level) => acc + level, 0);
-  const hasClassList = classList.length > 0;
-
-  // New
-  const [skillList, setSkillList] = useState(data.skills)
-
-  const handleRanksChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+  const handleRanksChange = ({
+    target,
+    skilltag,
+  }: {
+    target: { skill: SkillData; value: string };
+    skilltag: string;
+  }): void => {
     target.skill.ranks = parseInt(target.value, 10) ?? target.skill.ranks;
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
-      skilltag: target.skill
+      skilltag: target.skill,
     }));
   };
-  const handleIsClassChange = ({ target, skilltag }: { target: { skill: SkillData, e: ChangeEvent<HTMLInputElement> }, skilltag: string }): void => {
-    // target.skill.isClassSkill = event.target.value, 10) ?? target.skill.ranks;
-    target.skill.isClassSkill = target.e.target.checked
+  const handleIsClassChange = ({
+    target,
+    skilltag,
+  }: {
+    target: { skill: SkillData; e: ChangeEvent<HTMLInputElement> };
+    skilltag: string;
+  }): void => {
+    target.skill.isClassSkill = target.e.target.checked;
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
-      skilltag: target.skill
+      skilltag: target.skill,
     }));
   };
 
-  const handleModRacialChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+  const handleModRacialChange = ({
+    target,
+    skilltag,
+  }: {
+    target: { skill: SkillData; value: string };
+    skilltag: string;
+  }): void => {
     if (target.skill.mod) {
-      target.skill.mod.racial = parseInt(target.value, 10) ?? target.skill.mod.racial;
+      target.skill.mod.racial =
+        parseInt(target.value, 10) ?? target.skill.mod.racial;
     }
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
-      skilltag: target.skill
+      skilltag: target.skill,
     }));
   };
-  const handleModTraitChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+  const handleModTraitChange = ({
+    target,
+    skilltag,
+  }: {
+    target: { skill: SkillData; value: string };
+    skilltag: string;
+  }): void => {
     if (target.skill.mod) {
-      target.skill.mod.trait = parseInt(target.value, 10) ?? target.skill.mod.trait;
+      target.skill.mod.trait =
+        parseInt(target.value, 10) ?? target.skill.mod.trait;
     }
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
-      skilltag: target.skill
+      skilltag: target.skill,
     }));
   };
-  const handleModMiscChange = ({ target, skilltag }: { target: { skill: SkillData, value: string }, skilltag: string }): void => {
+  const handleModMiscChange = ({
+    target,
+    skilltag,
+  }: {
+    target: { skill: SkillData; value: string };
+    skilltag: string;
+  }): void => {
     if (target.skill.mod) {
-      target.skill.mod.misc = parseInt(target.value, 10) ?? target.skill.mod.misc;
+      target.skill.mod.misc =
+        parseInt(target.value, 10) ?? target.skill.mod.misc;
     }
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
-      skilltag: target.skill
+      skilltag: target.skill,
     }));
   };
+
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
+  console.log(isWideVersion);
   return (
     <Box>
       <ButtonGroup display="flex" justifyContent="space-between">
@@ -120,7 +130,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
             onPrev({
               ...data,
               copyFrom: (): void => {
-                throw new Error("Function not implemented.");
+                throw new Error('Function not implemented.');
               },
             })
           }
@@ -133,7 +143,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
             onNext({
               ...data,
               copyFrom: (): void => {
-                throw new Error("Function not implemented.");
+                throw new Error('Function not implemented.');
               },
             })
           }
@@ -143,29 +153,53 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
       </ButtonGroup>
       <Heading>Habilidades</Heading>
       <TableContainer mt={10}>
-        <Table size="sm">
+        <Table size="sm" variant="striped">
           <Thead>
             <Tr>
               <Th>Habilidad</Th>
               <Th>Clase</Th>
-              <Th>Mod</Th>
               <Th>Rangos</Th>
-              <Th>Modificadores de raza</Th>
-              <Th>Modificadores de dotes</Th>
-              <Th>Modificador varios</Th>
+              {!isWideVersion ? (
+                <Th>Mod</Th>
+              ) : (
+                <>
+                  <Th>Modificadores de raza</Th>
+                  <Th>Modificadores de dotes</Th>
+                  <Th>Modificador varios</Th>
+                </>
+              )}
             </Tr>
           </Thead>
           <Tbody>
             {Object.entries(skillList).map(([skilltag, skillData], index) => (
               <Tr key={index}>
-                <Td whiteSpace="break-spaces">{skillData.name}</Td>
-                <Td><Checkbox defaultChecked={skillData.isClassSkill} onChange={(e) => handleIsClassChange({ target: { skill: skillData, e }, skilltag })}></Checkbox></Td>
-                <Td>{skillData.modStat}</Td>
-                <Td>
+                <Td position={'relative'} whiteSpace="break-spaces">
+                  {skillData.name}
+                  <Box as="span" position={'absolute'} opacity={0.5} right={0}>
+                    {skillData.modStat}
+                  </Box>
+                </Td>
+                <Td textAlign={'center'}>
+                  <Checkbox
+                    defaultChecked={skillData.isClassSkill}
+                    onChange={(e) =>
+                      handleIsClassChange({
+                        target: { skill: skillData, e },
+                        skilltag,
+                      })
+                    }
+                  ></Checkbox>
+                </Td>
+                <Td textAlign={'center'}>
                   <NumberInput
                     variant="flushed"
                     value={skillData.ranks}
-                    onChange={(value) => handleRanksChange({ target: { skill: skillData, value }, skilltag })}
+                    onChange={(value) =>
+                      handleRanksChange({
+                        target: { skill: skillData, value },
+                        skilltag,
+                      })
+                    }
                   >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -174,45 +208,84 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
                     </NumberInputStepper>
                   </NumberInput>
                 </Td>
-                <Td>
-                  <NumberInput
-                    variant="flushed"
-                    value={skillData['mod'].racial}
-                    onChange={(value) => handleModRacialChange({ target: { skill: skillData, value }, skilltag })}
-                  >
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </Td>
-                <Td>
-                  <NumberInput
-                    variant="flushed"
-                    value={skillData['mod'].trait}
-                    onChange={(value) => handleModTraitChange({ target: { skill: skillData, value }, skilltag })}
-                  >
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </Td>
-                <Td>
-                  <NumberInput
-                    variant="flushed"
-                    value={skillData['mod'].misc}
-                    onChange={(value) => handleModMiscChange({ target: { skill: skillData, value }, skilltag })}
-                  >
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </Td>
+
+                {!isWideVersion ? (
+                  <Td textAlign={'center'}>
+                    <NumberInput
+                      variant="flushed"
+                      value={skillData['mod'].misc}
+                      onChange={(value) =>
+                        handleModMiscChange({
+                          target: { skill: skillData, value },
+                          skilltag,
+                        })
+                      }
+                    >
+                      <NumberInputField />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  </Td>
+                ) : (
+                  <>
+                    <Td textAlign={'center'}>
+                      <NumberInput
+                        variant="flushed"
+                        value={skillData['mod'].racial}
+                        onChange={(value) =>
+                          handleModRacialChange({
+                            target: { skill: skillData, value },
+                            skilltag,
+                          })
+                        }
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                    </Td>
+                    <Td textAlign={'center'}>
+                      <NumberInput
+                        variant="flushed"
+                        value={skillData['mod'].trait}
+                        onChange={(value) =>
+                          handleModTraitChange({
+                            target: { skill: skillData, value },
+                            skilltag,
+                          })
+                        }
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                    </Td>
+                    <Td textAlign={'center'}>
+                      <NumberInput
+                        variant="flushed"
+                        value={skillData['mod'].misc}
+                        onChange={(value) =>
+                          handleModMiscChange({
+                            target: { skill: skillData, value },
+                            skilltag,
+                          })
+                        }
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                    </Td>
+                  </>
+                )}
               </Tr>
             ))}
           </Tbody>
@@ -220,11 +293,16 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
             <Tr>
               <Th>Habilidad</Th>
               <Th>Clase</Th>
-              <Th>Mod</Th>
               <Th>Rangos</Th>
-              <Th>Modificadores de raza</Th>
-              <Th>Modificadores de dotes</Th>
-              <Th>Modificador varios</Th>
+              {!isWideVersion ? (
+                <Th>Mod</Th>
+              ) : (
+                <>
+                  <Th>Modificadores de raza</Th>
+                  <Th>Modificadores de dotes</Th>
+                  <Th>Modificador varios</Th>
+                </>
+              )}
             </Tr>
           </Tfoot>
         </Table>
