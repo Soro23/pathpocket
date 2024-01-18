@@ -16,7 +16,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
     setName(e.target.value);
   };
 
-  const handleGoldChange = (value:any) => {
+  const handleGoldChange = (value: number) => {
 
   }
   return (
