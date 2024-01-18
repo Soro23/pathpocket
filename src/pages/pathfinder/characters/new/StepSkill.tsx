@@ -76,8 +76,9 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
       skilltag: target.skill
     }));
   };
-  const handleisClassChange = ({ target, skilltag }: { target: { skill: SkillData, event: ChangeEvent<HTMLInputElement> }, skilltag: string }): void => {
-    target.skill.ranks = parseInt(event.target.value, 10) ?? target.skill.ranks;
+  const handleIsClassChange = ({ target, skilltag }: { target: { skill: SkillData, e: ChangeEvent<HTMLInputElement> }, skilltag: string }): void => {
+    // target.skill.isClassSkill = event.target.value, 10) ?? target.skill.ranks;
+    target.skill.isClassSkill = target.e.target.checked
     setSkillList((prevSkillList) => ({
       ...prevSkillList,
       skilltag: target.skill
@@ -158,7 +159,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
             {Object.entries(skillList).map(([skilltag, skillData], index) => (
               <Tr key={index}>
                 <Td whiteSpace="break-spaces">{skillData.name}</Td>
-                <Td><Checkbox defaultChecked={skillData.isClassSkill} onChange={(e) => handleisClassChange({ target: { skill: skillData, e }, skilltag })}></Checkbox></Td>
+                <Td><Checkbox defaultChecked={skillData.isClassSkill} onChange={(e) => handleIsClassChange({ target: { skill: skillData, e }, skilltag })}></Checkbox></Td>
                 <Td>{skillData.modStat}</Td>
                 <Td>
                   <NumberInput

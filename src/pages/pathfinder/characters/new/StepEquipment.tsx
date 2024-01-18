@@ -1,4 +1,4 @@
-import { Box, Heading, Input, Button, ButtonGroup, Image } from "@chakra-ui/react";
+import { Box, Heading, Input, Button, ButtonGroup, Image, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from "@chakra-ui/react";
 import { FC, ChangeEvent, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
 import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
@@ -16,9 +16,12 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
     setName(e.target.value);
   };
 
+  const handleGoldChange = (value:any) => {
+
+  }
   return (
     <Box>
-     <ButtonGroup display="flex" justifyContent="space-between">
+      <ButtonGroup display="flex" justifyContent="space-between">
         <Button
           onClick={() =>
             onPrev({
@@ -46,13 +49,50 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
         </Button>
       </ButtonGroup>
       <Heading>Equipación</Heading>
-      <Image
-        src='https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3'
-        alt={name}
-        borderRadius="lg"
-      />
-      <CharacterAvatarEditor name={name} buttonName="Añadir Imagen"/>
-      <Input placeholder="Nombre" value={name} onChange={handleChange} />
+      <Accordion allowToggle>
+        <AccordionItem>
+          <AccordionButton>
+            <HStack>
+              <Box as="span" flex='1' textAlign='left'>
+                Equipo
+              </Box>
+            </HStack>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel>
+            <Input placeholder="Nombre" value={name} onChange={handleChange} />
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionButton justifyContent='flex-end'>
+            <Box as="span" flex='1' textAlign='left' justifySelf='flex-start'>
+              Dinero
+            </Box>
+            <Box as="span" flex='1' textAlign='right'>
+              Total en Oro
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel>
+            <HStack justifyContent={"space-between"}>
+              <Box as="span">
+                Platino
+              </Box>
+              <NumberInput
+                variant="flushed"
+                value={data.gold}
+                onChange={(value) => handleGoldChange(value)}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </HStack>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </Box>
   );
 };

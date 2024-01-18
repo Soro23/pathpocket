@@ -113,7 +113,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'DES',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       apraise: {
         name: 'Tasación',
@@ -121,7 +125,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       bluff: {
         name: 'Engañar',
@@ -129,7 +137,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       climb: {
         name: 'Trepar',
@@ -137,7 +149,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'FUE',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       craft1: {
         name: 'Artesania',
@@ -146,7 +162,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       craft2: {
         name: 'Artesania',
@@ -155,7 +175,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       craft3: {
         name: 'Artesania',
@@ -164,7 +188,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       diplomacy: {
         name: 'Diplomacia',
@@ -172,7 +200,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       disable_device: {
         name: 'Inutilizar Mecanismo',
@@ -180,7 +212,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       disguise: {
         name: 'Disfrazarse',
@@ -188,7 +224,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       escape_artist: {
         name: 'Escapismo',
@@ -196,7 +236,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'DES',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       fly: {
         name: 'Volar',
@@ -204,7 +248,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'DES',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       handle_animal: {
         name: 'Trato con animales',
@@ -212,7 +260,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       heal: {
         name: 'Sanar',
@@ -220,7 +272,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'SAB',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       intimidate: {
         name: 'Intimidar',
@@ -228,7 +284,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_arcana: {
         name: 'Saber (Arcano',
@@ -236,7 +296,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_dungeoneering: {
         name: 'Saber (Dungeons)',
@@ -244,7 +308,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_engineering: {
         name: 'Saber (Ingeniería)',
@@ -252,7 +320,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_geography: {
         name: 'Saber (Geografía)',
@@ -260,7 +332,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_History: {
         name: 'Saber (Historia)',
@@ -268,7 +344,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_local: {
         name: 'Saber (Local)',
@@ -276,7 +356,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_nature: {
         name: 'Saber (Naturaleza)',
@@ -284,7 +368,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_nobility: {
         name: 'Saber (Nobleza)',
@@ -292,7 +380,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_planes: {
         name: 'Saber (Los Planos)',
@@ -300,7 +392,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       knowledge_religion: {
         name: 'Saber (Religión)',
@@ -308,7 +404,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       linguistics: {
         name: 'Lingüística',
@@ -316,7 +416,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       perception: {
         name: 'Percepción',
@@ -324,7 +428,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'SAB',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       perform1: {
         name: 'Interpretar 1',
@@ -333,7 +441,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       perform2: {
         name: 'Interpretar 2',
@@ -342,7 +454,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       profesion1: {
         name: 'Profesión 1',
@@ -351,7 +467,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'SAB',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       profesion2: {
         name: 'Profesión 2',
@@ -360,7 +480,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'SAB',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       ride: {
         name: 'Montar',
@@ -368,7 +492,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'DES',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       sense_motive: {
         name: 'Averiguar Intenciones',
@@ -376,7 +504,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'SAB',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       sleight_of_hand: {
         name: 'Juego de manos',
@@ -384,7 +516,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'DES',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       spellcraft: {
         name: 'Conocimiento de conjuros',
@@ -392,7 +528,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'INT',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       stealth: {
         name: 'Sigilo',
@@ -400,7 +540,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'DES',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       survival: {
         name: 'Supervivencia',
@@ -408,7 +552,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'SAB',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       swim: {
         name: 'Nadar',
@@ -416,7 +564,11 @@ export class CharacterData {
         isTrainedRequired: false,
         modStat: 'FUE',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
       use_magic_device: {
         name: 'Usar objeto mágico',
@@ -424,7 +576,11 @@ export class CharacterData {
         isTrainedRequired: true,
         modStat: 'CAR',
         ranks: 0,
-        mod: 0
+        mod: {
+          racial: 0,
+          trait: 0,
+          misc: 0
+        }
       },
     }
     this.speed = 0
