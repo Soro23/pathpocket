@@ -1,4 +1,4 @@
-import { Box, Heading, Input, Button, ButtonGroup, Image } from "@chakra-ui/react";
+import { Box, Heading, Input, Button, ButtonGroup, Image, Select, Textarea } from "@chakra-ui/react";
 import { FC, ChangeEvent, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
 import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
@@ -15,6 +15,8 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
+
+  // genero, edad, altura, peso, color ojos, color pelo
 
   return (
     <Box>
@@ -54,6 +56,33 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
       />
       <CharacterAvatarEditor name={name} buttonName="Añadir Imagen" />
       <Input placeholder="Nombre" value={name} onChange={handleChange} />
+      <Select placeholder='Selecciona Alineamiento'>
+        <option value='LB'>Legal Bueno</option>
+        <option value='NB'>Neutral Bueno</option>
+        <option value='CB'>Caotico Bueno</option>
+        <option value='LB'>Legal Neutral</option>
+        <option value='NB'>Neutral Neutral</option>
+        <option value='CB'>Caotico Neutral</option>
+        <option value='LB'>Legal Maligno</option>
+        <option value='NB'>Neutral Maligno</option>
+        <option value='CB'>Caotico Maligno</option>
+      </Select>
+      <Input placeholder="Deidad" onChange={handleChange} />
+      <Textarea placeholder='Procedencia' />
+      
+      <Select placeholder='Tamaño'>
+        <option value='-8'>Minúsculo </option>
+        <option value='-4'>Diminuto </option>
+        <option value='-2'>Menudo </option>
+        <option value='-1'>Pequeño </option>
+        <option value='0'>Mediano </option>
+        <option value='1'>Grande </option>
+        <option value='2'>Enorme </option>
+        <option value='4'>Gargantuesco </option>
+        <option value='8'>Colosal </option>
+      </Select>
+      <Input placeholder="Genero"  onChange={handleChange} />
+
     </Box>
   );
 };

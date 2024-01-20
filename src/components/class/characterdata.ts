@@ -1,7 +1,7 @@
 import { SkillData } from "./skilldata"
 
 export class CharacterData {
-  alignment: string = ''
+  alignment: string = 'LB'||'NB'||'CB'||'NB'||'NN'||'CN'||'LM'||'NM'||'CM'
   appearance: string = ''
   armor_class: number = 0
   background_story: string = ''
