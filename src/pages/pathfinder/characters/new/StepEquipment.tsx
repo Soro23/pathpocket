@@ -1,7 +1,8 @@
-import { Box, Heading, Input, Button, ButtonGroup, Image, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from "@chakra-ui/react";
+import { Box, Heading, Input, Button, ButtonGroup, Image, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, InputGroup, InputRightElement, Table, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
 import { FC, ChangeEvent, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
 import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 interface StepEquipmentProps {
   onNext: (data: CharacterData) => void;
@@ -10,14 +11,33 @@ interface StepEquipmentProps {
 }
 
 const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
+
+
+  const [equipment, setEquipment] = useState(data.equipment);
+  const [inputEquipment, setEquip] = useState("");
+  const nuevoEquipo = () => {
+    if (inputEquipment.trim() !== "") {
+      setEquipment((prevEquipment) => [
+        ...prevEquipment,
+        inputEquipment.trim(),
+      ]);
+      setEquip("");
+    }
+  };
+  const handleDeleteEquipment = (indexToDelete: number) => {
+    setEquipment((prevEquipment) =>
+      prevEquipment.filter((_, index) => index !== indexToDelete)
+    );
+  };
+  const hasEquipment = equipment.length > 0;
+
+
   const [money, setMoney] = useState(data.money);
   const [totalGold, setTotalGold] = useState(0);
-
   const handleCooperChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, cooper: +v, })); handleTotalGold() }
   const handleSilverChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, silver: +v, })); handleTotalGold() }
   const handleGoldChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, gold: +v, })); handleTotalGold() }
   const handlePlatiniumChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, platinium: +v, })); handleTotalGold() }
-
   const handleTotalGold = (): void => {
     setTotalGold((Math.floor((money.cooper / 100) + (money.silver / 10) + money.gold + (money.platinium * 10))))
   }
@@ -29,6 +49,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
           onClick={() =>
             onPrev({
               ...data,
+              equipment: equipment,
               money: money,
               copyFrom: (): void => {
                 throw new Error("Function not implemented.");
@@ -43,6 +64,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
           onClick={() =>
             onNext({
               ...data,
+              equipment: equipment,
               money: money,
               copyFrom: (): void => {
                 throw new Error("Function not implemented.");
@@ -65,7 +87,57 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
-            <Input placeholder="Nombre" />
+            <InputGroup size="md">
+              <Input
+                variant="flushed"
+                pr="4.5rem"
+                placeholder="Equipación"
+                value={inputEquipment}
+                onChange={(e) => setEquip(e.target.value)}
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={() => nuevoEquipo()}>
+                  <FaPlus />
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+
+            {hasEquipment ? (
+              <>
+                <TableContainer mt={10}>
+                  <Table size="sm">
+                    <Thead>
+                      <Tr>
+                        <Th>Equipación</Th>
+                        <Th></Th>
+                      </Tr>
+                    </Thead>
+                    <Tbody>
+                      {equipment.map((equip, index) => (
+                        <Tr key={index}>
+                          <Td whiteSpace="break-spaces">{equip}</Td>
+                          <Td textAlign="right">
+                            <Button
+                              size="xs"
+                              onClick={() => handleDeleteEquipment(index)}
+                            >
+                              <FaMinus />
+                            </Button>
+                          </Td>
+                        </Tr>
+                      ))}
+                    </Tbody>
+                    <Tfoot>
+                      <Tr>
+                        <Th>Equipación</Th>
+                      </Tr>
+                    </Tfoot>
+                  </Table>
+                </TableContainer>
+              </>
+            ) : (
+              <></>
+            )}
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
