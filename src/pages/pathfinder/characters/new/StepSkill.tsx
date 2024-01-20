@@ -120,8 +120,6 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
     base: false,
     lg: true,
   });
-
-  console.log(isWideVersion);
   return (
     <Box>
       <ButtonGroup display="flex" justifyContent="space-between">

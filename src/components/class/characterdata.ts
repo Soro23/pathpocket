@@ -12,7 +12,12 @@ export class CharacterData {
   feats: {
     racefeats: string[]
   }
-  gold: number = 0
+  money: {
+    cooper: number
+    silver: number
+    gold: number
+    platinium: number
+  }
   hit_points: number = 0
   imagesrc: string = ''
   initiative: number = 0
@@ -91,7 +96,12 @@ export class CharacterData {
     this.feats = {
       racefeats: []
     }
-    this.gold = 0
+    this.money = {
+      cooper: 0,
+      silver: 0,
+      gold: 0,
+      platinium: 0
+    }
     this.hit_points = 0
     this.imagesrc = 'https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3'
     this.initiative = 0

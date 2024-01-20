@@ -10,15 +10,18 @@ interface StepEquipmentProps {
 }
 
 const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
-  const [name, setName] = useState(data.name);
+  const [money, setMoney] = useState(data.money);
+  const [totalGold, setTotalGold] = useState(0);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
+  const handleCooperChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, cooper: +v, })); handleTotalGold() }
+  const handleSilverChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, silver: +v, })); handleTotalGold() }
+  const handleGoldChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, gold: +v, })); handleTotalGold() }
+  const handlePlatiniumChange = (v: number): void => { setMoney((prevMoney) => ({ ...prevMoney, platinium: +v, })); handleTotalGold() }
 
-  const handleGoldChange = (value: number) => {
-
+  const handleTotalGold = (): void => {
+    setTotalGold((Math.floor((money.cooper / 100) + (money.silver / 10) + money.gold + (money.platinium * 10))))
   }
+
   return (
     <Box>
       <ButtonGroup display="flex" justifyContent="space-between">
@@ -26,6 +29,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
           onClick={() =>
             onPrev({
               ...data,
+              money: money,
               copyFrom: (): void => {
                 throw new Error("Function not implemented.");
               },
@@ -39,6 +43,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
           onClick={() =>
             onNext({
               ...data,
+              money: money,
               copyFrom: (): void => {
                 throw new Error("Function not implemented.");
               },
@@ -60,7 +65,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
-            <Input placeholder="Nombre" value={name} onChange={handleChange} />
+            <Input placeholder="Nombre" />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
@@ -70,9 +75,64 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
             </Box>
             <Box as="span" flex='1' textAlign='right'>
               Total en Oro
+              <Box as="b" flex='1' textAlign='right'> {totalGold}</Box>
             </Box>
             <AccordionIcon />
           </AccordionButton>
+          <AccordionPanel>
+            <HStack justifyContent={"space-between"}>
+              <Box as="span">
+                Cobre
+              </Box>
+              <NumberInput
+                variant="flushed"
+                value={money.cooper}
+                onChange={(v) => handleCooperChange(v)}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </HStack>
+          </AccordionPanel>
+          <AccordionPanel>
+            <HStack justifyContent={"space-between"}>
+              <Box as="span">
+                Plata
+              </Box>
+              <NumberInput
+                variant="flushed"
+                value={money.silver}
+                onChange={(v) => handleSilverChange(v)}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </HStack>
+          </AccordionPanel>
+          <AccordionPanel>
+            <HStack justifyContent={"space-between"}>
+              <Box as="span">
+                Oro
+              </Box>
+              <NumberInput
+                variant="flushed"
+                value={money.gold}
+                onChange={(v) => handleGoldChange(v)}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </HStack>
+          </AccordionPanel>
           <AccordionPanel>
             <HStack justifyContent={"space-between"}>
               <Box as="span">
@@ -80,8 +140,8 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
               </Box>
               <NumberInput
                 variant="flushed"
-                value={data.gold}
-                onChange={(value) => handleGoldChange(value)}
+                value={money.platinium}
+                onChange={(v) => handlePlatiniumChange(v)}
               >
                 <NumberInputField />
                 <NumberInputStepper>
