@@ -62,3 +62,10 @@ export const createCharacter = (userId: any, character: CharacterData, name: str
     set(charactersRef, character);
 
 };
+
+export const removeCharacter = (userId: any, name: string) => {
+    const charactersRef = ref(db, `characters/${userId}/${name}`);
+    // Añadir validacion para ver si existe un character en ese userId con ese nombre
+    set(charactersRef, null);
+
+};
