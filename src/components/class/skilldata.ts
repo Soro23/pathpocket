@@ -3,12 +3,12 @@ export class SkillData{
     customName?:string = ''
     isClassSkill:boolean = false
     isTrainedRequired:boolean = false
-    modStat:string = 'strength'||'dexterity'||'constitution'||'intelligence'||'wisdom'||'charisma'
+    modStat:string = 'FUE'||'DES'||'CON'||'INT'||'SAN'||'CAR'
     ranks:number = 0
     mod: {
-        racial:number,
-        trait:number,
-        misc:number[]
-    } | number = 0
+        racial: number
+        trait: number
+        misc: number
+    } | undefined
 
 }

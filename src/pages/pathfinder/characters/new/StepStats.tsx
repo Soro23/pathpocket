@@ -2,9 +2,7 @@
 import {
   Box,
   Heading,
-  Checkbox,
   Button,
-  Input,
   Text,
   ButtonGroup,
   NumberDecrementStepper,
@@ -43,28 +41,22 @@ const StepStats: FC<StepStatsProps> = ({ onNext, onPrev, data }) => {
   return (
     <Box>
       <ButtonGroup display="flex" justifyContent="space-between">
-        <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
             onPrev({
               ...data,
-              stats: stats,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              stats: stats
             })
           }
         >
           Atrás
         </Button>
+        <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
             onNext({
               ...data,
-              stats: stats,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              stats: stats
             })
           }
         >

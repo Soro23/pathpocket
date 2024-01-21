@@ -6,6 +6,7 @@ import { SoroLogo } from '@/utils/soro-logo';
 import { useEffect, useState } from 'react';
 import { CharacterData } from '@/components/class/characterdata';
 import { TopHeader } from '@/components/ui/organisms/Character/TopHeader';
+import { createCharacter } from "@/services/firebase/database";
 
 import StepRace from './StepRace';
 import StepClass from './StepClass';
@@ -17,6 +18,7 @@ import { useRouter } from 'next/router';
 
 
 const NewCharacter: NextPage = () => {
+  const { authUser } = useAuth();
   const router = useRouter();
   const { name } = router.query;
 
@@ -47,6 +49,12 @@ const NewCharacter: NextPage = () => {
   const handleComplete = (lastStepData: any) => {
     setData((prevData: any) => ({ ...prevData, ...lastStepData }));
     console.log('Datos finales:', lastStepData);
+    if (authUser) {
+      createCharacter(authUser.uid, lastStepData, lastStepData.name)
+      router.push({
+        pathname: "/pathfinder/characters",
+      });
+    }
   };
 
   const stepComponents = [
