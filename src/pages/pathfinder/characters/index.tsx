@@ -28,18 +28,20 @@ import {
 } from "@chakra-ui/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthUserContext";
-import { getUserCharacters } from "@/services/firebase/database";
+import { getUserCharacters, removeCharacter } from "@/services/firebase/database";
 import { CharacterData } from "@/components/class/characterdata";
 import { Button as CButton } from "@/components/ui/atoms/Button";
 import { RiAddFill } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { auth } from "@/services/firebase";
 
 const Characters: NextPage = () => {
   const { authUser } = useAuth();
   const [characters, setCharacters] = useState<any[]>([]);
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { isOpen: isRegisterModalOpen, onOpen: openRegisterModal, onClose: closeRegisterModal } = useDisclosure();
+  const { isOpen: isRemoveModalOpen, onOpen: openRemoveModal, onClose: closeRemoveModal } = useDisclosure();
   const gColumns = useBreakpointValue({
     base: 2,
     md: 3,
@@ -51,12 +53,12 @@ const Characters: NextPage = () => {
     setName(e.target.value);
   };
   const handleGoNew = () => {
-    if(name !== ''){
+    if (name !== '') {
       router.push({
         pathname: "/pathfinder/characters/new",
-        query: {name: name}
+        query: { name: name }
       });
-    }else{
+    } else {
       alert("Introduce un nombre");
     }
   };
@@ -71,7 +73,7 @@ const Characters: NextPage = () => {
             const charactersArray = Object.entries(characters).map(
               ([key, val]) => {
                 let nval: CharacterData = new CharacterData()
-                if(nval.copyFrom){
+                if (nval.copyFrom) {
                   nval.copyFrom(val as CharacterData | undefined)
                 }
                 return { key, val };
@@ -92,8 +94,11 @@ const Characters: NextPage = () => {
   const navigateToEditPage = (characterId: string) => {
     router.push(`/pathfinder/characters/${characterId}`);
   };
-  const removeCharacter = (characterId: string) => {
-    console.log(`removecharacrer ${characterId} in user ${authUser?.uid}`)
+  const deleteCharacter = (characterId: string) => {
+    if (authUser) {
+      removeCharacter(authUser.uid,characterId)
+      router.reload();
+    }
   }
 
   return (
@@ -106,11 +111,11 @@ const Characters: NextPage = () => {
         </Box>
         <Spacer />
         <ButtonGroup gap="2">
-          <CButton onClick={onOpen} cvariant={true} rightIcon={<RiAddFill />}>
+          <CButton onClick={openRegisterModal} cvariant={true} rightIcon={<RiAddFill />}>
             Nuevo
           </CButton>
-          <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
+          <Modal isCentered closeOnOverlayClick={false} isOpen={isRegisterModalOpen} onClose={closeRegisterModal}>
+            <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
             <ModalContent>
               <ModalHeader>Introduce un nombre</ModalHeader>
               <ModalCloseButton />
@@ -152,9 +157,24 @@ const Characters: NextPage = () => {
               <CButton onClick={() => navigateToEditPage(character.key)}>
                 Edit
               </CButton>
-              <Button onClick={() => removeCharacter(character.key)}>
+              <Button onClick={openRemoveModal}>
                 Remove
               </Button>
+              <Modal isCentered closeOnOverlayClick={false} isOpen={isRemoveModalOpen} onClose={closeRemoveModal}>
+                <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
+                <ModalContent >
+                  <ModalCloseButton />
+                  <ModalBody>
+                    Seguro que quieres eliminar el personaje?
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button onClick={() => deleteCharacter(character.key)} colorScheme='red' mr={3}>
+                      Eliminar
+                    </Button>
+                    <Button onClick={closeRemoveModal}>Cancelar</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </CardFooter>
           </Card>
         ))}
