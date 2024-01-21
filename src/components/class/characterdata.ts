@@ -1,10 +1,27 @@
 import { SkillData } from "./skilldata"
 
 export class CharacterData {
-  alignment: string = 'LB'||'NB'||'CB'||'NB'||'NN'||'CN'||'LM'||'NM'||'CM'
-  appearance: string = ''
+  character_details = {
+    alignment: 'LB' || 'NB' || 'CB' || 'NB' || 'NN' || 'CN' || 'LM' || 'NM' || 'CM',
+    deity: '',
+    appearance: {
+      size: 0,
+      genre: '',
+      age: 0,
+      height: 0,
+      weight: 0,
+      skin: '',
+      hair: '',
+      eyes: '',
+    },
+    lore: {
+      origin_context: '',
+      motivations_objectives: '',
+      relations: '',
+      highlight_events: '',
+    }
+  }
   armor_class: number = 0
-  background_story: string = ''
   class: string[] = []
   class_level: number[] = []
   equipment: string[] = []
@@ -84,11 +101,11 @@ export class CharacterData {
     wisdom: number
   }
 
+
+
   constructor() {
     this.alignment = ''
-    this.appearance = ''
     this.armor_class = 0
-    this.background_story = ''
     this.class = []
     this.class_level = []
     this.equipment = []
