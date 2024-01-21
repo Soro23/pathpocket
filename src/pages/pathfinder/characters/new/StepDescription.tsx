@@ -76,9 +76,39 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
   }
   const [age, setAge] = useState(data.character_details.appearance.age)
   const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
-    characterDetails.appearance.age = +e.target.value
+    characterDetails.appearance.height = +e.target.value
     setCharacterDetails(data.character_details)
     setAge(+e.target.value);
+  }
+  const [height, setHeight] = useState(data.character_details.appearance.height)
+  const handleHeight = (e: ChangeEvent<HTMLInputElement>) => {
+    characterDetails.appearance.height = +e.target.value
+    setCharacterDetails(data.character_details)
+    setHeight(+e.target.value);
+  }
+  const [weight, setWeight] = useState(data.character_details.appearance.weight)
+  const handleWeight = (e: ChangeEvent<HTMLInputElement>) => {
+    characterDetails.appearance.weight = +e.target.value
+    setCharacterDetails(data.character_details)
+    setWeight(+e.target.value);
+  }
+  const [skin, setSkin] = useState(data.character_details.appearance.genre)
+  const handleSkin = (e: ChangeEvent<HTMLInputElement>) => {
+    characterDetails.appearance.skin = e.target.value
+    setCharacterDetails(data.character_details)
+    setSkin(e.target.value);
+  }
+  const [hair, setHair] = useState(data.character_details.appearance.hair)
+  const handleHair = (e: ChangeEvent<HTMLInputElement>) => {
+    characterDetails.appearance.hair = e.target.value
+    setCharacterDetails(data.character_details)
+    setHair(e.target.value);
+  }
+  const [eyes, setEyes] = useState(data.character_details.appearance.eyes)
+  const handleEyes = (e: ChangeEvent<HTMLInputElement>) => {
+    characterDetails.appearance.eyes = e.target.value
+    setCharacterDetails(data.character_details)
+    setEyes(e.target.value);
   }
 
   return (
@@ -129,8 +159,6 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
           <Input variant="flushed" placeholder="Nombre" value={name} onChange={handleName} />
         </VStack>
       </HStack>
-
-
       <Accordion allowToggle>
         <AccordionItem>
           <h2>
@@ -238,12 +266,12 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
             <Center height='100px'>
               <VStack alignItems={"flex-start"}>
                 <Text>Peso</Text>
-                <Input variant="flushed" placeholder="Peso" onChange={handleAge} value={characterDetails.appearance.weight} />
+                <Input variant="flushed" placeholder="Peso" onChange={handleWeight} value={characterDetails.appearance.weight} />
               </VStack>
               <Divider orientation='vertical' mx={2} />
               <VStack alignItems={"flex-start"}>
                 <Text>Altura</Text>
-                <Input variant="flushed" placeholder="Altura" onChange={handleChange} value={characterDetails.appearance.height} />
+                <Input variant="flushed" placeholder="Altura" onChange={handleHeight} value={characterDetails.appearance.height} />
               </VStack>
             </Center>
             <Center height='100px'>
@@ -254,18 +282,18 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
               <Divider orientation='vertical' mx={2} />
               <VStack alignItems={"flex-start"}>
                 <Text>Piel</Text>
-                <Input variant="flushed" placeholder="Piel" onChange={handleChange} value={characterDetails.appearance.skin} />
+                <Input variant="flushed" placeholder="Piel" onChange={handleSkin} value={characterDetails.appearance.skin} />
               </VStack>
             </Center>
             <Center height='100px'>
               <VStack alignItems={"flex-start"}>
                 <Text>Ojos</Text>
-                <Input variant="flushed" placeholder="Ojos" onChange={handleChange} value={characterDetails.appearance.eyes} />
+                <Input variant="flushed" placeholder="Ojos" onChange={handleEyes} value={characterDetails.appearance.eyes} />
               </VStack>
               <Divider orientation='vertical' mx={2} />
               <VStack alignItems={"flex-start"}>
                 <Text>Cabello</Text>
-                <Input variant="flushed" placeholder="Cabello" onChange={handleChange} value={characterDetails.appearance.hair} />
+                <Input variant="flushed" placeholder="Cabello" onChange={handleHair} value={characterDetails.appearance.hair} />
               </VStack>
             </Center>
           </AccordionPanel>
