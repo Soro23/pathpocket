@@ -17,9 +17,10 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
   const handleName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
   }
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-
-  }
+  const [imagesrc, setPhotoURL] = useState(data.imagesrc);
+  const handlePhotoURLChange = (newPhotoURL: string) => {
+    setPhotoURL(newPhotoURL)
+  };
 
   /**
    * Detalles del personaje
@@ -55,14 +56,6 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
 
   /**
    * Caracteristicas Fisicas
-      size: 0,
-      genre: '',
-      age: 0,
-      height: 0,
-      weight: 0,
-      skin: '',
-      hair: '',
-      eyes: '',
    */
   const handleSize = (e: ChangeEvent<HTMLSelectElement>) => {
     characterDetails.appearance.size = +e.target.value
@@ -76,21 +69,21 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
   }
   const [age, setAge] = useState(data.character_details.appearance.age)
   const handleAge = (e: ChangeEvent<HTMLInputElement>) => {
-    characterDetails.appearance.height = +e.target.value
+    characterDetails.appearance.age = +e.target.value
     setCharacterDetails(data.character_details)
     setAge(+e.target.value);
   }
   const [height, setHeight] = useState(data.character_details.appearance.height)
   const handleHeight = (e: ChangeEvent<HTMLInputElement>) => {
-    characterDetails.appearance.height = +e.target.value
+    characterDetails.appearance.height = e.target.value
     setCharacterDetails(data.character_details)
-    setHeight(+e.target.value);
+    setHeight(e.target.value);
   }
   const [weight, setWeight] = useState(data.character_details.appearance.weight)
   const handleWeight = (e: ChangeEvent<HTMLInputElement>) => {
-    characterDetails.appearance.weight = +e.target.value
+    characterDetails.appearance.weight = e.target.value
     setCharacterDetails(data.character_details)
-    setWeight(+e.target.value);
+    setWeight(e.target.value);
   }
   const [skin, setSkin] = useState(data.character_details.appearance.genre)
   const handleSkin = (e: ChangeEvent<HTMLInputElement>) => {
@@ -110,6 +103,33 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
     setCharacterDetails(data.character_details)
     setEyes(e.target.value);
   }
+  /**
+   * Lore
+   */
+  const [origin, setOrigin] = useState(data.character_details.lore.origin_context)
+  const handleOrigin = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    characterDetails.lore.origin_context = e.target.value
+    setCharacterDetails(data.character_details)
+    setOrigin(e.target.value);
+  }
+  const [motivation, setMotivation] = useState(data.character_details.lore.motivations_objectives)
+  const handleMotivation = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    characterDetails.lore.motivations_objectives = e.target.value
+    setCharacterDetails(data.character_details)
+    setMotivation(e.target.value);
+  }
+  const [relation, setRelation] = useState(data.character_details.lore.relations)
+  const handleRelations = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    characterDetails.lore.relations = e.target.value
+    setCharacterDetails(data.character_details)
+    setRelation(e.target.value);
+  }
+  const [event, setEvent] = useState(data.character_details.lore.highlight_events)
+  const handleEvents = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    characterDetails.lore.highlight_events = e.target.value
+    setCharacterDetails(data.character_details)
+    setEvent(e.target.value);
+  }
 
   return (
     <Box>
@@ -120,10 +140,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
               ...data,
               name: name,
               languages: languages,
-              character_details: characterDetails,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.")
-              },
+              character_details: characterDetails
             })
           }
         >
@@ -134,25 +151,25 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
           onClick={() =>
             onComplete({
               ...data,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.")
-              },
+              name: name,
+              imagesrc: imagesrc,
+              languages: languages,
+              character_details: characterDetails
             })
           }
         >
-          Siguiente
+          Completar
         </Button>
       </ButtonGroup>
       <Heading>Información básica</Heading>
       <HStack my={4}>
         <VStack>
           <Image
-            src='https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3'
+            src={imagesrc}
             alt={name}
             borderRadius="lg"
-
           />
-          <CharacterAvatarEditor name={name} buttonName="Añadir Imagen" />
+          <CharacterAvatarEditor name={name} buttonName="Añadir Imagen" newCharacter  onPhotoURLChange={handlePhotoURLChange}/>
         </VStack>
         <VStack alignItems={"flex-start"}>
           <Text as="span" size='xs'>Nombre</Text>
@@ -298,7 +315,6 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
             </Center>
           </AccordionPanel>
         </AccordionItem>
-
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -326,7 +342,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} />
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.origin_context} onChange={handleOrigin}/>
             <Divider my={4} />
             <Text as="span" size='xs'>Motivaciones y Objetivos</Text>
             <Popover isLazy>
@@ -343,7 +359,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} />
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.motivations_objectives} onChange={handleMotivation}/>
             <Divider my={4} />
             <Text as="span" size='xs'>Relaciones Personales</Text>
             <Popover isLazy>
@@ -359,7 +375,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} />
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.relations} onChange={handleRelations}/>
             <Divider my={4} />
             <Text as="span" size='xs'>Eventos Significativos</Text>
             <Popover isLazy>
@@ -376,7 +392,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} />
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.highlight_events} onChange={handleEvents} />
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

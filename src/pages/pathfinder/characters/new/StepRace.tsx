@@ -7,8 +7,6 @@ import {
   Text,
   InputGroup,
   InputRightElement,
-  ListItem,
-  UnorderedList,
   Table,
   TableContainer,
   Tbody,
@@ -63,10 +61,7 @@ const StepRace: FC<StepRaceProps> = ({ onNext, data }) => {
               feats: {
                 ...data.feats,
                 racefeats: raceFeats,
-              },
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              }
             })
           }
         >

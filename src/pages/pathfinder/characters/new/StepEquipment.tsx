@@ -1,7 +1,6 @@
 import { Box, Heading, Input, Button, ButtonGroup, Image, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, InputGroup, InputRightElement, Table, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
-import { FC, ChangeEvent, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { CharacterData } from "@/components/class/characterdata";
-import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 interface StepEquipmentProps {
@@ -52,10 +51,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
             onPrev({
               ...data,
               equipment: equipment,
-              money: money,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              money: money
             })
           }
         >
@@ -67,10 +63,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
             onNext({
               ...data,
               equipment: equipment,
-              money: money,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              money: money
             })
           }
         >
@@ -98,7 +91,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
               <NumberInput
                 variant="flushed"
                 value={money.cooper}
-                onChange={(v) => handleCooperChange(v)}
+                onChange={(vs, v) => handleCooperChange(v)}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -116,7 +109,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
               <NumberInput
                 variant="flushed"
                 value={money.silver}
-                onChange={(v) => handleSilverChange(v)}
+                onChange={(vs, v) => handleSilverChange(v)}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -134,7 +127,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
               <NumberInput
                 variant="flushed"
                 value={money.gold}
-                onChange={(v) => handleGoldChange(v)}
+                onChange={(vs, v) => handleGoldChange(v)}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -152,7 +145,7 @@ const StepEquipment: FC<StepEquipmentProps> = ({ onNext, onPrev, data }) => {
               <NumberInput
                 variant="flushed"
                 value={money.platinium}
-                onChange={(v) => handlePlatiniumChange(v)}
+                onChange={(vs, v) => handlePlatiniumChange(v)}
               >
                 <NumberInputField />
                 <NumberInputStepper>

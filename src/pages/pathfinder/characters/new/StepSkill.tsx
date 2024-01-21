@@ -1,14 +1,7 @@
 import {
   Box,
   Heading,
-  Text,
-  Select,
   Button,
-  Input,
-  ListItem,
-  UnorderedList,
-  InputGroup,
-  InputRightElement,
   ButtonGroup,
   Table,
   TableContainer,
@@ -126,10 +119,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
         <Button
           onClick={() =>
             onPrev({
-              ...data,
-              copyFrom: (): void => {
-                throw new Error('Function not implemented.');
-              },
+              ...data
             })
           }
         >
@@ -139,10 +129,7 @@ const StepSkill: FC<StepSkillProps> = ({ onNext, onPrev, data }) => {
         <Button
           onClick={() =>
             onNext({
-              ...data,
-              copyFrom: (): void => {
-                throw new Error('Function not implemented.');
-              },
+              ...data
             })
           }
         >

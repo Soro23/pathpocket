@@ -8,8 +8,8 @@ export class CharacterData {
       size: 0,
       genre: '',
       age: 0,
-      height: 0,
-      weight: 0,
+      height: '',
+      weight: '',
       skin: '',
       hair: '',
       eyes: '',
@@ -104,7 +104,6 @@ export class CharacterData {
 
 
   constructor() {
-    this.alignment = ''
     this.armor_class = 0
     this.class = []
     this.class_level = []
@@ -640,7 +639,7 @@ export class CharacterData {
     }
   }
 
-  copyFrom(other: CharacterData | undefined): void {
+  copyFrom?(other: CharacterData | undefined): void {
     if (other!) {
       CharacterData.copyObject(this, other);
     }

@@ -11,13 +11,10 @@ import {
   SimpleGrid,
   Stack,
   Image,
-  Text,
   Center,
-  IconButton,
   useColorModeValue,
   Flex,
   Spacer,
-  color,
   useBreakpointValue,
   Modal,
   ModalBody,
@@ -32,7 +29,6 @@ import {
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthUserContext";
 import { getUserCharacters } from "@/services/firebase/database";
-import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
 import { CharacterData } from "@/components/class/characterdata";
 import { Button as CButton } from "@/components/ui/atoms/Button";
 import { RiAddFill } from "react-icons/ri";
@@ -74,8 +70,10 @@ const Characters: NextPage = () => {
           } else {
             const charactersArray = Object.entries(characters).map(
               ([key, val]) => {
-                let nval: CharacterData = new CharacterData();
-                nval.copyFrom(val as CharacterData | undefined);
+                let nval: CharacterData = new CharacterData()
+                if(nval.copyFrom){
+                  nval.copyFrom(val as CharacterData | undefined)
+                }
                 return { key, val };
               }
             );
@@ -94,9 +92,9 @@ const Characters: NextPage = () => {
   const navigateToEditPage = (characterId: string) => {
     router.push(`/pathfinder/characters/${characterId}`);
   };
-  const logthis = (log: any) => {
-    console.log(log);
-  };
+  const removeCharacter = (characterId: string) => {
+    console.log(`removecharacrer ${characterId} in user ${authUser?.uid}`)
+  }
 
   return (
     <Box w="full" p={4}>
@@ -141,10 +139,10 @@ const Characters: NextPage = () => {
                 src={character.val.imagesrc}
                 alt={character.val.name}
                 borderRadius="lg"
-                onClick={() => logthis(character)}
+                onClick={() => console.log(character)}
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md" onClick={() => logthis(character)}>
+                <Heading size="md" onClick={() => console.log(character)}>
                   <Center>{character.key}</Center>
                 </Heading>
               </Stack>
@@ -154,7 +152,9 @@ const Characters: NextPage = () => {
               <CButton onClick={() => navigateToEditPage(character.key)}>
                 Edit
               </CButton>
-              <CharacterAvatarEditor name={character.val.name} />
+              <Button onClick={() => removeCharacter(character.key)}>
+                Remove
+              </Button>
             </CardFooter>
           </Card>
         ))}
