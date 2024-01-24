@@ -60,7 +60,8 @@ const EditCharacterPage: NextPage = () => {
     )
   }
   let chardata = new CharacterData()
-  chardata.copyFrom(character)
+  if (chardata.copyFrom)
+    chardata.copyFrom(character)
 
 
   return (

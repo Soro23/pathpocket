@@ -11,13 +11,10 @@ import {
   SimpleGrid,
   Stack,
   Image,
-  Text,
   Center,
-  IconButton,
   useColorModeValue,
   Flex,
   Spacer,
-  color,
   useBreakpointValue,
   Modal,
   ModalBody,
@@ -28,22 +25,29 @@ import {
   ModalOverlay,
   useDisclosure,
   Input,
+  Badge,
 } from "@chakra-ui/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthUserContext";
-import { getUserCharacters } from "@/services/firebase/database";
-import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor";
+import { getUserCharacters, removeCharacter } from "@/services/firebase/database";
 import { CharacterData } from "@/components/class/characterdata";
 import { Button as CButton } from "@/components/ui/atoms/Button";
 import { RiAddFill } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { auth } from "@/services/firebase";
 
 const Characters: NextPage = () => {
   const { authUser } = useAuth();
   const [characters, setCharacters] = useState<any[]>([]);
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { isOpen: isRegisterModalOpen, onOpen: openRegisterModal, onClose: closeRegisterModal } = useDisclosure();
+  const { isOpen: isRemoveModalOpen, onOpen: openRemoveModal2, onClose: closeRemoveModal } = useDisclosure();
+  const [selectedCharacterKey, setSelectedCharacterKey] = useState('');
+  const openRemoveModal = (characterKey: string) => {
+    setSelectedCharacterKey(characterKey);
+    openRemoveModal2();
+  };
   const gColumns = useBreakpointValue({
     base: 2,
     md: 3,
@@ -55,12 +59,12 @@ const Characters: NextPage = () => {
     setName(e.target.value);
   };
   const handleGoNew = () => {
-    if(name !== ''){
+    if (name !== '') {
       router.push({
         pathname: "/pathfinder/characters/new",
-        query: {name: name}
+        query: { name: name }
       });
-    }else{
+    } else {
       alert("Introduce un nombre");
     }
   };
@@ -74,8 +78,10 @@ const Characters: NextPage = () => {
           } else {
             const charactersArray = Object.entries(characters).map(
               ([key, val]) => {
-                let nval: CharacterData = new CharacterData();
-                nval.copyFrom(val as CharacterData | undefined);
+                let nval: CharacterData = new CharacterData()
+                if (nval.copyFrom) {
+                  nval.copyFrom(val as CharacterData | undefined)
+                }
                 return { key, val };
               }
             );
@@ -94,9 +100,12 @@ const Characters: NextPage = () => {
   const navigateToEditPage = (characterId: string) => {
     router.push(`/pathfinder/characters/${characterId}`);
   };
-  const logthis = (log: any) => {
-    console.log(log);
-  };
+  const deleteCharacter = (characterId: string) => {
+    if (authUser) {
+      removeCharacter(authUser.uid, characterId)
+      router.reload();
+    }
+  }
 
   return (
     <Box w="full" p={4}>
@@ -108,11 +117,11 @@ const Characters: NextPage = () => {
         </Box>
         <Spacer />
         <ButtonGroup gap="2">
-          <CButton onClick={onOpen} cvariant={true} rightIcon={<RiAddFill />}>
+          <CButton onClick={openRegisterModal} cvariant={true} rightIcon={<RiAddFill />}>
             Nuevo
           </CButton>
-          <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
+          <Modal isCentered closeOnOverlayClick={false} isOpen={isRegisterModalOpen} onClose={closeRegisterModal}>
+            <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
             <ModalContent>
               <ModalHeader>Introduce un nombre</ModalHeader>
               <ModalCloseButton />
@@ -141,10 +150,10 @@ const Characters: NextPage = () => {
                 src={character.val.imagesrc}
                 alt={character.val.name}
                 borderRadius="lg"
-                onClick={() => logthis(character)}
+                onClick={() => console.log(character)}
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md" onClick={() => logthis(character)}>
+                <Heading size="md" onClick={() => console.log(character)}>
                   <Center>{character.key}</Center>
                 </Heading>
               </Stack>
@@ -154,11 +163,28 @@ const Characters: NextPage = () => {
               <CButton onClick={() => navigateToEditPage(character.key)}>
                 Edit
               </CButton>
-              <CharacterAvatarEditor name={character.val.name} />
+              <Button onClick={() => openRemoveModal(character.key)}>
+                Remove
+              </Button>
             </CardFooter>
           </Card>
         ))}
       </SimpleGrid>
+      <Modal isCentered closeOnOverlayClick={false} isOpen={isRemoveModalOpen} onClose={closeRemoveModal}>
+        <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
+        <ModalContent >
+          <ModalCloseButton />
+          <ModalBody>
+            Seguro que quieres eliminar el personaje <Badge colorScheme='red'>{selectedCharacterKey}</Badge>?
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={() => deleteCharacter(selectedCharacterKey)} colorScheme='red' mr={3}>
+              Eliminar
+            </Button>
+            <Button onClick={closeRemoveModal}>Cancelar</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };

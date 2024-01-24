@@ -2,9 +2,7 @@
 import {
   Box,
   Heading,
-  Checkbox,
   Button,
-  Input,
   Text,
   ButtonGroup,
   NumberDecrementStepper,
@@ -47,10 +45,7 @@ const StepStats: FC<StepStatsProps> = ({ onNext, onPrev, data }) => {
           onClick={() =>
             onPrev({
               ...data,
-              stats: stats,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              stats: stats
             })
           }
         >
@@ -61,10 +56,7 @@ const StepStats: FC<StepStatsProps> = ({ onNext, onPrev, data }) => {
           onClick={() =>
             onNext({
               ...data,
-              stats: stats,
-              copyFrom: (): void => {
-                throw new Error("Function not implemented.");
-              },
+              stats: stats
             })
           }
         >

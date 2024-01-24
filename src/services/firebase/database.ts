@@ -58,6 +58,14 @@ export const updateCharacterAvatar = (userId: any, character: string, avatarsrc:
 export const createCharacter = (userId: any, character: CharacterData, name: string) => {
     const charactersRef = ref(db, `characters/${userId}/${name}`);
     // Añadir validacion para ver si existe un character en ese userId con ese nombre
+    delete character.copyFrom;
     set(charactersRef, character);
+
+};
+
+export const removeCharacter = (userId: any, name: string) => {
+    const charactersRef = ref(db, `characters/${userId}/${name}`);
+    // Añadir validacion para ver si existe un character en ese userId con ese nombre
+    set(charactersRef, null);
 
 };

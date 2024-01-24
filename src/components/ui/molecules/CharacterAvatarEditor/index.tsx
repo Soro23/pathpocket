@@ -17,7 +17,9 @@ import { storage } from "services/firebase";
 import { useAuth } from "contexts/AuthUserContext";
 import { updateCharacterAvatar } from "@/services/firebase/database";
 
-export default function CharacterAvatarEditor(props: { name: string, buttonName?: string }) {
+
+export default function CharacterAvatarEditor({ name, buttonName, newCharacter = false, onPhotoURLChange }: { name: string, buttonName?: string, newCharacter?: boolean, onPhotoURLChange?: (newPhotoURL: string) => void }) {
+  const [photoURL, setPhotoURL] = useState<string | null>(null);
   const [imageUrl, setImageUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const imageEditorRef = useRef<AvatarEditor>(null);
@@ -40,12 +42,17 @@ export default function CharacterAvatarEditor(props: { name: string, buttonName?
       const editor = imageEditorRef.current;
       if (!editor) return;
       const dataString = editor.getImageScaledToCanvas().toDataURL();
-      const imageStoragePath = `/users/${authUser?.uid}/public/characters/${props.name}`;
+      const imageStoragePath = `/users/${authUser?.uid}/public/characters/${name}`;
 
       await storage.uploadString(imageStoragePath, dataString, "data_url");
       const photoURL = await storage.getDownloadURL(imageStoragePath);
       // await updateCurrentUserProfile({ photoURL });
-      updateCharacterAvatar(authUser?.uid, props.name, photoURL)
+      if (!newCharacter) {
+        updateCharacterAvatar(authUser?.uid, name, photoURL)
+      } else {
+        if (onPhotoURLChange)
+          onPhotoURLChange(photoURL)
+      }
       onClose();
     } catch (err) {
       toast({
@@ -60,10 +67,11 @@ export default function CharacterAvatarEditor(props: { name: string, buttonName?
     setSaving(false);
   }, [imageEditorRef, updateCurrentUserProfile, onClose]);
 
+
   return (
     <>
       <FileUpload
-        placeholder={props.buttonName? props.buttonName : "Foto"}
+        placeholder={buttonName ? buttonName : "Foto"}
         acceptedFileTypes={["image/*"]}
         onChange={handleStartEdit}
       />

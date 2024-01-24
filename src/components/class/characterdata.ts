@@ -1,10 +1,27 @@
 import { SkillData } from "./skilldata"
 
 export class CharacterData {
-  alignment: string = ''
-  appearance: string = ''
+  character_details = {
+    alignment: 'LB' || 'NB' || 'CB' || 'NB' || 'NN' || 'CN' || 'LM' || 'NM' || 'CM',
+    deity: '',
+    appearance: {
+      size: 0,
+      genre: '',
+      age: 0,
+      height: '',
+      weight: '',
+      skin: '',
+      hair: '',
+      eyes: '',
+    },
+    lore: {
+      origin_context: '',
+      motivations_objectives: '',
+      relations: '',
+      highlight_events: '',
+    }
+  }
   armor_class: number = 0
-  background_story: string = ''
   class: string[] = []
   class_level: number[] = []
   equipment: string[] = []
@@ -12,7 +29,12 @@ export class CharacterData {
   feats: {
     racefeats: string[]
   }
-  gold: number = 0
+  money: {
+    cooper: number
+    silver: number
+    gold: number
+    platinium: number
+  }
   hit_points: number = 0
   imagesrc: string = ''
   initiative: number = 0
@@ -79,11 +101,10 @@ export class CharacterData {
     wisdom: number
   }
 
+
+
   constructor() {
-    this.alignment = ''
-    this.appearance = ''
     this.armor_class = 0
-    this.background_story = ''
     this.class = []
     this.class_level = []
     this.equipment = []
@@ -91,7 +112,12 @@ export class CharacterData {
     this.feats = {
       racefeats: []
     }
-    this.gold = 0
+    this.money = {
+      cooper: 0,
+      silver: 0,
+      gold: 0,
+      platinium: 0
+    }
     this.hit_points = 0
     this.imagesrc = 'https://firebasestorage.googleapis.com/v0/b/soro-dashboard.appspot.com/o/users%2FdE3IicCMypbQNL0ojqIBdDGXdxE3%2Fpublic%2Fcharacters%2FT3?alt=media&token=914e6c5d-c018-488a-8b10-ce76f6f0cae3'
     this.initiative = 0
@@ -613,7 +639,7 @@ export class CharacterData {
     }
   }
 
-  copyFrom(other: CharacterData | undefined): void {
+  copyFrom?(other: CharacterData | undefined): void {
     if (other!) {
       CharacterData.copyObject(this, other);
     }
