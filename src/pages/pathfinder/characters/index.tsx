@@ -25,6 +25,7 @@ import {
   ModalOverlay,
   useDisclosure,
   Input,
+  Badge,
 } from "@chakra-ui/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthUserContext";
@@ -41,7 +42,12 @@ const Characters: NextPage = () => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isRegisterModalOpen, onOpen: openRegisterModal, onClose: closeRegisterModal } = useDisclosure();
-  const { isOpen: isRemoveModalOpen, onOpen: openRemoveModal, onClose: closeRemoveModal } = useDisclosure();
+  const { isOpen: isRemoveModalOpen, onOpen: openRemoveModal2, onClose: closeRemoveModal } = useDisclosure();
+  const [selectedCharacterKey, setSelectedCharacterKey] = useState('');
+  const openRemoveModal = (characterKey: string) => {
+    setSelectedCharacterKey(characterKey);
+    openRemoveModal2();
+  };
   const gColumns = useBreakpointValue({
     base: 2,
     md: 3,
@@ -96,7 +102,7 @@ const Characters: NextPage = () => {
   };
   const deleteCharacter = (characterId: string) => {
     if (authUser) {
-      removeCharacter(authUser.uid,characterId)
+      removeCharacter(authUser.uid, characterId)
       router.reload();
     }
   }
@@ -157,28 +163,28 @@ const Characters: NextPage = () => {
               <CButton onClick={() => navigateToEditPage(character.key)}>
                 Edit
               </CButton>
-              <Button onClick={openRemoveModal}>
+              <Button onClick={() => openRemoveModal(character.key)}>
                 Remove
               </Button>
-              <Modal isCentered closeOnOverlayClick={false} isOpen={isRemoveModalOpen} onClose={closeRemoveModal}>
-                <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
-                <ModalContent >
-                  <ModalCloseButton />
-                  <ModalBody>
-                    Seguro que quieres eliminar el personaje?
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button onClick={() => deleteCharacter(character.key)} colorScheme='red' mr={3}>
-                      Eliminar
-                    </Button>
-                    <Button onClick={closeRemoveModal}>Cancelar</Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
             </CardFooter>
           </Card>
         ))}
       </SimpleGrid>
+      <Modal isCentered closeOnOverlayClick={false} isOpen={isRemoveModalOpen} onClose={closeRemoveModal}>
+        <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)' />
+        <ModalContent >
+          <ModalCloseButton />
+          <ModalBody>
+            Seguro que quieres eliminar el personaje <Badge colorScheme='red'>{selectedCharacterKey}</Badge>?
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={() => deleteCharacter(selectedCharacterKey)} colorScheme='red' mr={3}>
+              Eliminar
+            </Button>
+            <Button onClick={closeRemoveModal}>Cancelar</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
