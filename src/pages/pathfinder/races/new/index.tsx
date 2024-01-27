@@ -1,18 +1,15 @@
 import type { NextPage } from 'next';
 import { Flex, Text } from '@chakra-ui/layout';
-import { AbsoluteCenter, Box, Button, Card, CardBody, CardFooter, Center, Divider, Heading, Input, InputGroup, InputRightElement, Select, SimpleGrid, Spacer, Spinner, Stack, Table, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, VStack, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Card, CardBody, Center, Heading, Input, InputGroup, InputRightElement, Select, Spacer, Stack, Table, TableContainer, Tbody, Td, Th, Thead, Tr, VStack, useColorModeValue } from '@chakra-ui/react';
 import { useAuth } from 'contexts/AuthUserContext';
-import { SoroLogo } from '@/utils/soro-logo';
-import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
 import { CharacterData } from '@/components/class/characterdata';
-import { TopHeader } from '@/components/ui/organisms/Character/TopHeader';
 import { createRace, getRaces } from "@/services/firebase/database";
 
 
 import { useRouter } from 'next/router';
 import { RaceData } from '@/components/class/racedata';
-import characters from '../../characters';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 
 const NewCharacter: NextPage = () => {
@@ -32,8 +29,8 @@ const NewCharacter: NextPage = () => {
     const characterData = new CharacterData()
 
 
-    useEffect(() => {
-        getRaces()
+    const fetchDataAndUpdate = async () => {
+        const newData = await getRaces()
             .then((race) => {
                 if (Array.isArray(race)) {
                     setRaces(races);
@@ -49,6 +46,9 @@ const NewCharacter: NextPage = () => {
             .catch((error) => {
                 console.error("Error fetching characters:", error);
             })
+    };
+    useEffect(() => {
+        fetchDataAndUpdate();
     }, []);
 
 
@@ -57,9 +57,7 @@ const NewCharacter: NextPage = () => {
     const createNewRace = (race: RaceData) => {
         if (authUser) {
             createRace(race)
-            router.push({
-                pathname: "/pathfinder/races/new",
-            });
+            fetchDataAndUpdate()
         }
     };
     return (
@@ -90,7 +88,7 @@ const NewCharacter: NextPage = () => {
             </Box>
             <Spacer />
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce el nombre de la raza</Text>
                     <Input
                         variant="flushed"
@@ -101,7 +99,7 @@ const NewCharacter: NextPage = () => {
                     />
 
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce el la categoria de la raza</Text>
                     <Input
                         variant="flushed"
@@ -111,7 +109,7 @@ const NewCharacter: NextPage = () => {
                         onChange={(e) => { setRaceData(prevRaceData => ({ ...prevRaceData, race_category: e.target.value })) }}
                     />
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce los puntos de la raza</Text>
                     <Input
                         variant="flushed"
@@ -124,7 +122,7 @@ const NewCharacter: NextPage = () => {
             </Flex>
 
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
 
                     <Text as="i">Añade caracterisitcas positivas</Text>
                     <Select variant="flushed" placeholder='Puntuaciones Positivas' onChange={(e) => {
@@ -161,7 +159,7 @@ const NewCharacter: NextPage = () => {
                         </TableContainer>
                     )}
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Añade caracterisitcas negativas</Text>
                     <Select variant="flushed" placeholder='Puntuaciones Negativas' onChange={(e) => {
                         const ability = e.target.value
@@ -199,7 +197,7 @@ const NewCharacter: NextPage = () => {
                 </VStack>
             </Flex>
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="span" size='xs'>Tamaño</Text>
                     <Select variant="flushed" placeholder='Elige un tamaño' onChange={(e) => setRaceData(prevRaceData => ({ ...prevRaceData, size: +e.target.value }))} defaultValue={raceData.size}>
                         <option value='-8'>Minúsculo </option>
@@ -213,7 +211,7 @@ const NewCharacter: NextPage = () => {
                         <option value='8'>Colosal </option>
                     </Select>
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce el subtipo de la raza</Text>
                     <Input
                         variant="flushed"
@@ -223,7 +221,7 @@ const NewCharacter: NextPage = () => {
                         onChange={(e) => setRaceData(prevRaceData => ({ ...prevRaceData, subtype: e.target.value }))}
                     />
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce la velocidad de la raza</Text>
                     <Input
                         variant="flushed"
@@ -236,7 +234,7 @@ const NewCharacter: NextPage = () => {
             </Flex>
             {/* Idiomas */}
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce los idiomas base de la raza</Text>
                     <InputGroup size="md">
                         <Input
@@ -286,7 +284,7 @@ const NewCharacter: NextPage = () => {
                         </TableContainer>
                     )}
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     {/* Senses */}
                     <Text as="i">Introduce los sentidos de la raza</Text>
                     <InputGroup size="md">
@@ -339,7 +337,7 @@ const NewCharacter: NextPage = () => {
                 </VStack>
             </Flex>
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     {/* OTraits */}
                     <Text as="i">Introduce los rasgos ofensivos de la raza</Text>
                     <InputGroup size="md">
@@ -390,7 +388,7 @@ const NewCharacter: NextPage = () => {
                         </TableContainer>
                     )}
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     {/* DTraits */}
                     <Text as="i">Introduce los rasgos defensivos base de la raza</Text>
                     <InputGroup size="md">
@@ -444,7 +442,7 @@ const NewCharacter: NextPage = () => {
             </Flex>
             {/* Feats */}
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce los dotes adicionales de la raza</Text>
                     <InputGroup size="md">
                         <Input
@@ -494,7 +492,7 @@ const NewCharacter: NextPage = () => {
                         </TableContainer>
                     )}
                 </VStack>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     {/* Spell */}
                     <Text as="i">Introduce los conjuros adicionales de la raza</Text>
                     <InputGroup size="md">
@@ -547,7 +545,7 @@ const NewCharacter: NextPage = () => {
                 </VStack>
             </Flex>
             <Flex p={4} gap={4}>
-                <VStack flex={1} p={4} border={'1px solid ' +headingColor} borderRadius={4}>
+                <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Añade habilidades de classe</Text>
                     <Select variant="flushed" placeholder='Habilidades' onChange={(e) => {
                         let selectedIndex = +e.target.value
@@ -586,10 +584,10 @@ const NewCharacter: NextPage = () => {
                 </VStack>
             </Flex>
             <Flex>
-            <Button flex={1} bgColor={headingColor} onClick={() => {
-                console.log(raceData)
-                createRace(raceData)
-            }}>Crear</Button>
+                <Button flex={1} bgColor={headingColor} onClick={() => {
+                    console.log(raceData)
+                    createNewRace(raceData)
+                }}>Crear</Button>
             </Flex>
 
         </Box >
