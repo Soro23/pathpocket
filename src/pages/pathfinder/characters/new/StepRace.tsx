@@ -15,6 +15,7 @@ import {
   Th,
   Thead,
   Tr,
+  Link,
 } from "@chakra-ui/react";
 import { FC, ChangeEvent, useState } from "react";
 import { CharacterData } from "@/components/class/characterdata";
@@ -51,7 +52,8 @@ const StepRace: FC<StepRaceProps> = ({ onNext, data }) => {
   const hasRaceFeats = raceFeats.length > 0;
   return (
     <Box>
-      <ButtonGroup display="flex" justifyContent="flex-end">
+      <ButtonGroup display="flex" justifyContent="space-between">
+        <Box></Box>
         <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
@@ -68,7 +70,8 @@ const StepRace: FC<StepRaceProps> = ({ onNext, data }) => {
           Siguiente
         </Button>
       </ButtonGroup>
-      <Heading>Raza</Heading>
+      
+      <Link href="https://www.d20pfsrd.com/races/"><Heading>Raza</Heading></Link>
       <Text as="i">Introduce el nombre de la raza</Text>
       <Input
         variant="flushed"

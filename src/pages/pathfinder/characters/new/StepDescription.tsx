@@ -40,8 +40,8 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
   const [inputLanguage, setLanguage] = useState("")
   const newLanguage = () => {
     if (inputLanguage.trim() !== "") {
-      setLanguages((prevEquipment) => [
-        ...prevEquipment,
+      setLanguages((prevLanguages) => [
+        ...prevLanguages,
         inputLanguage.trim(),
       ])
       setLanguage("")

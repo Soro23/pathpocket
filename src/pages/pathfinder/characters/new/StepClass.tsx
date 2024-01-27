@@ -67,7 +67,6 @@ const StepClass: FC<StepClassProps> = ({ onNext, onPrev, data }) => {
   return (
     <Box>
       <ButtonGroup display="flex" justifyContent="space-between">
-        <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
             onPrev({
@@ -82,6 +81,7 @@ const StepClass: FC<StepClassProps> = ({ onNext, onPrev, data }) => {
         >
           Atrás
         </Button>
+        <Button onClick={() => console.log(data)}>log</Button>
         <Button
           onClick={() =>
             onNext({
