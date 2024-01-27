@@ -1,3 +1,4 @@
+import { RaceData } from "./racedata"
 import { SkillData } from "./skilldata"
 
 export class CharacterData {
@@ -43,7 +44,7 @@ export class CharacterData {
   level: number[] = []
   name: string = ''
   personality_traits: string = ''
-  race: string = ''
+  race: RaceData = new RaceData()
   saving_throws: {
     fortitude: number
     reflex: number

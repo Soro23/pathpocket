@@ -12,7 +12,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
 
-const NewCharacter: NextPage = () => {
+const NewRace: NextPage = () => {
     const { authUser } = useAuth();
     const router = useRouter();
     const headingColor = useColorModeValue('maroon', 'wheat');
@@ -62,31 +62,20 @@ const NewCharacter: NextPage = () => {
     };
     return (
         <Box w="full" p={4}>
-            {races.length > 0 ? (
-                <Flex minWidth="max-content" alignItems="center" gap="2" p={4} border={'1px solid ' + headingColor}>
-                    <Flex gap={5}>
-                        {races.map((race) => (
-                            <Card key={race.key} maxW="sm" onClick={() => console.log(race)}>
-                                <CardBody>
-                                    <Stack mt="6" spacing="3">
-                                        <Heading size="md">
-                                            <Center>{race.val.name}</Center>
-                                        </Heading>
-                                    </Stack>
-                                </CardBody>
-                            </Card>
-                        ))}
-                    </Flex>
-                </Flex>
-            ) : (<></>)
-            }
-
             <Box p="2">
                 <Heading as="h3" size="lg" style={{ color: headingColor }}>
                     Añadir Raza
                 </Heading>
             </Box>
-            <Spacer />
+            <Flex gap={4}>
+                <Button flex={1} bgColor={headingColor} onClick={() => {
+                    router.push('/pathfinder/races')
+                }}>Atras</Button>
+                <Button flex={1} bgColor={headingColor} onClick={() => {
+                    console.log(raceData)
+                    createNewRace(raceData)
+                }}>Crear</Button>
+            </Flex>
             <Flex p={4} gap={4}>
                 <VStack flex={1} p={4} border={'1px solid ' + headingColor} borderRadius={4}>
                     <Text as="i">Introduce el nombre de la raza</Text>
@@ -594,5 +583,5 @@ const NewCharacter: NextPage = () => {
     );
 };
 
-export default NewCharacter;
+export default NewRace;
 
