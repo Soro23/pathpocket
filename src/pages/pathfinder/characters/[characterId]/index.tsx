@@ -1,6 +1,6 @@
 // src/pages/edit-character/[characterId].tsx
 
-import { Heading, ButtonGroup, FormControl, FormLabel, Input, Box, useColorModeValue, Image, Text, Button, Grid, InputGroup, HStack, GridItem, FormHelperText, Textarea } from '@chakra-ui/react';
+import { Heading, ButtonGroup, FormControl, FormLabel, Input, Box, useColorModeValue, Image, Text, Button, Grid, InputGroup, HStack, GridItem, FormHelperText, Textarea, IconButton } from '@chakra-ui/react';
 import { Button as CButton } from '@/components/ui/atoms/Button';
 import { useRouter } from 'next/router';
 import { getUserCharacter } from '@/services/firebase/database';
@@ -11,13 +11,15 @@ import { CharacterData } from '@/components/class/characterdata'
 import { TopHeader } from '@/components/ui/organisms/Character/TopHeader';
 import { Header } from '@/components/ui/organisms/Character/Header';
 import { FloatingButton } from '@/components/ui/organisms/Character/FloatingButton';
+import FloatingMenu from '@/components/ui/organisms/Character/FloatingMenu';
+import { SectionStats } from '@/components/ui/organisms/Character/SectionStats';
+import { CgMenuGridO } from "react-icons/cg";
+import { SectionSkills } from '@/components/ui/organisms/Character/SectionSkills';
 
 
 const EditCharacterPage: NextPage = () => {
   const { authUser } = useAuth();
   const [character, setCharacter] = useState<CharacterData>();
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
 
   const router = useRouter();
   const params = Array.isArray(router.query) ? router.query[0] : router.query
@@ -25,7 +27,6 @@ const EditCharacterPage: NextPage = () => {
 
 
   useEffect(() => {
-    setIsLoading(true)
     if (authUser) {
       getUserCharacter(authUser.uid, params.characterId)
         .then((character) => {
@@ -35,10 +36,8 @@ const EditCharacterPage: NextPage = () => {
         .catch((error) => {
           // Manejar errores de lectura de la base de datos
           console.error("Error fetching characters:", error);
-          setIsError(true)
         });
     }
-    setIsLoading(false)
   }, [authUser]);
 
   // Ejemplo de cómo puedes manejar la navegación
@@ -49,40 +48,48 @@ const EditCharacterPage: NextPage = () => {
   const headingColor = useColorModeValue('maroon', 'wheat')
 
 
-  if (isLoading && !character) {
-    return (
-      <h2>Loading...</h2>
-    )
-  }
-  if (!isLoading && isError) {
-    return (
-      <h2>Something went wrong</h2>
-    )
-  }
-  let chardata = new CharacterData()
-  if (chardata.copyFrom)
-    chardata.copyFrom(character)
 
+  let chardata = new CharacterData()
+  if (chardata.copyFrom) {
+    chardata.copyFrom(character)
+  }
+  const [showMenu, setShowMenu] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleMenuClick = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+    setShowMenu(false);
+  };
 
   return (
-    <><FloatingButton /><Box w="full" h="full">
-      <TopHeader CharData={chardata} />
-      <Header CharData={chardata} />
-      <Grid templateColumns="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" templateRows="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr" gap={2} p={5}
-        templateAreas={`
-        "head head head head head head head head head head head head"
-        "stats stats stats stats stats stats stats stats stats stats stats stats"
-        "saves saves saves hab hab hab ca ca ca ca ca ca"
-        "saves saves saves hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "feats feats feats hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"
-        "lang lang lang hab hab hab atk-spell atk-spell atk-spell atk-spell atk-spell atk-spell"; 
-        `}>
+    <>
+      {/* Botón para abrir/cerrar el menú flotante */}
+      <IconButton position="fixed"
+        bottom="20px"
+        left="20px"
+        size="md"
+        zIndex={999}
+        backgroundColor={headingColor}
+        icon={<CgMenuGridO />} aria-label={'Menu'} onClick={() => handleMenuClick()}></IconButton>
+      {/* Renderización condicional del menú flotante */}
+      {showMenu && (
+        <FloatingMenu onOptionClick={handleOptionClick} />
+      )}
+
+      {/* Renderización condicional de componentes según la opción seleccionada */}
+      {/* {selectedOption === 'opcionB' && <ComponenteB />} */}
+
+      {/* <FloatingButton /> */}
+      <Box w="full" h="full">
+        <TopHeader CharData={chardata} />
+        <Header CharData={chardata} />
+        {selectedOption === 'stats' && <SectionStats CharData={chardata} />}
+        {selectedOption === 'skills' && <SectionSkills CharData={chardata} />}
+
         {/* Fila Imagen */}
         {/* <GridItem area={'head'}>
       <GridItem templateColumns="12fr" gap={6} p={5} pb={2} borderBottom="2px solid wheat">
@@ -162,8 +169,7 @@ const EditCharacterPage: NextPage = () => {
       </Grid>
     </GridItem> */}
         {/* Fila Stats */}
-      </Grid>
-    </Box></>
+      </Box></>
   )
 
   return (

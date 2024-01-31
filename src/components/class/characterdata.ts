@@ -49,7 +49,7 @@ export class CharacterData {
     fortitude: number
     reflex: number
     will: number
-  } | number = 0
+  }
   skills: {
     acrobatics: SkillData
     apraise: SkillData
@@ -127,7 +127,7 @@ export class CharacterData {
     this.level = []
     this.name = ''
     this.personality_traits = ''
-    this.race = ''
+    this.race = new RaceData
     this.saving_throws = {
       fortitude: 0,
       reflex: 0,
