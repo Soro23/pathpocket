@@ -111,7 +111,7 @@ export function TopHeader({ CharData = new CharacterData(), editMode = false }: 
                 {CharData.name}
               </Heading>
               <Text fontSize={"xs"}>
-                {CharData.race} -{" "}
+                {CharData.race.name} -{" "}
                 {CharData.class.map((cl, i) => {
                   return (
                     cl +

@@ -40,7 +40,7 @@ export function Header({ CharData = new CharacterData() }: CharacterProps) {
       {!isWideVersion ? (
         <Flex justifyContent="space-around" px={3} backgroundColor={headingColor} color={textColor}>
           <Flex flexDirection="column-reverse" alignItems="center" w={24} p={2}>
-            <Heading as="h6" size="lg">{CharData.speed}</Heading>
+            <Heading as="h6" size="lg">{CharData.race.speed}</Heading>
             <Text fontSize={'xs'} textAlign={"center"}>Velocidad movimiento</Text>
           </Flex>
           <Flex flexDirection="column-reverse" alignItems="center" w={24} p={2}>
@@ -51,13 +51,17 @@ export function Header({ CharData = new CharacterData() }: CharacterProps) {
             <Heading as="h6" size="lg">{CharData.armor_class}</Heading>
             <Text fontSize={'xs'} textAlign={"center"}>CA</Text>
           </Flex>
+          <Flex flexDirection="column-reverse" alignItems="center" w={24} p={2}>
+            <Heading as="h6" size="lg">{CharData.hit_points}</Heading>
+            <Text fontSize={'xs'} textAlign={"center"}>PG</Text>
+          </Flex>
         </Flex>
       ) : (
         <Flex justifyContent="space-between" p={5}>
           <Flex flexDirection="column" alignItems="center">
             <Text fontSize="lg">Velocidad de movimiento</Text>
             <Heading as="h6" size="lg">
-              {CharData.speed}
+              {CharData.race.speed}
             </Heading>
           </Flex>
           <Flex flexDirection="column" alignItems="center">

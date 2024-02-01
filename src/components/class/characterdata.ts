@@ -2,8 +2,15 @@ import { RaceData } from "./racedata"
 import { SkillData } from "./skilldata"
 
 export class CharacterData {
+  // Datos Generales
+  name: string = ''
+  imagesrc: string = ''
+  race: RaceData = new RaceData()
+  initiative: number = 0
+
+  // Detalles del Personaje
   character_details = {
-    alignment: 'LB' || 'NB' || 'CB' || 'NB' || 'NN' || 'CN' || 'LM' || 'NM' || 'CM',
+    alignment: Alignment.LawfulGood,
     deity: '',
     appearance: {
       size: 0,
@@ -22,86 +29,102 @@ export class CharacterData {
       highlight_events: '',
     }
   }
-  armor_class: number = 0
-  class: string[] = []
-  class_level: number[] = []
-  equipment: string[] = []
-  experience_points: number = 0
-  feats: {
-    racefeats: string[]
-  }
-  money: {
-    cooper: number
-    silver: number
-    gold: number
-    platinium: number
-  }
-  hit_points: number = 0
-  imagesrc: string = ''
-  initiative: number = 0
-  inventory: string[] = []
-  languages: string[] = []
-  level: number[] = []
-  name: string = ''
-  personality_traits: string = ''
-  race: RaceData = new RaceData()
-  saving_throws: {
-    fortitude: number
-    reflex: number
-    will: number
-  }
-  skills: {
-    acrobatics: SkillData
-    apraise: SkillData
-    bluff: SkillData
-    climb: SkillData
-    craft1: SkillData
-    craft3: SkillData
-    craft2: SkillData
-    diplomacy: SkillData
-    disable_device: SkillData
-    disguise: SkillData
-    escape_artist: SkillData
-    fly: SkillData
-    handle_animal: SkillData
-    heal: SkillData
-    intimidate: SkillData
-    knowledge_arcana: SkillData
-    knowledge_dungeoneering: SkillData
-    knowledge_engineering: SkillData
-    knowledge_geography: SkillData
-    knowledge_History: SkillData
-    knowledge_local: SkillData
-    knowledge_nature: SkillData
-    knowledge_nobility: SkillData
-    knowledge_planes: SkillData
-    knowledge_religion: SkillData
-    linguistics: SkillData
-    perception: SkillData
-    perform1: SkillData
-    perform2: SkillData
-    profesion1: SkillData
-    profesion2: SkillData
-    ride: SkillData
-    sense_motive: SkillData
-    sleight_of_hand: SkillData
-    spellcraft: SkillData
-    stealth: SkillData
-    survival: SkillData
-    swim: SkillData
-    use_magic_device: SkillData
-  } | Object
-  speed: number = 0
-  spells!: Array<string>;
-  stats: {
-    charisma: number,
-    constitution: number,
-    dexterity: number,
-    intelligence: number,
-    strength: number,
-    wisdom: number
+
+  // Estadísticas
+  stats: Stats = {
+    charisma: 0,
+    constitution: 0,
+    dexterity: 0,
+    intelligence: 0,
+    strength: 0,
+    wisdom: 0
   }
 
+  // Habilidades
+  skills: Skills = {
+    acrobatics: new SkillData(),
+    apraise: new SkillData(),
+    bluff: new SkillData(),
+    climb: new SkillData(),
+    craft1: new SkillData(),
+    craft3: new SkillData(),
+    craft2: new SkillData(),
+    diplomacy: new SkillData(),
+    disable_device: new SkillData(),
+    disguise: new SkillData(),
+    escape_artist: new SkillData(),
+    fly: new SkillData(),
+    handle_animal: new SkillData(),
+    heal: new SkillData(),
+    intimidate: new SkillData(),
+    knowledge_arcana: new SkillData(),
+    knowledge_dungeoneering: new SkillData(),
+    knowledge_engineering: new SkillData(),
+    knowledge_geography: new SkillData(),
+    knowledge_History: new SkillData(),
+    knowledge_local: new SkillData(),
+    knowledge_nature: new SkillData(),
+    knowledge_nobility: new SkillData(),
+    knowledge_planes: new SkillData(),
+    knowledge_religion: new SkillData(),
+    linguistics: new SkillData(),
+    perception: new SkillData(),
+    perform1: new SkillData(),
+    perform2: new SkillData(),
+    profesion1: new SkillData(),
+    profesion2: new SkillData(),
+    ride: new SkillData(),
+    sense_motive: new SkillData(),
+    sleight_of_hand: new SkillData(),
+    spellcraft: new SkillData(),
+    stealth: new SkillData(),
+    survival: new SkillData(),
+    swim: new SkillData(),
+    use_magic_device: new SkillData(),
+  } 
+
+  // Clase y Nivel
+  class: string[] = []
+  class_level: number[] = []
+  level: number[] = []
+
+  // Equipo y Dinero
+  equipment: string[] = []
+  money: Money = {
+    cooper: 0,
+    silver: 0,
+    gold: 0,
+    platinium: 0
+  }
+
+  // Salud y Combate
+  hit_points: number = 0
+  armor_class: number = 0
+
+  // Hechizos
+  spells: string[] = []
+
+  // Otras Características
+  feats: Feats = {
+    racefeats: []
+  }
+
+  // Personalidad y Lenguajes
+  personality_traits: string = ''
+  languages: string[] = []
+
+  // Experiencia y Puntos de Acción
+  experience_points: number = 0
+
+  // Lanzamientos de Salvación
+  saving_throws: SavingThrows = {
+    fortitude: 0,
+    reflex: 0,
+    will: 0
+  }
+
+  // Inventario
+  inventory: string[] = []
 
 
   constructor() {
@@ -610,7 +633,6 @@ export class CharacterData {
         }
       },
     }
-    this.speed = 0
     this.spells = []
     this.stats = {
       charisma: 0,
@@ -619,22 +641,22 @@ export class CharacterData {
       intelligence: 0,
       strength: 0,
       wisdom: 0,
-    };
+    }
   }
 
 
   private static isObject(obj: any): obj is Record<string, any> {
-    return typeof obj === 'object' && obj !== null;
+    return typeof obj === 'object' && obj !== null
   }
 
   private static copyObject(target: Record<string, any>, source: Record<string, any>): void {
     for (const key in source) {
       if (source.hasOwnProperty(key)) {
         if (CharacterData.isObject(source[key])) {
-          target[key] = CharacterData.isObject(target[key]) ? target[key] : {};
-          CharacterData.copyObject(target[key], source[key]);
+          target[key] = CharacterData.isObject(target[key]) ? target[key] : {}
+          CharacterData.copyObject(target[key], source[key])
         } else {
-          target[key] = source[key];
+          target[key] = source[key]
         }
       }
     }
@@ -642,9 +664,73 @@ export class CharacterData {
 
   copyFrom?(other: CharacterData | undefined): void {
     if (other!) {
-      CharacterData.copyObject(this, other);
+      CharacterData.copyObject(this, other)
+    }
+  }
+  getStatValue(modStat: string) {
+    switch (modStat) {
+      case 'FUE':
+        return this.stats.strength
+        break
+      case 'DES':
+        return this.stats.dexterity
+        break
+      case 'CON':
+        return this.stats.constitution
+        break
+      case 'INT':
+        return this.stats.intelligence
+        break
+      case 'SAB':
+        return this.stats.wisdom
+        break
+      case 'CAR':
+        return this.stats.charisma
+        break
     }
   }
 
+}
 
+enum Alignment {
+  LawfulGood = 'LB',
+  NeutralGood = 'NB',
+  ChaoticGood = 'CB',
+  LawfulNeutral = 'LN',
+  NeutralNeutral = 'NN',
+  ChaoticNeutral = 'CN',
+  LawfulEvil = 'LM',
+  NeutralEvil = 'NM',
+  ChaoticEvil = 'CM',
+}
+
+// Tipos de Datos Específicos
+interface Stats {
+  charisma: number;
+  constitution: number;
+  dexterity: number;
+  intelligence: number;
+  strength: number;
+  wisdom: number;
+}
+
+interface Skills {
+  [key: string]: SkillData;
+}
+
+interface Money {
+  cooper: number;
+  silver: number;
+  gold: number;
+  platinium: number;
+}
+
+interface Feats {
+  racefeats: string[];
+}
+
+interface SavingThrows {
+  fortitude: number;
+  reflex: number;
+  will: number;
 }

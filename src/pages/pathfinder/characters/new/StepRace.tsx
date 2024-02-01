@@ -141,13 +141,13 @@ const StepRace: FC<StepRaceProps> = ({ onNext, data }) => {
       </InputGroup>
 
       {(raceFeats.length > 0
-        || races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.defensive_traits.length > 0
-        || races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.offensive_traits.length > 0) && (
+        || races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.defensive_traits?.length > 0
+        || races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.offensive_traits?.length > 0) && (
           <>
             <TableContainer mt={10}>
               <Table size="sm">
                 <Tbody>
-                  {races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.offensive_traits.length > 0 && (
+                  {races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.offensive_traits?.length > 0 && (
                     <><Tr >
                       <Td textAlign={'center'} textTransform={'uppercase'} color={headingColor} borderColor={headingColor} >Ofensivos</Td>
                       <Th borderColor={headingColor}></Th>
@@ -166,7 +166,7 @@ const StepRace: FC<StepRaceProps> = ({ onNext, data }) => {
                         </Tr>
                       ))}
                     </>)}
-                  {races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.defensive_traits.length > 0 && (
+                  {races[Object.values(races).findIndex((race) => race.key === data.race.name)]?.val.defensive_traits?.length > 0 && (
                     <><Tr>
                       <Td textAlign={'center'} textTransform={'uppercase'} color={headingColor} borderColor={headingColor} pt={10}>Defensivos</Td>
                       <Th borderColor={headingColor}></Th>
@@ -185,7 +185,7 @@ const StepRace: FC<StepRaceProps> = ({ onNext, data }) => {
                         </Tr>
                       ))}
                     </>)}
-                  {raceFeats.length > 0 && (
+                  {raceFeats?.length > 0 && (
                     <><Tr>
                       <Td textAlign={'center'} textTransform={'uppercase'} color={headingColor} borderColor={headingColor} pt={10}>Adicionales</Td>
                       <Th borderColor={headingColor}></Th>
