@@ -3,6 +3,7 @@ import init from './init'
 import { child, get, getDatabase, ref, set } from "firebase/database";
 import firebaseConfig from 'configs/firebase'
 import { CharacterData } from "@/components/class/characterdata";
+import { RaceData } from '@/components/class/racedata';
 
 
 
@@ -18,6 +19,7 @@ import { CharacterData } from "@/components/class/characterdata";
 const app = initializeApp(firebaseConfig, 'databaseApp');
 const db = getDatabase(app);
 
+// Funcionalidades de Hojas de Personaje
 export const getUserCharacters = (userId: string) => {
     const charactersRef = ref(db, `characters/${userId}`);
 
@@ -25,7 +27,7 @@ export const getUserCharacters = (userId: string) => {
         .then((snapshot) => snapshot.val())
         .catch((error) => {
             console.error('Error fetching characters:', error);
-            throw error;  // Propaga el error para que pueda ser manejado fuera de esta función
+            throw error;
         });
 };
 
@@ -36,7 +38,7 @@ export const getUserCharacter = (userId: string, charname: string) => {
         .then((snapshot) => snapshot.val())
         .catch((error) => {
             console.error('Error fetching characters:', error);
-            throw error;  // Propaga el error para que pueda ser manejado fuera de esta función
+            throw error;
         });
 };
 
@@ -50,14 +52,13 @@ export const updateCharacterAvatar = (userId: any, character: string, avatarsrc:
         })
         .catch((error) => {
             console.error('Error fetching characters:', error);
-            throw error;  // Propaga el error para que pueda ser manejado fuera de esta función
+            throw error;
         });
 
 };
 
 export const createCharacter = (userId: any, character: CharacterData, name: string) => {
     const charactersRef = ref(db, `characters/${userId}/${name}`);
-    // Añadir validacion para ver si existe un character en ese userId con ese nombre
     delete character.copyFrom;
     set(charactersRef, character);
 
@@ -65,7 +66,23 @@ export const createCharacter = (userId: any, character: CharacterData, name: str
 
 export const removeCharacter = (userId: any, name: string) => {
     const charactersRef = ref(db, `characters/${userId}/${name}`);
-    // Añadir validacion para ver si existe un character en ese userId con ese nombre
     set(charactersRef, null);
+
+};
+
+// Funcionalidades de Raza
+export const getRaces = () => {
+    const racesRef = ref(db, `races/`);
+    return get(racesRef)
+        .then((snapshot) => snapshot.val())
+        .catch((error) => {
+            console.error('Error fetching races:', error);
+            throw error;
+        });
+
+};
+export const createRace = (race: RaceData) => {
+    const racesRef = ref(db, `races/${race.name}`);
+    set(racesRef, race);
 
 };

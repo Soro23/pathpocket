@@ -10,7 +10,7 @@ export default function DashboardLogo(props: DashboardLogoProps) {
       letterSpacing="tight"
       {...props}
     >
-      Soro
+      PathPocket
       <Text as='span' ml="1" color="green.500">.</Text>
     </Text>
   );

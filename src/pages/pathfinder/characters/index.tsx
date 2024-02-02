@@ -106,7 +106,6 @@ const Characters: NextPage = () => {
       router.reload();
     }
   }
-
   return (
     <Box w="full" p={4}>
       <Flex minWidth="max-content" alignItems="center" gap="2" p={4}>
