@@ -103,7 +103,7 @@ export function SectionStats({ CharData = new CharacterData() }: CharacterProps)
           <Flex flexDirection="column" alignItems="center">
             <Text fontSize="lg">Velocidad de movimiento</Text>
             <Heading as="h6" size="lg">
-              {CharData.speed}
+              {CharData.race.speed}
             </Heading>
           </Flex>
           <Flex flexDirection="column" alignItems="center">

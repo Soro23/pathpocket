@@ -5,10 +5,16 @@ export class SkillData{
     isTrainedRequired:boolean = false
     modStat:string = 'FUE'||'DES'||'CON'||'INT'||'SAN'||'CAR'
     ranks:number = 0
-    mod: {
+    mod!: {
         racial: number
         trait: number
         misc: number
-    } | undefined
+    } 
+
+    constructor(){
+        this.mod.racial = 0
+        this.mod.trait = 0
+        this.mod.misc = 0
+    }
 
 }

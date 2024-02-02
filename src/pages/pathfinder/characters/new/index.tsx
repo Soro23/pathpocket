@@ -30,10 +30,7 @@ const NewCharacter: NextPage = () => {
   const [step, setStep] = useState<number>(1);
   const [data, setData] = useState<CharacterData>(() => ({
     ...new CharacterData(),
-    name: name as string,
-    copyFrom: (): void => {
-      throw new Error('Function not implemented.');
-    },
+    name: name as string
   }));
 
   const handleNext = (stepData: any) => {

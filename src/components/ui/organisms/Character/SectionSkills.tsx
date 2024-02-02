@@ -86,10 +86,10 @@ export function SectionSkills({ CharData = new CharacterData() }: CharacterProps
                 </Td>
                 <Td textAlign={'center'}>
                   {!skillData.isTrainedRequired ? (
-                    skillData.ranks + skillData['mod'].racial + skillData['mod'].trait + skillData['mod'].misc + (skillData.isClassSkill ? 3 : 0) + CharData.getStatValue(skillData.modStat)
+                    skillData.ranks + skillData['mod'].racial + skillData['mod'].trait + skillData['mod'].misc + (skillData.isClassSkill ? 3 : 0) + (CharData.getStatValue ? CharData.getStatValue(skillData?.modStat || '') : 0)
                   ) : (
                     skillData.ranks > 0 ? (
-                      skillData.ranks + skillData['mod'].racial + skillData['mod'].trait + skillData['mod'].misc + (skillData.isClassSkill ? 3 : 0) + CharData.getStatValue(skillData.modStat)
+                      skillData.ranks + skillData['mod'].racial + skillData['mod'].trait + skillData['mod'].misc + (skillData.isClassSkill ? 3 : 0) + (CharData.getStatValue ? CharData.getStatValue(skillData?.modStat || '') : 0)
                     ) : (
                       <Box color={'red.300'}>0</Box>
                     )

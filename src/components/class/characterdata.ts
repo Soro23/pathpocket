@@ -81,7 +81,7 @@ export class CharacterData {
     survival: new SkillData(),
     swim: new SkillData(),
     use_magic_device: new SkillData(),
-  } 
+  }
 
   // Clase y Nivel
   class: string[] = []
@@ -667,7 +667,7 @@ export class CharacterData {
       CharacterData.copyObject(this, other)
     }
   }
-  getStatValue(modStat: string) {
+  getStatValue?(modStat: string): number {
     switch (modStat) {
       case 'FUE':
         return this.stats.strength
@@ -687,12 +687,16 @@ export class CharacterData {
       case 'CAR':
         return this.stats.charisma
         break
+      default:
+        return 0
+        break
     }
+    return 0
   }
 
 }
 
-enum Alignment {
+export enum Alignment {
   LawfulGood = 'LB',
   NeutralGood = 'NB',
   ChaoticGood = 'CB',

@@ -1,6 +1,6 @@
 import { Box, Heading, Input, Button, ButtonGroup, Image, Select, Textarea, Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Divider, FormControl, FormLabel, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, IconButton, Text, Center, HStack, VStack, InputGroup, InputRightElement, Table, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
 import { FC, ChangeEvent, useState } from "react"
-import { CharacterData } from "@/components/class/characterdata"
+import { CharacterData, Alignment } from "@/components/class/characterdata"
 import CharacterAvatarEditor from "@/components/ui/molecules/CharacterAvatarEditor"
 import { GiInfo } from "react-icons/gi"
 import { FaPlus, FaMinus } from "react-icons/fa"
@@ -26,8 +26,20 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
    * Detalles del personaje
    */
   const handleAlignment = (e: ChangeEvent<HTMLSelectElement>) => {
-    characterDetails.alignment = e.target.value
-    setCharacterDetails(data.character_details)
+    const selectedAlignment: string = e.target.value;
+    // Asegúrate de que el valor seleccionado está dentro de los valores permitidos del enum Alignment
+    if (Object.values(Alignment).includes(selectedAlignment as Alignment)) {
+      characterDetails.alignment = selectedAlignment as Alignment;
+      setCharacterDetails(data.character_details)
+      // setCharacterDetails({ ...data, character_details: characterDetails });
+    } else {
+      // Manejar el caso en que el valor seleccionado no es un valor válido del enum Alignment
+      characterDetails.alignment = Alignment.NeutralNeutral;
+      setCharacterDetails(data.character_details)
+      console.error("Valor de alineación no válido:", selectedAlignment);
+    }
+    // characterDetails.alignment = e.target.value
+    // setCharacterDetails(data.character_details)
   }
   const [deity, setDeity] = useState(data.character_details.deity)
   const handleDeity = (e: ChangeEvent<HTMLInputElement>) => {
@@ -169,7 +181,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
             alt={name}
             borderRadius="lg"
           />
-          <CharacterAvatarEditor name={name} buttonName="Añadir Imagen" newCharacter  onPhotoURLChange={handlePhotoURLChange}/>
+          <CharacterAvatarEditor name={name} buttonName="Añadir Imagen" newCharacter onPhotoURLChange={handlePhotoURLChange} />
         </VStack>
         <VStack alignItems={"flex-start"}>
           <Text as="span" size='xs'>Nombre</Text>
@@ -342,7 +354,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} value={characterDetails.lore.origin_context} onChange={handleOrigin}/>
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.origin_context} onChange={handleOrigin} />
             <Divider my={4} />
             <Text as="span" size='xs'>Motivaciones y Objetivos</Text>
             <Popover isLazy>
@@ -359,7 +371,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} value={characterDetails.lore.motivations_objectives} onChange={handleMotivation}/>
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.motivations_objectives} onChange={handleMotivation} />
             <Divider my={4} />
             <Text as="span" size='xs'>Relaciones Personales</Text>
             <Popover isLazy>
@@ -375,7 +387,7 @@ const StepDescription: FC<StepDescriptionProps> = ({ onComplete, onPrev, data })
                 </PopoverBody>
               </PopoverContent>
             </Popover>
-            <Textarea variant="flushed" rows={5} value={characterDetails.lore.relations} onChange={handleRelations}/>
+            <Textarea variant="flushed" rows={5} value={characterDetails.lore.relations} onChange={handleRelations} />
             <Divider my={4} />
             <Text as="span" size='xs'>Eventos Significativos</Text>
             <Popover isLazy>
